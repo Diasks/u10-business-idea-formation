@@ -8,6 +8,7 @@ var config = require('dotenv').config();
 var mongoose = require('mongoose');
 var cors = require('cors');
 
+
 var app = express();
 app.use(cors());
 
@@ -33,7 +34,7 @@ var usersRouter = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
