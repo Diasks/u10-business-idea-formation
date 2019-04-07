@@ -1,30 +1,71 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/User');
+ 
 
+//WORKING WITH POSTMAN
 /* GET users  */
 router.get('/', function(req, res) {
-  res.json({"status": "OK", "data" : ""});
+  User.find(function(error, users){
+    if(error) {
+      res.json({"Status" : "Error", "message": `${error}`});
+    }
+    res.status(200).json(users);
+  });
 });
 
-
+//WORKING WITH POSTMAN
 /* GET  specific user by ID  */
-router.get('/', function(req, res) {
-  res.json({"status": "OK", "data" : ""});
+router.get('/:userId', function(req, res) {
+  User.findById(req.params.userId, function(error, user) {
+if (error) {
+  res.json({"status" : "error", "message" : `${error}`});
+}
+  res.status(200).json(user); 
 });
+});
+
+//WORKING WITH POSTMAN
 
 /* POST create user  */
 router.post('/', function(req, res) {
-  res.json({"status": "OK", "data" : `recieved, ${req.body.name}`});
+  var newUser = new User();
+  newUser.first_name = req.body.first_name,
+  newUser.last_name = req.body.last_name,
+  newUser.email = req.body.email,
+  newUser.age = req.body.age,
+
+newUser.save(function(error) {
+  if (error) {
+    res.json({"status": "error", "message": `${error}`});
+  }
+
+  res.json({"status": "OK", "data" : `recieved, ${res}`});
+});
 });
 
+//WORKING (!!)
 /* PUT update user  */
-router.put('/:userId', function(req, res) {
-  res.json({"status": "OK", "data" : `Put request, ${req.params.userId}`});
+router.patch('/:userId/update', function(req, res) {
+  User.findByIdAndUpdate(req.params.userId, {$set: req.body}, function (error, user) {
+    if (error) {
+      res.json({"status": "error", "message": `${error}`});
+    }
+  res.status(200).json(user);
+});
 });
 
-/* DELETE user listing */
-router.delete('/:userId', function(req, res) {
-  res.json({"status": "OK", "data" : `Delete request, ${req.params.userId}`});
+
+
+//Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
+/* DELETE user  */
+router.delete('/:userId/delete', function(req, res) {
+  User.findByIdAndRemove(req.params.userId, function(error) {
+if (error) {
+  res.json({"status": "error", "message" : `${error}`});
+}
+res.status(200);
+  });
 });
 
 module.exports = router;
