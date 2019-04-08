@@ -5,7 +5,7 @@ import React from 'react';
 			return (
 			<header style={headerStyle}>
 			<h1>Formation</h1>
-			<Link style={linkStyle}to="/login">Login</Link> | <Link style={linkStyle} to="/about">About</Link> | <Link style={linkStyle} to="/register">Register</Link>
+			<Link style={linkStyle}to="/login">Login</Link> | <Link style={linkStyle} to="/profile">Profile</Link> | <Link style={linkStyle} to="/register">Register</Link>
 			</header>
 			)
 			}
