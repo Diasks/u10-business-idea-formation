@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 			
 			
 			this.state = {
-			name: '',
+			first_name: '',
+			last_name: '',
 			password: '',
 			email: ''
 			};
@@ -41,16 +42,19 @@ import React, { Component } from 'react';
 			console.log(this.state);
 			
 			const user = {
-			name: this.state.name,
+			first_name: this.state.first_name,
+			last_name: this.state.last_name,
 			password: this.state.password,
 			email: this.state.email
 			};
 			
-			axios.post(`http://localhost:4000/users`, { user })
+			axios.post(`http://localhost:4000/users`,  user )
 			.then(res => {
 			console.log(res);
 			console.log(res.data);
-			})
+			}).catch(err => {
+				err.status(400).send('unable to save to database');
+			});
 			
 			
 			}
@@ -63,8 +67,15 @@ import React, { Component } from 'react';
 			<div>
 			<form onSubmit={this.handleSubmit}>
 			<div>
-			<label htmlFor="name">Full name</label>
-			<input type="text" id="name" placeholder="enter your full name" name="name" value={this.state.name} onChange={this.handleChange}/>
+			<label htmlFor="first_name">Firstname</label>
+			<input type="text" id="first_name" placeholder="enter your firstname" name="first_name" value={this.state.first_name} onChange={this.handleChange}/>
+			
+			
+			</div>
+
+			<div>
+			<label htmlFor="last_name">Lastname</label>
+			<input type="text" id="last_name" placeholder="enter your lastname" name="last_name" value={this.state.last_name} onChange={this.handleChange}/>
 			
 			
 			</div>
