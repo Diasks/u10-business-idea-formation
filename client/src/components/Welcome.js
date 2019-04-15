@@ -124,7 +124,9 @@ const AppealPicture = styled.div`
   background-image: url(${AppealPic});
 `;
 
-const WelcomePage = styled.div``;
+const WelcomePage = styled.div`
+  height: 1000px;
+`;
 
 function Welcome() {
   return (
