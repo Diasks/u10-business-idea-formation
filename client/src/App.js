@@ -14,14 +14,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <div>
-            {
-              // TODO
-              //<Header />
-              //<Route path="/login" component={Login} />
-              //<Route exact path="/profile" component={Profile} />
-              //<Route exact path="/register" component={Register} />
-              //<Footer />
-            }
+            <Header>
+                <Route path="/login" component={Login} />
+                <Route exact path="/profile" component={Profile} />
+                <Route exact path="/register" component={Register} />
+              </Header>
             <Welcome />
             <Footer />
           </div>
