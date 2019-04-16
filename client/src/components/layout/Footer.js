@@ -12,7 +12,7 @@ const FooterDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  height: 260px;
+  height: 200px;
 `;
 
 const Connect = styled.span`
@@ -105,35 +105,17 @@ function Footer() {
         <Link style={linkStyle} to="/login">
           About Us
         </Link>
-        <Link style={linkStyle} to="/login">
-          Products
-        </Link>
-        <Link style={linkStyle} to="/login">
-          Career
-        </Link>
       </LinkSection>
 
       <LinkSection><LinkSectionTitle>Resources</LinkSectionTitle>
         <Link style={linkStyle} to="/login">
-          Some Article
-        </Link>
-        <Link style={linkStyle} to="/login">
-          Another Article
-        </Link>
-        <Link style={linkStyle} to="/login">
-          Last Article
+          Articles
         </Link>
       </LinkSection>
 
       <LinkSection><LinkSectionTitle>Support</LinkSectionTitle>
         <Link style={linkStyle} to="/login">
-          FAQ
-        </Link>
-        <Link style={linkStyle} to="/login">
           Contact Us
-        </Link>
-        <Link style={linkStyle} to="/login">
-          Privacy
         </Link>
       </LinkSection>
       </Links>
