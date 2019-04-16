@@ -28,7 +28,7 @@ const LeftHalf = styled.div`
 const RightHalf = styled.div`
   width: 100%;
   background-color: ${Tapestry};
-  height: 450px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
