@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Header from "./components/layout/Header";
-import Profile from "./components/pages/Profile";
-import Login from "./components/pages/Login";
-import Register from "./components/pages/Register";
 import Footer from "./components/layout/Footer";
 import Welcome from "./components/Welcome";
 import "./App.css";
@@ -19,11 +15,6 @@ class App extends Component {
           <Route exact path="/PageTwo" component={PageTwo} />
 
           <div>
-            <Header>
-              <Route path="/login" component={Login} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/register" component={Register} />
-            </Header>
             <Welcome />
             <Footer />
           </div>
