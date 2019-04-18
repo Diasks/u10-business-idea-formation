@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
 import TemplatePic from "../assets/template-pic.png";
 import AppealPic from "../assets/placeholder.png";
 
@@ -140,7 +142,9 @@ function Welcome() {
           <TemplatePicture />
         </Logo>
         <RightHalf>
+        <Link to="/getstarted">
           <GetStarted>Get Started</GetStarted>
+          </Link>
         </RightHalf>
       </Halves>
       <Offer>
