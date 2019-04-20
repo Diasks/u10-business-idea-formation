@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
- 
+var mongoose = require('mongoose');
+
+
+
+
 
 //WORKING WITH POSTMAN
 /* GET users  */
@@ -30,6 +34,7 @@ if (error) {
 /* POST create user  */
 router.post('/', function(req, res) {
   var newUser = new User();
+  newUser._id = new mongoose.Types.ObjectId(),
   newUser.first_name = req.body.first_name,
   newUser.last_name = req.body.last_name,
   newUser.password = req.body.password,
@@ -43,6 +48,10 @@ newUser.save(function(error) {
   res.json({"status": "OK", "data" : `recieved, ${res}`});
 });
 });
+
+
+  
+
 
 //WORKING (!!)
 /* PUT update user  */
