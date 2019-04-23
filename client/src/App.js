@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 			import { BrowserRouter as Router, Route } from 'react-router-dom';
 			import Header from './components/layout/Header';
 			import Profile from './components/pages/Profile';
+			import Cvtemplate from './components/pages/Cvtemplate';
 			import Login from './components/pages/Login';
 			import Register from './components/pages/Register';
 			import Footer from './components/layout/Footer'
@@ -21,6 +22,7 @@ import React, { Component } from 'react';
 			<Header />
 			<Route  path="/login" component={Login}/>
 			<Route exact path ="/profile" component= {Profile} />
+			<Route exact path ="/cvtemplate" component= {Cvtemplate} />
 			<Route exact path ="/register" component= {Register} />
 			<div id="content">
           
