@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/User');
-var mongoose = require('mongoose');
+var Template = require('../models/Template');
+
 
 
 
 
 
 //WORKING WITH POSTMAN
-/* GET users  */
+/* GET templates  */
 router.get('/', function(req, res) {
   User.find(function(error, users){
     if(error) {
@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
 });
 
 //WORKING WITH POSTMAN
-/* GET  specific user by ID  */
+/* GET  specific template by ID  */
 router.get('/:userId', function(req, res) {
   User.findById(req.params.userId, function(error, user) {
 if (error) {
@@ -31,16 +31,16 @@ if (error) {
 
 //WORKING WITH POSTMAN
 
-/* POST create user  */
+/* POST create template  */
 router.post('/', function(req, res) {
-  var newUser = new User();
-  newUser._id = new mongoose.Types.ObjectId(),
-  newUser.first_name = req.body.first_name,
-  newUser.last_name = req.body.last_name,
-  newUser.password = req.body.password,
-  newUser.email = req.body.email,
-
-newUser.save(function(error) {
+  var newTemplate = new Template();
+  newTemplate.first_name = req.body.first_name,
+  newTemplate.last_name = req.body.last_name,
+  newTemplate.email = req.body.email,
+  newTemplate.phone_number = req.body.phone_number,
+  newTemplate.Address= req.body.Adress,
+  newTemplate.Zipcode = req.body.Zipcode
+newTemplate.save(function(error) {
   if (error) {
     res.json({"status": "error", "message": `${error}`});
   }
