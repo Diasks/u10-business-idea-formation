@@ -1,15 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
+import { colors } from "./Common";
 
 import TemplatePic from "../assets/template-pic.png";
 import AppealPic from "../assets/placeholder.png";
-
-const LividBrown = "#55273c";
-const Cerulean = "#00c0fd";
-const Tapestry = "#ae6488";
-const Melanie = "#e4bdd0";
-const Lily = "#bf9ead";
 
 const Halves = styled.div`
   display: flex;
@@ -19,7 +14,7 @@ const Halves = styled.div`
 
 const LeftHalf = styled.div`
   width: 100%;
-  background-color: ${Cerulean};
+  background-color: ${colors.Cerulean};
   height: 325px;
   display: flex;
   flex-direction: column;
@@ -29,7 +24,7 @@ const LeftHalf = styled.div`
 
 const RightHalf = styled.div`
   width: 100%;
-  background-color: ${Tapestry};
+  background-color: ${colors.Tapestry};
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -38,13 +33,13 @@ const RightHalf = styled.div`
 `;
 
 const GetStarted = styled.button`
-  background-color: ${LividBrown};
+  background-color: ${colors.LividBrown};
   border-radius: 40px;
   height: 40px;
   width: 150px;
   padding: 0;
   margin-bottom: 30px;
-  border: 2px solid ${Cerulean};
+  border: 2px solid ${colors.Cerulean};
   font-weight: 700;
   color: white;
   z-index: 3000;
@@ -69,8 +64,8 @@ const Switch = styled.h1`
   color: white;
   padding-left: 80px;
   text-transform: uppercase;
-  text-stroke: 2px ${Tapestry};
-  -webkit-text-stroke: 2px ${Tapestry};
+  text-stroke: 2px ${colors.Tapestry};
+  -webkit-text-stroke: 2px ${colors.Tapestry};
 }
 `;
 
@@ -81,7 +76,7 @@ const Logo = styled.div`
   border-radius: 50%;
   height: 380px;
   width: 380px;
-  background-color: ${Melanie};
+  background-color: ${colors.Melanie};
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -93,7 +88,7 @@ const TemplatePicture = styled.div`
   width: 175px;
   z-index: 1000;
   background-image: url(${TemplatePic});
-  box-shadow: 8px 8px 0 0 ${Lily};
+  box-shadow: 8px 8px 0 0 ${colors.Lily};
 `;
 
 const Offer = styled.div`
@@ -142,8 +137,8 @@ function Welcome() {
           <TemplatePicture />
         </Logo>
         <RightHalf>
-        <Link to="/getstarted">
-          <GetStarted>Get Started</GetStarted>
+          <Link to="/getstarted">
+            <GetStarted>Get Started</GetStarted>
           </Link>
         </RightHalf>
       </Halves>
