@@ -65,19 +65,10 @@ app.post("/api/login", function(req, res) {
     } else {
       console.log('error');
     }
-    // user exists, create token and return to client
-    // done
-  })
   
-  // var user = {id: 3};
-  //   var token = jwt.sign(user, process.env.SECRET_OR_KEY,  { expiresIn: '24h' // expires in 24 hours
-  // });
-  //   res.json({
-  //     success: true,
-  //     message: 'Authentication successfull',
-  //     token: token,
-  //     user: user
-  //   });
+  
+  })
+
 });
 
 app.use("/", indexRouter);
