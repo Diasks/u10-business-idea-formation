@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BrowserRouter as Link } from "react-router-dom";
-import { colors } from "./Common";
+import { colors, TemplatePicture } from "./Common";
 
-import TemplatePic from "../assets/template-pic.png";
 import AppealPic from "../assets/placeholder.png";
 
 const Halves = styled.div`
@@ -81,14 +80,6 @@ const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const TemplatePicture = styled.div`
-  height: 255px;
-  width: 175px;
-  z-index: 1000;
-  background-image: url(${TemplatePic});
-  box-shadow: 8px 8px 0 0 ${colors.Lily};
 `;
 
 const Offer = styled.div`
