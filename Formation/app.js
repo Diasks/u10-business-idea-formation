@@ -45,25 +45,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/api/login", function(req, res) {
   //auth user
-  debugger;
-  console.log(req.body);
-  console.log(req.body.email);
-  debugger;
-  User.findOne({email: req.body.email}, function(err, user) {
-    debugger;
-    console.log(user);
+  User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
+
     if (!err) {
-      debugger;
       var token = jwt.sign(user.toJSON(), process.env.SECRET_OR_KEY,  { expiresIn: '24h' // expires in 24 hours
       });
    res.json({
       success: true,
       message: 'Authentication successfull',
-      token: token,
-      user: user
+      token: token
     });
-    } else {
-      console.log('error');
+    } else  {
+      //skicka ett error kanske
+
     }
   
   
