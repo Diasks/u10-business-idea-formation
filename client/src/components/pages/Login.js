@@ -1,13 +1,29 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
+var emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+
+var formValid = formErrors => {
+	var valid = true;
+
+	Object.values(formErrors).forEach( val => {
+		val.length > 0 && (valid=false);
+	});
+	return valid;
+};
+
 export class Login extends Component {
   constructor() {
     super();
 
     this.state = {
       email: "",
-      password: ""
+	  password: "",
+	  formErrors: {
+		email: '',
+	password: ''
+	}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,51 +33,72 @@ export class Login extends Component {
   handleChange(e) {
     let target = e.target;
     let value = target.value;
-    let name = target.name;
+	let name = target.name;
+	let formErrors = this.state.formErrors;
 
-    this.setState({
+	switch(name) {
+		case 'email': 
+		formErrors.email = emailRegex.test(value)  ? ''
+		: "invalid email address";
+		break;
+		case 'password': 
+		formErrors.password = value.length < 6  ? 'minimum 3 characters required'
+		: '';
+		break;
+		default:
+		break;
+
+	}
+
+    this.setState({formErrors,
       [name]: value
     });
   }
 
   //Kopplad till backenden(!!)
   handleSubmit(e) {
-    e.preventDefault();
-    console.log("submitted");
-    console.log(this.state);
+	e.preventDefault();
+	if (formValid(this.state.formErrors)) { 
 
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    };
+		const user = {
+			email: this.state.email,
+			password: this.state.password
+		  };
 
 	axios.post(`http://localhost:4000/api/login`, user)
 		.then(res => {
-			debugger;
 			console.log(res);
 			console.log(res.data);
 			localStorage.setItem("cool-jwt", res.data.token);
 			localStorage.setItem("user", res.data.user._id);
-    	});
-  }
+    	}).catch(function(e) {
+			alert(`${e.message}: Wrong email or password.  `);
+		
+		});
+	}
+	else{console.error('Form invalid!')};
+}
 
   render() {
+	var {formErrors} = this.state;
     return (
       <div className="Form">
         <form onSubmit={this.handleSubmit} className="FormInputs">
           <div className="form-group">
-            <label htmlFor="email" className="FormInputLabel">
+			<label htmlFor="email" className="FormInputLabel">
               Email
             </label>
             <input
-              type="email"
+              type="email" required
               className="form-control"
               id="email"
               placeholder="enter your full name"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
-            />
+            /> {formErrors.email.length >0 && (
+				<span className="errorMessage">{formErrors.email}</span>
+			)}
           </div>
 
           <div className="form-group">
@@ -69,14 +106,16 @@ export class Login extends Component {
               Password
             </label>
             <input
-              type="password"
+              type="password" required
               className="form-control"
               id="password"
               placeholder="enter your full name"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
-            />
+            />{formErrors.password.length >0 && (
+				<span className="errorMessage">{formErrors.password}</span>
+			)}
           </div>
 
           <div>
