@@ -53,7 +53,8 @@ app.post("/api/login", function(req, res) {
    res.json({
       success: true,
       message: 'Authentication successfull',
-      token: token
+      token: token,
+      user: user._id
     });
     } else  {
       //skicka ett error kanske
