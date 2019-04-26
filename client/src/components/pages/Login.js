@@ -70,7 +70,7 @@ export class Login extends Component {
 			console.log(res);
 			console.log(res.data);
 			localStorage.setItem("cool-jwt", res.data.token);
-			localStorage.setItem("user", res.data.user._id);
+			localStorage.setItem("user", res.data.user);
     	}).catch(function(e) {
 			alert(`${e.message}: Wrong email or password.  `);
 		
@@ -96,9 +96,7 @@ export class Login extends Component {
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
-            /> {formErrors.email.length >0 && (
-				<span className="errorMessage">{formErrors.email}</span>
-			)}
+            /> 
           </div>
 
           <div className="form-group">
