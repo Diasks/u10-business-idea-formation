@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
 import { colors, TemplatePicture } from "./Common";
+import PageTwo from './pages/PageTwo';
 
 import AppealPic from "../assets/placeholder.png";
 
@@ -128,9 +129,15 @@ function Welcome() {
           <TemplatePicture />
         </Logo>
         <RightHalf>
-          <Link to="/getstarted">
+          <Router>
+          <NavLink to="/PageTwo">
             <GetStarted>Get Started</GetStarted>
-          </Link>
+          </NavLink>
+                          <Route exact path="/PageTwo" component={PageTwo}>
+        </Route>
+        </Router>
+
+          
         </RightHalf>
       </Halves>
       <Offer>
