@@ -75,7 +75,8 @@
 .form-control::placeholder {
   color: #616E7F;
 }
- .FormButton {
+
+.FormButton {
   background-color: #00BFFF;
   color: white;
   border: none;
@@ -84,7 +85,7 @@
   padding: 15px 70px;
   font-size: .8em;
   font-weight: 500;
- }
+}
 
 .App {
   text-align: center;
@@ -115,6 +116,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
