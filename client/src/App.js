@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Profile from "./components/pages/Profile";
 import Welcome from "./components/Welcome";
 import "./App.css";
+import PageTwo from "./components/pages/PageTwo";
 
 class App extends Component {
   render() {
