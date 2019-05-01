@@ -7,7 +7,7 @@ constructor() {
 }
 
 routeChange() {
-    var path = `PageTwo`;
+    const path = `PageTwo`;
     this.props.history.push(path);
 }
  

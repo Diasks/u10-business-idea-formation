@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 
 
-var emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
-var formValid = formErrors => {
-	var valid = true;
+let formValid = formErrors => {
+	let valid = true;
 
 	Object.values(formErrors).forEach( val => {
 		val.length > 0 && (valid=false);
@@ -80,7 +80,7 @@ export class Login extends Component {
 }
 
   render() {
-	var {formErrors} = this.state;
+	let {formErrors} = this.state;
     return (
       <div className="Form">
         <form onSubmit={this.handleSubmit} className="FormInputs">
@@ -92,7 +92,7 @@ export class Login extends Component {
               type="email" required
               className="form-control"
               id="email"
-              placeholder="enter your full name"
+              placeholder="enter your email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
@@ -107,7 +107,7 @@ export class Login extends Component {
               type="password" required
               className="form-control"
               id="password"
-              placeholder="enter your full name"
+              placeholder="enter your password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
@@ -117,9 +117,10 @@ export class Login extends Component {
           </div>
 
           <div>
+			  
             <button type="submit" className="FormButton">
               Sign in
-            </button>{" "}
+            </button>
           </div>
         </form>
       </div>

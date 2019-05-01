@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 			import axios from 'axios';
 		
 
-			var emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+			const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
 			
-var formValid = formErrors => {
-	var valid = true;
+let formValid = formErrors => {
+	let valid = true;
 
 	Object.values(formErrors).forEach( val => {
 		val.length > 0 && (valid=false);
@@ -55,7 +55,7 @@ var formValid = formErrors => {
 				: '';
 				break;
 				case 'last_name': 
-				formErrors.last_name = value.length < 3  ? 'minimum 3 characters required'
+				formErrors.last_name = value.length < 3  ? 'minimum 3 characters required, only letters'
 				: '';
 				break;
 				case 'email': 
@@ -108,7 +108,7 @@ var formValid = formErrors => {
 			
 			
 			render () {
-			var {formErrors} = this.state;
+			let {formErrors} = this.state;
 			return (
 			
 			<div className="Form">
@@ -133,7 +133,7 @@ var formValid = formErrors => {
 			
 			<div className="form-group">
 			<label htmlFor="password" className="FormInputLabel">Password</label>
-			<input type="password" className="form-control" id="password" placeholder="enter your full name" required name="password" value={this.state.password} onChange={this.handleChange} />
+			<input type="password" className="form-control" id="password" placeholder="enter a password " required name="password" value={this.state.password} onChange={this.handleChange} />
 			{formErrors.password.length >0 && (
 				<span className="errorMessage">{formErrors.password}</span>
 			)}
@@ -143,7 +143,7 @@ var formValid = formErrors => {
 			
 			<div className="form-group">
 			<label htmlFor="email" className="FormInputLabel">Email</label>
-			<input type="email" className="form-control" id="email" placeholder="enter your full name" required name="email" value={this.state.email} onChange={this.handleChange}/>
+			<input type="email" className="form-control" id="email" placeholder="enter your email" required name="email" value={this.state.email} onChange={this.handleChange}/>
 			{formErrors.email.length >0 && (
 				<span className="errorMessage">{formErrors.email}</span>
 			)}
