@@ -5,6 +5,7 @@ import Profile from "./components/pages/Profile";
 import Welcome from "./components/Welcome";
 import "./App.css";
 import PageTwo from "./components/pages/PageTwo";
+import Profession from "./components/pages/Profession";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path="/Profile" component={Profile} />
             <Route path="/" exact component={Welcome} />
             <Route path="/PageTwo" exact component={PageTwo} />
+            <Route path="/Profession" exact component={Profession} />
             <Footer />
           </div>
         </div>

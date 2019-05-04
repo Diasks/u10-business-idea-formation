@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "jest": "^23.6.0",
     "jquery": "^1.9.1",
     "popper.js": "^1.14.7",
     "react": "^16.8.6",
@@ -18,11 +19,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    }
   },
   "browserslist": [
     ">0.2%",
@@ -31,6 +37,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-plugin-macros": "^2.5.1"
+    "babel-plugin-macros": "^2.5.1",
+    "babel-plugin-styled-components": "^1.10.0",
+    "identity-obj-proxy": "^3.0.0"
   }
 }
