@@ -32,7 +32,7 @@ const RightHalf = styled.div`
   align-items: center;
 `;
 
-const GetStarted = styled.button`
+export const GetStarted = styled.button`
   background-color: ${colors.LividBrown};
   border-radius: 40px;
   height: 40px;
