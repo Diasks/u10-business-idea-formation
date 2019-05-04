@@ -1,25 +1,7 @@
 import React, { Component } from 'react';	
-import styled from "styled-components/macro";
+
 			import axios from 'axios';
 		
-
-
-
-			const Form = styled.div`
-			margin-bottom: 100px;
-			`;
-			const FormInputs = styled.form`
-			margin-bottom: 40px;
-			`;
-			
-		
-
-
-
-
-
-
-
 
 			const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
@@ -111,7 +93,7 @@ let formValid = formErrors => {
 			email: this.state.email
 			};
 			
-			axios.post(`https://formation-app.herokuapp.com/users`,  user )
+			axios.post(`http://localhost:4000/users`,  user )
 			.then(res => {
 			console.log(res);
 			console.log(res.data);
@@ -129,8 +111,8 @@ let formValid = formErrors => {
 			let {formErrors} = this.state;
 			return (
 			
-		<Form>
-			<FormInputs onSubmit={this.handleSubmit}>
+			<div className="Form">
+			<form onSubmit={this.handleSubmit} className="FormInputs">
 			<div className="form-group">
 			<label htmlFor="first_name" className="FormInputLabel">Firstname</label>
 			<input type="text" className="form-control" id="first_name" placeholder="enter your firstname" required name="first_name" value={this.state.first_name} onChange={this.handleChange}/>
@@ -176,8 +158,8 @@ let formValid = formErrors => {
 	
        
 				</div>
-			</FormInputs>
-			</Form>
+			</form>
+			</div>
 			
 			)}
 			}

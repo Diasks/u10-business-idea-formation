@@ -65,7 +65,7 @@ export class Login extends Component {
 			password: this.state.password
 		  };
 
-	axios.post(`https://formation-app.herokuapp.com/api/login`, user)
+	axios.post(`http://localhost:4000/api/login`, user)
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
