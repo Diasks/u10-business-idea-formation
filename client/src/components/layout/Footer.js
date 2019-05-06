@@ -12,6 +12,11 @@ const FooterDiv = styled.div`
   align-items: center;
   padding: 10px;
   height: 200px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
 `;
 
 const Connect = styled.span`
@@ -91,7 +96,7 @@ function Footer() {
       <Links>
         <LinkSection>
           <LinkSectionTitle>Company</LinkSectionTitle>
-          <Link style={linkStyle} to="/login">
+          <Link style={linkStyle} to="/About">
             About Us
           </Link>
         </LinkSection>
@@ -105,7 +110,7 @@ function Footer() {
 
         <LinkSection>
           <LinkSectionTitle>Support</LinkSectionTitle>
-          <Link style={linkStyle} to="/login">
+          <Link style={linkStyle} to="/Contact">
             Contact Us
           </Link>
         </LinkSection>
