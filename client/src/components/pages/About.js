@@ -1,16 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 
 
 let styleHeader = {
   backgroundColor: "#ffffff",
-  padding: "60px",
   textAlign: "center",
   //fontFamily: "palatino"
 };
 let styleHeader1 = {
   textTransform: "uppercase",
   marginBottom: "60px",
+  height: "300px",
   color: "#55273c",
   fontSize: "40px",
   textAlign: "center"
@@ -25,6 +27,7 @@ let styleParagraph = {
 function About() {
   return (
     <div class="bgSection" style={styleHeader}>
+      <Header />
       <h1 style={styleHeader1}>- Our Mission - </h1>
       <div class="aboutParagraph" style={styleParagraph}>
         <p>
@@ -45,6 +48,7 @@ function About() {
           id aliquet risus.
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

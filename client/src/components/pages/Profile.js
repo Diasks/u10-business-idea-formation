@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
 import { colors } from "../Common";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -100,6 +101,7 @@ function Profile() {
           </TabPanel>
         </Tabs>
       </Body>
+      <Footer />
     </div>
   );
 }

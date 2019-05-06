@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
 import { colors, TemplatePicture } from "./Common";
 import PageTwo from './pages/PageTwo';
+import Footer from "./layout/Footer";
 
 import AppealPic from "../assets/placeholder.png";
 
@@ -154,6 +155,7 @@ function Welcome() {
           <AppealPicture />
         </Appeal>
       </Offer>
+      <Footer />
     </WelcomePage>
   );
 }
