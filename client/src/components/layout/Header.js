@@ -55,7 +55,7 @@ function Header() {
         <Options>
           <StyledLink to="/profile">Username</StyledLink>
           <StyledLink to="/my-templates">My templates</StyledLink>
-          <StyledLink to="/my-color-schemes">My color schemes</StyledLink>
+          <StyledLink to="/new">Add new</StyledLink>
           <StyledLink to="/logout">Log out</StyledLink>
         </Options>
       </Dropdown>
