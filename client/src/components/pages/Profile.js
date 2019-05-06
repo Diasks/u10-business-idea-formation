@@ -1,36 +1,17 @@
 import React from "react";
 import Header from "../layout/Header";
 import styled from "styled-components/macro";
-import { Link } from "react-router-dom";
-import { colors, TemplatePicture } from "../Common";
-
-const Content = styled.div`
-  display: flex;
-  flex: 1 10;
-  min-height: 900px;
-`;
-
-const Sidebar = styled.div`
-  background-color: #f5f5f5;
-  padding: 20px;
-  display: flex;
-  flex: 0 0 25%;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  z-index: 2000;
-  color: ${colors.Gray};
-`;
+import { colors } from "../Common";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import "formol/lib/default.css";
+import Formol, { Field } from "formol/lib/formol";
 
 const Body = styled.div`
-  position: relative;
-  background-color: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  max-width: 640px;
-  min-height: 640px;
+  max-width: 980px;
+  min-height: 980px;
   margin: 30px auto;
+  padding: 30px;
   height: 100%;
   width: 100%;
 `;
@@ -38,64 +19,87 @@ const Body = styled.div`
 const Circle = styled.div`
   position: absolute;
   z-index: 1000;
-  left: calc(50% - 640px / 2);
-  top: 0;
+  right: 200px;
+  top: 150px;
   border-radius: 50%;
-  height: 640px;
-  width: 640px;
+  height: 400px;
+  width: 400px;
   background: ${colors.LightLily};
-  border-radius: 50%;
   background-position: 50% 50%;
   background-size: cover;
-`;
-
-const BodyItem = styled.div`
-  flex: 1 0 calc(33% - 20px);
-  margin: 10px;
-  z-index: 2000;
-`;
-
-const StyledHr = styled.hr`
-  border: 1px white ${colors.LightGray};
-  width: 100%;
-`;
-
-const StyledLink = styled(Link)`
-  color: #a9a9a9;
-  text-decoration: none;
-  padding: 10px;
-  font-weight: 500;
-  font-size: 22px;
-
-  &:hover {
-    color: ${colors.DarkCerulean};
-    text-decoration: none;
-  }
 `;
 
 function Profile() {
   return (
     <div>
       <Header />
-      <Content>
-        <Sidebar>
-          <StyledLink to="/templates">Templates</StyledLink>
-          <StyledLink to="/color-schemes">Color schemes</StyledLink>
-          <StyledLink to="/popular">Popular designs</StyledLink>
-          <StyledHr />
-          <StyledLink to="/new">+ New</StyledLink>
-        </Sidebar>
-        <Body>
-          <Circle />
-          {[0, 1, 2, 3, 4, 5].map(i => {
-            return (
-              <BodyItem>
-                <TemplatePicture />
-              </BodyItem>
-            );
-          })}
-        </Body>
-      </Content>
+
+      <Body>
+        <Formol onSubmit={e => console.log("submitted!", e)}>
+          <Field type="text">Full name</Field>
+          <Field type="text">Place (City, Country)</Field>
+          <Field type="tel">Telephone (XXX-XXX-XXXX)</Field>
+          <Field type="email">Email</Field>
+        </Formol>
+        <Circle />
+
+        <Tabs>
+          <TabList>
+            <Tab>Objective</Tab>
+            <Tab>Work experience</Tab>
+            <Tab>Education</Tab>
+            <Tab>Skills</Tab>
+            <Tab>Others</Tab>
+          </TabList>
+
+          <TabPanel>
+            <h2>Objective</h2>
+            <p>
+              Please think of the main objective you want to reach with you CV
+            </p>
+            <Formol onSubmit={e => console.log("submitted!", e)}>
+              <Field type="area">Objective</Field>
+            </Formol>
+          </TabPanel>
+          <TabPanel>
+            <h2>Work experience</h2>
+            <p>Please list all your jobs in reverse order</p>
+            <Formol onSubmit={e => console.log("submitted!", e)}>
+              <Field type="date">Date job started</Field>
+              <Field type="date">Date job finished</Field>
+              <Field type="area">Role, Company, Place</Field>
+            </Formol>
+          </TabPanel>
+          <TabPanel>
+            <h2>Education</h2>
+            <p>Please list your education in reverse order</p>
+            <Formol onSubmit={e => console.log("submitted!", e)}>
+              <Field type="date">Date education started</Field>
+              <Field type="date">Date education finished</Field>
+              <Field type="area">Program, Institution, Place</Field>
+            </Formol>
+          </TabPanel>
+          <TabPanel>
+            <h2>Skills</h2>
+            <p>
+              Please list all your skills relevant to the job you want to get
+            </p>
+            <Formol onSubmit={e => console.log("submitted!", e)}>
+              <Field type="area">Skills</Field>
+            </Formol>
+          </TabPanel>
+          <TabPanel>
+            <h2>Others</h2>
+            <p>
+              Please list other important things you want your future employer
+              to know
+            </p>
+            <Formol onSubmit={e => console.log("submitted!", e)}>
+              <Field type="area">Others</Field>
+            </Formol>
+          </TabPanel>
+        </Tabs>
+      </Body>
     </div>
   );
 }
