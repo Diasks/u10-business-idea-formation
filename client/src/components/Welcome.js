@@ -4,6 +4,7 @@ import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
 import { colors, TemplatePicture } from "./Common";
 import PageTwo from './pages/PageTwo';
 
+
 import AppealPic from "../assets/placeholder.png";
 
 const Halves = styled.div`
@@ -155,7 +156,8 @@ function Welcome() {
         </Appeal>
       </Offer>
     </WelcomePage>
-  );
+
+);
 }
 
 export default Welcome;
