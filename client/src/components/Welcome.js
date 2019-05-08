@@ -118,8 +118,14 @@ const WelcomePage = styled.div`
   height: 1000px;
 `;
 
+
+
+
 function Welcome() {
+
+
   return (
+    
     <WelcomePage>
       <Halves>
         <LeftHalf>
