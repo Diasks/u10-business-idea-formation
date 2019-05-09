@@ -43,6 +43,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+
 app.post("/api/login", function(req, res) {
   //auth user
   User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
