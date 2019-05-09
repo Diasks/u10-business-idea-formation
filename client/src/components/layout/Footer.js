@@ -12,10 +12,6 @@ const FooterDiv = styled.div`
   align-items: center;
   padding: 10px;
   height: 200px;
-<<<<<<< HEAD
-  
-=======
->>>>>>> 62b48b639421149e1eed82c423903790d57c6c90
   left: 0;
   bottom: 0;
   right: 0;

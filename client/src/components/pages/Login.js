@@ -71,8 +71,7 @@ export class Login extends Component {
 			console.log(res.data);
 			localStorage.setItem("cool-jwt", res.data.token);
       localStorage.setItem("user", res.data.user);
-      const path = '/Profile';
-      this.props.history.push(path);
+      this.props.history.push('/Profile');
     	}).catch(function(e) {
 			alert(`${e.message}: Wrong email or password.  `);
 		
