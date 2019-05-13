@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { FormWrap, FormInputs, FormInputLabel, FormControl, ErrorMessage, FormButton } from "./Register";
-		
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
 let formValid = formErrors => {
@@ -124,6 +123,9 @@ export class Login extends Component {
         
         </FormInputs>
         </FormWrap>
+
+
+
     );
   }
 }

@@ -142,8 +142,6 @@ let formValid = formErrors => {
 			
 			axios.post(`http://localhost:4000/users`,  user )
 			.then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.history.push("/login");
 			}).catch(err => {
 				err.status(400).send('unable to save to database');
