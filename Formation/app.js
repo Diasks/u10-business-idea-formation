@@ -57,10 +57,10 @@ app.post("/api/login", function(req, res) {
       success: true,
       message: 'Authentication successfull',
       token: token,
-      user: user._id
+      user: user._id 
     });
     } else  {
-      //skicka ett error kanske
+     return res.status(500).send('An error occured while trying to find user');
 
     }
   

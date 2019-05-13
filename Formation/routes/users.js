@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var mongoose = require('mongoose');
-
+var bcrypt = require('bcrypt');
 
 
 
@@ -33,19 +33,21 @@ if (error) {
 
 /* POST create user  */
 router.post('/', function(req, res) {
+  var hashedPassword = bcrypt.hashSync(req.body.password, 10);
   var newUser = new User();
   newUser._id = new mongoose.Types.ObjectId(),
   newUser.first_name = req.body.first_name,
   newUser.last_name = req.body.last_name,
-  newUser.password = req.body.password,
+  newUser.password = hashedPassword,
   newUser.email = req.body.email,
 
 newUser.save(function(error) {
   if (error) {
     res.json({"status": "error", "message": `${error}`});
+  } else{ 
+    res.json({"status": "OK", "data" : `recieved, ${res}`});
   }
 
-  res.json({"status": "OK", "data" : `recieved, ${res}`});
 });
 });
 
