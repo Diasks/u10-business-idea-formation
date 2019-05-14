@@ -121,14 +121,25 @@ function SchoolList({ length }) {
   );
 }
 
+const client = axios.create({
+  baseURL: "http://localhost:4000",
+  headers: {
+    // https://github.com/axios/axios/issues/1383
+    Authorization: {
+      toString() {
+        const token = localStorage.getItem("cool-jwt");
+        return `Bearer ${token}`;
+      }
+    }
+  }
+});
+
 function Profile() {
   const [user, setUser] = useState({ loading: true });
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(
-        "http://localhost:4000/users/5cd00c126431370746538b90"
-      );
+      const result = await client.get("/users/me");
 
       setUser({ jobs: [], ...result.data, loading: false });
     }
@@ -139,11 +150,7 @@ function Profile() {
   async function updateProfile(item) {
     setUser({ loading: true });
 
-    const result = await axios.patch(
-      "http://localhost:4000/users/5cd00c126431370746538b90/update",
-      item
-    );
-
+    const result = await client.patch("/users/me", item);
     const jobs = result.data.jobs || [];
 
     setUser({ ...result.data, jobs, loading: false });
