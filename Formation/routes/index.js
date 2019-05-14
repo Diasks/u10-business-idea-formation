@@ -8,7 +8,6 @@ const app = express();
 //   res.sendFile("../../client/build/index.html");
 
 // });
-
-app.use(express.static("client/build"));
+app.use(express.static(__dirname + "/../../client/build"));
 
 module.exports = router;
