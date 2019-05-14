@@ -1,16 +1,31 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-
-var UserSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    first_name: String,
-    last_name: String,
-    password: String,
-    email: String,
-   
-
+var JobSchema = new Schema({
+  start_date: String,
+  end_date: String,
+  role: String
 });
 
+var SchoolSchema = new Schema({
+  start_date: String,
+  end_date: String,
+  program: String
+});
 
-module.exports = mongoose.model('User', UserSchema);
+var UserSchema = new Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  first_name: String,
+  last_name: String,
+  password: String,
+  email: String,
+  place: String,
+  telephone: String,
+  objective: String,
+  jobs: [JobSchema],
+  schools: [SchoolSchema],
+  skills: String,
+  others: String
+});
+
+module.exports = mongoose.model("User", UserSchema);
