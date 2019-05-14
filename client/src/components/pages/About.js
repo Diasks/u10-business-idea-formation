@@ -28,6 +28,7 @@ function About() {
   return (
     <div class="bgSection" style={styleHeader}>
       <Header />
+
       <h1 style={styleHeader1}>- Our Mission - </h1>
       <div class="aboutParagraph" style={styleParagraph}>
         <p>
@@ -47,6 +48,7 @@ function About() {
           nunc sed blandit. Placerat duis ultricies lacus sed turpis tincidunt
           id aliquet risus.
         </p>
+        
       </div>
       <Footer />
     </div>

@@ -14,12 +14,11 @@ const Header1 = styled.h1`
  
  const StyleInput = styled.input`
  width: 60%;
- margin: 20px 0;
+ margin: 53px;
  background: #0000;
  border: none;
  border-bottom: 1px solid #55273c;
- 
- 
+ input:focus {outline:none;};
  `
 function Contact () {
   return(
@@ -33,9 +32,10 @@ function Contact () {
       <StyleInput type="text" placeholder="Name"></StyleInput>
       <StyleInput type="text" placeholder="E-Mail"></StyleInput>
       <StyleInput type="text" placeholder="Message"></StyleInput>
-
+      <Footer />
     </div>
   )
+
 }
  
 export default Contact;
