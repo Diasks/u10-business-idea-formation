@@ -1,5 +1,7 @@
 import React, {Component} from 'react';	
-            
+import { GetStarted } from "../Welcome";
+import  Header  from "../layout/Header";
+
 class Profession extends Component {
 constructor() {
     super();
@@ -14,22 +16,23 @@ routeChange() {
 render() {
 			return (
                 <div> 
+                    <Header/>
             <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">	
 			Choose a profession:</h1>
-    <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Hantverksyrken</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Serviceyrken</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Socialt arbete</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Tekniskt arbete</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Pedagogiskt arbete</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Vård</button> 
+    <GetStarted onClick={this.routeChange}>Hantverk</GetStarted>  
+            <GetStarted onClick={this.routeChange}>Service</GetStarted>  
+            <GetStarted onClick={this.routeChange}>Socialt</GetStarted>  
+            <GetStarted onClick={this.routeChange}>Teknik</GetStarted>  
+            <GetStarted onClick={this.routeChange}>Pedagogik</GetStarted>  
+            <GetStarted onClick={this.routeChange}>Vård</GetStarted> 
 
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Kultur</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>
-Naturvetenskapligt arbete</button>  
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Sanering och renhållning</button> 
-            <button type="submit" className="ProfessionButton" onClick={this.routeChange}>Transport</button> 
+            <GetStarted onClick={this.routeChange}>Kultur</GetStarted>  
+            <GetStarted onClick={this.routeChange}>
+Naturvetenskap</GetStarted>  
+            <GetStarted onClick={this.routeChange}>Miljö</GetStarted> 
+            <GetStarted onClick={this.routeChange}>Transport</GetStarted> 
   </div>
 </div>
             </div>

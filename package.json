@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "node --inspect ./bin/www",
-    "install": "cd client && npm run build && cd .."
+    "start": "node ./Formation/bin/www && cd ..",
+    "dev": "node --inspect ./Formation/bin/www && cd ..",
+    "install": "cd client && npm install && npm run build && cd .. "
   },
   "dependencies": {
     "bcrypt": "^3.0.6",

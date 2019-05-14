@@ -3,6 +3,8 @@ import styled from "styled-components/macro";
 import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
 import { colors, TemplatePicture } from "./Common";
 import PageTwo from './pages/PageTwo';
+import Footer from "./layout/Footer";
+
 
 import AppealPic from "../assets/placeholder.png";
 
@@ -32,7 +34,7 @@ const RightHalf = styled.div`
   align-items: center;
 `;
 
-const GetStarted = styled.button`
+export const GetStarted = styled.button`
   background-color: ${colors.LividBrown};
   border-radius: 40px;
   height: 40px;
@@ -117,8 +119,14 @@ const WelcomePage = styled.div`
   height: 1000px;
 `;
 
+
+
+
 function Welcome() {
+
+
   return (
+    
     <WelcomePage>
       <Halves>
         <LeftHalf>
@@ -154,8 +162,10 @@ function Welcome() {
           <AppealPicture />
         </Appeal>
       </Offer>
+      <Footer />
     </WelcomePage>
-  );
+
+);
 }
 
 export default Welcome;

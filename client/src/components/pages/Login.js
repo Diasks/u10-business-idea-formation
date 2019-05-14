@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
-
+import { FormWrap, FormInputs, FormInputLabel, FormControl, ErrorMessage, FormButton } from "./Register";
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
 let formValid = formErrors => {
@@ -42,7 +41,7 @@ export class Login extends Component {
 		: "invalid email address";
 		break;
 		case 'password': 
-		formErrors.password = value.length < 6  ? 'minimum 3 characters required'
+		formErrors.password = value.length < 6  ? 'minimum 6 characters required'
 		: '';
 		break;
 		default:
@@ -70,7 +69,8 @@ export class Login extends Component {
 			console.log(res);
 			console.log(res.data);
 			localStorage.setItem("cool-jwt", res.data.token);
-			localStorage.setItem("user", res.data.user);
+      localStorage.setItem("user", res.data.user);
+      this.props.history.push('/Profile');
     	}).catch(function(e) {
 			alert(`${e.message}: Wrong email or password.  `);
 		
@@ -82,48 +82,50 @@ export class Login extends Component {
   render() {
 	let {formErrors} = this.state;
     return (
-      <div className="Form">
-        <form onSubmit={this.handleSubmit} className="FormInputs">
-          <div className="form-group">
-			<label htmlFor="email" className="FormInputLabel">
+      <FormWrap> 
+        <FormInputs onSubmit={this.handleSubmit}>
+
+			<FormInputLabel htmlFor="email">
               Email
-            </label>
-            <input
+            </FormInputLabel>
+            <FormControl
               type="email" required
-              className="form-control"
               id="email"
               placeholder="enter your email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
-            /> 
-          </div>
+            /> {formErrors.email.length >0 && (
+              <ErrorMessage>{formErrors.email}</ErrorMessage>
+            )}
+      
 
-          <div className="form-group">
-            <label htmlFor="password" className="FormInputLabel">
+     
+            <FormInputLabel htmlFor="password" className="FormInputLabel">
               Password
-            </label>
-            <input
+            </FormInputLabel>
+            <FormControl
               type="password" required
-              className="form-control"
               id="password"
               placeholder="enter your password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
             />{formErrors.password.length >0 && (
-				<span className="errorMessage">{formErrors.password}</span>
+				<ErrorMessage>{formErrors.password}</ErrorMessage>
 			)}
-          </div>
+      
 
-          <div>
 			  
-            <button type="submit" className="FormButton">
+            <FormButton type="submit">
               Sign in
-            </button>
-          </div>
-        </form>
-      </div>
+            </FormButton>
+        
+        </FormInputs>
+        </FormWrap>
+
+
+
     );
   }
 }

@@ -48,19 +48,19 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function Header() {
+const Header = ({ user }) => {
   return (
     <Navbar>
       <Dropdown>
         <Options>
-          <StyledLink to="/profile">Username</StyledLink>
+          <StyledLink to="/profile">{user.first_name}</StyledLink>
           <StyledLink to="/my-templates">My templates</StyledLink>
-          <StyledLink to="/my-color-schemes">My color schemes</StyledLink>
+          <StyledLink to="/new">Add new</StyledLink>
           <StyledLink to="/logout">Log out</StyledLink>
         </Options>
       </Dropdown>
     </Navbar>
   );
-}
+};
 
 export default Header;
