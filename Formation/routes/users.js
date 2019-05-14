@@ -56,7 +56,7 @@ newUser.save(function(error) {
 //WORKING (!!)
 /* PUT update user  */
 router.patch('/:userId/update', function(req, res) {
-  User.findByIdAndUpdate(req.params.userId, {$set: req.body}, function (error, user) {
+  User.findByIdAndUpdate(req.params.userId, {$set: req.body}, {new: true}, function (error, user) {
     if (error) {
       res.json({"status": "error", "message": `${error}`});
     }
