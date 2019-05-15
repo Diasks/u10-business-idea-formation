@@ -50,6 +50,7 @@ import React, { Component } from 'react';
 			font-weight: 500;
 			`; 
 
+
 			const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
 			

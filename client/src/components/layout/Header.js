@@ -48,19 +48,19 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function Header() {
+const Header = ({ user }) => {
   return (
     <Navbar>
       <Dropdown>
         <Options>
-          <StyledLink to="/profile">Username</StyledLink>
-          <StyledLink to="/my-templates">My templates</StyledLink>
-          <StyledLink to="/new">Add new</StyledLink>
-          <StyledLink to="/logout">Log out</StyledLink>
+          <StyledLink to="/profile"> </StyledLink>
+          <StyledLink to="/My templates">My templates</StyledLink>
+          <StyledLink to="/Profession">Add new</StyledLink>
+          <StyledLink to="/" onClick={() => { localStorage.clear()  }}>Log out</StyledLink>
         </Options>
       </Dropdown>
     </Navbar>
   );
-}
+};
 
 export default Header;

@@ -48,8 +48,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.post("/api/login", function(req, res) {
   //auth user
-  User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
-
+  User.findOne({email: req.body.email}, function(err, user) {
     if (!err) {
       var token = jwt.sign(user.toJSON(), process.env.SECRET_OR_KEY,  { expiresIn: '24h' // expires in 24 hours
       });

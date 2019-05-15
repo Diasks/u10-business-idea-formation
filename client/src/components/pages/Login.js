@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 import { FormWrap, FormInputs, FormInputLabel, FormControl, ErrorMessage, FormButton } from "./Register";
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
@@ -56,21 +57,20 @@ export class Login extends Component {
 
   //Kopplad till backenden(!!)
   handleSubmit(e) {
-	e.preventDefault();
+  e.preventDefault();
 	if (formValid(this.state.formErrors)) { 
-
 		const user = {
 			email: this.state.email,
 			password: this.state.password
 		  };
-
 	axios.post(`http://localhost:4000/api/login`, user)
 		.then(res => {
-			console.log(res);
-			console.log(res.data);
 			localStorage.setItem("cool-jwt", res.data.token);
       localStorage.setItem("user", res.data.user);
-      this.props.history.push('/Profile');
+     
+      window.location.replace('/profile');
+
+     
     	}).catch(function(e) {
 			alert(`${e.message}: Wrong email or password.  `);
 		

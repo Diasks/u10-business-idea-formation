@@ -30,6 +30,24 @@ const FormTitle = styled.div `
   `; 
   
 
+  const FormTitleLink = styled(NavLink) `
+  color: #DA70D6;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 0 10px;
+  padding-bottom: 5px;
+
+  &:active {
+    color: white;
+    border-bottom: 1px solid #DA70D6;
+
+  }
+  `; 
+  
+  
+  
+ 
 
 
  class PageTwo extends Component {
@@ -41,12 +59,13 @@ return (
            <PageTwosAside></PageTwosAside> 
            <PageTwoForm> 
             <FormTitle> 
-        <NavLink to="/Login" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/Register" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Register</NavLink>
+        <FormTitleLink to="/Login">Sign In</FormTitleLink> or <FormTitleLink exact to="/Register">Register</FormTitleLink>
         </FormTitle>
         <Route exact path="/Register" component={Register}>
         </Route>
         <Route exact path="/Login" component={Login}> 
         </Route>
+      
         </PageTwoForm>	
         </PageTwos>
         </Router>
