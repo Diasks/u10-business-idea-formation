@@ -1,6 +1,7 @@
 import React, {Component} from 'react';	
 import { GetStarted } from "../Welcome";
 import  Header  from "../layout/Header";
+import  Footer  from "../layout/Footer";
 
 class Profession extends Component {
 constructor() {
@@ -34,7 +35,9 @@ Naturvetenskap</GetStarted>
             <GetStarted onClick={this.routeChange}>Transport</GetStarted> 
   </div>
 </div>
+<Footer/>
             </div>
+           
       )}
             
             }

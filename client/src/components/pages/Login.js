@@ -57,18 +57,14 @@ export class Login extends Component {
 
   //Kopplad till backenden(!!)
   handleSubmit(e) {
-	e.preventDefault();
+  e.preventDefault();
 	if (formValid(this.state.formErrors)) { 
-
 		const user = {
 			email: this.state.email,
 			password: this.state.password
 		  };
-
 	axios.post(`http://localhost:4000/api/login`, user)
 		.then(res => {
-			console.log(res);
-			console.log(res.data);
 			localStorage.setItem("cool-jwt", res.data.token);
       localStorage.setItem("user", res.data.user);
      
