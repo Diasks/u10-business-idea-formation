@@ -28,16 +28,13 @@ function Contact () {
       <Paragraph>lorem ipsum är en utfyllnadstext från tryck- och förlagsindustrin. lorem ipsum har varit standard ända sen 1500-talet
         av en okänd boksättare
       </Paragraph>
-    
       <StyleInput type="text" placeholder="Name"></StyleInput>
       <StyleInput type="text" placeholder="E-Mail"></StyleInput>
       <StyleInput type="text" placeholder="Message"></StyleInput>
       <Footer />
     </div>
   )
-
 }
- 
 export default Contact;
 
 
