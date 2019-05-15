@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 			import axios from 'axios';
 		
 
-			var emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+			const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
 			
-var formValid = formErrors => {
-	var valid = true;
+let formValid = formErrors => {
+	let valid = true;
 
 	Object.values(formErrors).forEach( val => {
 		val.length > 0 && (valid=false);
@@ -55,7 +55,7 @@ var formValid = formErrors => {
 				: '';
 				break;
 				case 'last_name': 
-				formErrors.last_name = value.length < 3  ? 'minimum 3 characters required'
+				formErrors.last_name = value.length < 3  ? 'minimum 3 characters required, only letters'
 				: '';
 				break;
 				case 'email': 
@@ -82,8 +82,7 @@ var formValid = formErrors => {
 			//Kopplad till backenden(!!)
 			handleSubmit(e) {
 			e.preventDefault();
-			console.log('submitted');
-			console.log(this.state);
+	
 			
 			if (formValid(this.state.formErrors)) { 
 
@@ -101,20 +100,22 @@ var formValid = formErrors => {
 			}).catch(err => {
 				err.status(400).send('unable to save to database');
 			});
-		}else {console.error('Form invalid!')};
+		}
+		else 
+		{console.error('Form invalid!')};
 			
 			}
 			
 			
 			render () {
-			var {formErrors} = this.state;
+			let {formErrors} = this.state;
 			return (
 			
 			<div className="Form">
 			<form onSubmit={this.handleSubmit} className="FormInputs">
 			<div className="form-group">
 			<label htmlFor="first_name" className="FormInputLabel">Firstname</label>
-			<input type="text" className="form-control" id="first_name" placeholder="enter your firstname" name="first_name" value={this.state.first_name} onChange={this.handleChange}/>
+			<input type="text" className="form-control" id="first_name" placeholder="enter your firstname" required name="first_name" value={this.state.first_name} onChange={this.handleChange}/>
 			{formErrors.first_name.length >0 && (
 				<span className="errorMessage">{formErrors.first_name}</span>
 			)}
@@ -123,7 +124,7 @@ var formValid = formErrors => {
 
 			<div className="form-group">
 			<label htmlFor="last_name" className="FormInputLabel">Lastname</label>
-			<input type="text" className="form-control" id="last_name" placeholder="enter your lastname" name="last_name" value={this.state.last_name} onChange={this.handleChange}/>
+			<input type="text" className="form-control" id="last_name" placeholder="enter your lastname" required name="last_name" value={this.state.last_name} onChange={this.handleChange}/>
 			{formErrors.last_name.length >0 && (
 				<span className="errorMessage">{formErrors.last_name}</span>
 			)}
@@ -132,7 +133,7 @@ var formValid = formErrors => {
 			
 			<div className="form-group">
 			<label htmlFor="password" className="FormInputLabel">Password</label>
-			<input type="password" className="form-control" id="password" placeholder="enter your full name" name="password" value={this.state.password} onChange={this.handleChange} />
+			<input type="password" className="form-control" id="password" placeholder="enter a password " required name="password" value={this.state.password} onChange={this.handleChange} />
 			{formErrors.password.length >0 && (
 				<span className="errorMessage">{formErrors.password}</span>
 			)}
@@ -142,7 +143,7 @@ var formValid = formErrors => {
 			
 			<div className="form-group">
 			<label htmlFor="email" className="FormInputLabel">Email</label>
-			<input type="email" className="form-control" id="email" placeholder="enter your full name" name="email" value={this.state.email} onChange={this.handleChange}/>
+			<input type="email" className="form-control" id="email" placeholder="enter your email" required name="email" value={this.state.email} onChange={this.handleChange}/>
 			{formErrors.email.length >0 && (
 				<span className="errorMessage">{formErrors.email}</span>
 			)}

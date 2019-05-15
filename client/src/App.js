@@ -1,39 +1,30 @@
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Footer from "./components/layout/Footer";
+import Profile from "./components/pages/Profile";
+import Welcome from "./components/Welcome";
+import "./App.css";
+import PageTwo from "./components/pages/PageTwo";
+import Profession from "./components/pages/Profession";
+import GeneralTemplate from "./components/pages/GeneralTemplate";
 
-import React, { Component } from 'react';			
-			import { BrowserRouter as Router, Route } from 'react-router-dom';
-			import Header from './components/layout/Header';
-			import Profile from './components/pages/Profile';
-			import Cvtemplate from './components/pages/Cvtemplate';
-			import Login from './components/pages/Login';
-			import Register from './components/pages/Register';
-			import Footer from './components/layout/Footer'
-			import './App.css';
-			
-			class App extends Component {
-			
-			
-			
-			
-			render() {
-			return (
-			<Router>
-			<div className="App">
-			<div className="container">
-			<Header />
-			<Route  path="/login" component={Login}/>
-			<Route exact path ="/profile" component= {Profile} />
-			<Route exact path ="/cvtemplate" component= {Cvtemplate} />
-			<Route exact path ="/register" component= {Register} />
-			<div id="content">
-          
-		  </div>
-			<Footer />
-			</div>
-			</div>
-			</Router>
-					
-			);
-			}
-			}
-		
-			export default App;
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <div>
+            <Route path="/Profile" exact component={Profile} />
+            <Route path="/" exact component={Welcome} />
+            <Route path="/PageTwo" exact component={PageTwo} />
+            <Route path="/Profession" exact component={Profession} />
+            <Route path="/GeneralTemplate" exact component={GeneralTemplate} />
+            <Footer />
+          </div>
+        </div>
+      </Router>
+    );
+  }
+}
+
+export default App;

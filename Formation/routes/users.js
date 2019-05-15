@@ -2,10 +2,9 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var mongoose = require('mongoose');
-
-
-
-
+var mongo = require('mongodb');
+var assert = require('assert');
+var url = 'mongodv://localhost:4000/test'
 
 //WORKING WITH POSTMAN
 /* GET users  */
