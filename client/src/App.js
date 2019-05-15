@@ -7,6 +7,7 @@ import Contact from "./components/pages/Contact";
 import "./App.css";
 import PageTwo from "./components/pages/PageTwo";
 import Profession from "./components/pages/Profession";
+import Coverletter from "./components/pages/Coverletter";
 
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/PageTwo" component={PageTwo} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/Profession" component={Profession} />
+            <Route exact path="/Coverletter" component={Coverletter} />
             <Route exact path="/About" component={About} />
             <Route exact path="/Contact" component={Contact} />
           </div>
