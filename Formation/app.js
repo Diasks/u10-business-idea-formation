@@ -43,27 +43,31 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.static(path.join(__dirname, "client/build")));
+
 app.post("/api/login", function(req, res) {
   //auth user
-  User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
+  
+  User.findOne({ email: req.body.email}, function(
+    err,
+    user
+  ) {
+    const user_id = user._id;
 
     if (!err) {
-      var token = jwt.sign(user.toJSON(), process.env.SECRET_OR_KEY,  { expiresIn: '24h' // expires in 24 hours
+      var token = jwt.sign({ user_id }, process.env.SECRET_OR_KEY, {
+        expiresIn: "24h" // expires in 24 hours
       });
-   res.json({
-      success: true,
-      message: 'Authentication successfull',
-      token: token,
-      user: user._id
-    });
-    } else  {
-      //skicka ett error kanske
-
+      res.json({
+        success: true,
+        message: "Authentication successfull",
+        token: token,
+        user: user_id
+      });
+    } else {
+      return res.status(500).send("An error occured while trying to find user");
     }
-  
-  
-  })
-
+  });
 });
 
 app.use("/", indexRouter);

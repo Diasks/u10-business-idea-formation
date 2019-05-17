@@ -1,6 +1,7 @@
 import React, {Component} from 'react';	
 import { GetStarted } from "../Welcome";
 import  Header  from "../layout/Header";
+import  Footer  from "../layout/Footer";
 
 class Profession extends Component {
 constructor() {
@@ -9,7 +10,7 @@ constructor() {
 }
 
 routeChange() {
-    const path = `GeneralTemplate`;
+    const path = `GenTemplate`;
     this.props.history.push(path);
 }
  
@@ -17,9 +18,9 @@ render() {
 			return (
                 <div> 
                     <Header/>
-            <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">	
+            <div className="jumbotron jumbotron-fluid">
+  <div className="container">
+    <h1 className="display-4">	
 			Choose a profession:</h1>
             <GetStarted onClick={this.routeChange}>Generell</GetStarted>  
             <GetStarted onClick={this.routeChange}>Hantverk</GetStarted>  
@@ -36,7 +37,9 @@ Naturvetenskap</GetStarted>
             <GetStarted onClick={this.routeChange}>Transport</GetStarted> 
   </div>
 </div>
+<Footer/>
             </div>
+           
       )}
             
             }
