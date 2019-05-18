@@ -56,7 +56,7 @@ const Header = ({ user }) => {
           <StyledLink to="/profile"> </StyledLink>
           <StyledLink to="/My templates">My templates</StyledLink>
           <StyledLink to="/Profession">Add new</StyledLink>
-          <StyledLink to="/Coverletter">Add new Coverletter (denna länk ska flyttas sen!)</StyledLink>
+          <StyledLink to="/coverletters">Add new Coverletter (denna länk ska flyttas sen!)</StyledLink>
           <StyledLink to="/" onClick={() => { localStorage.clear()  }}>Log out</StyledLink>
         </Options>
       </Dropdown>
