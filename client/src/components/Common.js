@@ -21,4 +21,9 @@ export const TemplatePicture = styled.div`
   background-image: url(${TemplatePic});
   border: 1px ${colors.Gray} solid;
   box-shadow: 8px 8px 0 0 ${colors.Lily};
+
+  @media (max-width: 600px) {
+    height: 200px;
+    width: 140px;
+    box-shadow: 6px 6px 0 0 ${colors.Lily};
 `;

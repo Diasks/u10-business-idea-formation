@@ -10,17 +10,14 @@ import Formol, { Field } from "formol/lib/formol";
 import axios from "axios";
 
 const Body = styled.div`
-  max-width: 980px;
-  min-height: 980px;
-  margin: 30px auto;
-  padding: 30px;
+  margin: 30px;
   height: 100%;
   width: 100%;
 `;
 
 const Circle = styled.div`
   position: absolute;
-  z-index: 1000;
+  z-index: -1;
   right: 200px;
   top: 150px;
   border-radius: 50%;
@@ -29,6 +26,16 @@ const Circle = styled.div`
   background: ${colors.LightLily};
   background-position: 50% 50%;
   background-size: cover;
+
+  @media (max-width: 1110px) {
+    right: 100px;
+    top: 200px;
+    height: 300px;
+    width: 300px;
+  }
+
+  @media (max-width: 800px) {
+    display: none;
 `;
 
 function JobList({ length }) {
@@ -44,7 +51,7 @@ function JobList({ length }) {
         <Field name={`jobs.${i}.end_date`} type="date">
           Date job finished
         </Field>
-        <Field name={`jobs.${i}.role`} type="area">
+        <Field name={`jobs.${i}.role`} type="text">
           Role, Company, Place
         </Field>
       </div>
@@ -89,7 +96,7 @@ function SchoolList({ length }) {
         <Field name={`schools.${i}.end_date`} type="date">
           Date education finished
         </Field>
-        <Field name={`schools.${i}.program`} type="area">
+        <Field name={`schools.${i}.program`} type="text">
           Program, Institution, Place
         </Field>
       </div>
@@ -170,7 +177,7 @@ function Profile() {
     <TabPanel>
       <h2>Objective</h2>
       <p>Please think of the main objective you want to reach with you CV</p>
-      <Field name="objective" type="area">
+      <Field name="objective" type="text">
         Objective
       </Field>
     </TabPanel>
@@ -196,7 +203,7 @@ function Profile() {
     <TabPanel>
       <h2>Skills</h2>
       <p>Please list all your skills relevant to the job you want to get</p>
-      <Field type="area" name="skills">
+      <Field type="text" name="skills">
         Skills
       </Field>
     </TabPanel>
@@ -208,7 +215,7 @@ function Profile() {
       <p>
         Please list other important things you want your future employer to know
       </p>
-      <Field type="area" name="others">
+      <Field type="text" name="others">
         Others
       </Field>
     </TabPanel>
@@ -227,7 +234,7 @@ function Profile() {
           <Field type="tel" name="telephone">
             Telephone (XXX-XXX-XXXX)
           </Field>
-          <Field readOnly type="area">
+          <Field readOnly type="text">
             Email
           </Field>
           <Circle />
