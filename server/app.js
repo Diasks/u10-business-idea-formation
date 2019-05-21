@@ -48,11 +48,8 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.post("/api/login", function(req, res) {
   //auth user
-  
-  User.findOne({ email: req.body.email}, function(
-    err,
-    user
-  ) {
+
+  User.findOne({ email: req.body.email }, function(err, user) {
     const user_id = user._id;
 
     if (!err) {
@@ -71,13 +68,19 @@ app.post("/api/login", function(req, res) {
   });
 });
 
-app.use("/users", usersRouter);
-app.use("/templates", templatesRouter);
-app.use("/coverletters", coverlettersRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/templates", templatesRouter);
+app.use("/api/coverletters", coverlettersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use("/api/*", function(req, res, next) {
   next(createError(404));
+});
+
+// https://github.com/mars/heroku-cra-node/blob/master/server/index.js
+// All remaining requests return the React app, so it can handle routing.
+app.get("*", function(request, response) {
+  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 // error handler

@@ -1,9 +1,9 @@
 import React from 'react';	
 import Formol, { Field } from "formol/lib/formol";
 import styled from "styled-components/macro";
-import axios from "axios";
 import  Header  from "../layout/Header";
 import  Footer  from "../layout/Footer";
+import client from "../../client";
 
 const Body = styled.div`
   max-width: 980px;
@@ -51,20 +51,6 @@ const Body = styled.div`
 //  font-size: 14px;
 //  `;
 
- 
-
- const client = axios.create({
-    baseURL: "http://localhost:4000",
-    headers: {
-      // https://github.com/axios/axios/issues/1383
-      Authorization: {
-        toString() {
-          const token = localStorage.getItem("cool-jwt");
-          return `Bearer ${token}`;
-        }
-      }
-    }
-  });
 
   
   function Coverletter() {
