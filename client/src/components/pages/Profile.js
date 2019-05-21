@@ -158,9 +158,8 @@ function Profile() {
     setUser({ loading: true });
 
     const result = await client.patch("/users/me", item);
-    const jobs = result.data.jobs || [];
 
-    setUser({ ...result.data, jobs, loading: false });
+    setUser({ jobs: [], ...result.data, loading: false });
   }
 
   if (user.loading) {
@@ -223,7 +222,7 @@ function Profile() {
 
   return (
     <div>
-      <Header user={user} />
+      <Header />
       <Body>
         <Formol item={user} onSubmit={updateProfile}>
           <Field name="first_name">First name</Field>
