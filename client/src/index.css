@@ -17,3 +17,11 @@ code {
   padding-top: 70px;
   min-height: "calc(100vh - 92px)";
 }
+
+input[type=date] {
+  width: 11em;
+}
+
+input[type=text] {
+  width: 20em;
+}
