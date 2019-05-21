@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "formol/lib/default.css";
 import Formol, { Field } from "formol/lib/formol";
-import axios from "axios";
+import client from "../../client";
 
 const Body = styled.div`
   margin: 30px;
@@ -83,8 +83,52 @@ function JobList({ length }) {
   );
 }
 
-function SchoolList({ length }) {
-  const [currentLength, setCurrentLength] = useState(length);
+// function SchoolList({ length }) {
+//   const [currentLength, setCurrentLength] = useState(length);
+
+//   const els = [];
+//   for (let i = 0; i < currentLength; i++) {
+//     els.push(
+//       <div key={`schools.${i}`}>
+//         <Field name={`schools.${i}.start_date`} type="date">
+//           Date education started
+//         </Field>
+//         <Field name={`schools.${i}.end_date`} type="date">
+//           Date education finished
+//         </Field>
+//         <Field name={`schools.${i}.program`} type="area">
+//           Program, Institution, Place
+//         </Field>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div>
+//       {els}
+//       <button
+//         onClick={e => {
+//           setCurrentLength(currentLength + 1);
+//           e.preventDefault();
+//         }}
+//       >
+//         Add
+//       </button>
+//       <button
+//         onClick={e => {
+//           if (currentLength > 0) {
+//             setCurrentLength(currentLength - 1);
+//           }
+//           e.preventDefault();
+//         }}
+//       >
+//         Remove
+//       </button>
+//     </div>
+//   );
+// }
+
+
 
   const els = [];
   for (let i = 0; i < currentLength; i++) {
@@ -101,45 +145,7 @@ function SchoolList({ length }) {
         </Field>
       </div>
     );
-  }
 
-  return (
-    <div>
-      {els}
-      <button
-        onClick={e => {
-          setCurrentLength(currentLength + 1);
-          e.preventDefault();
-        }}
-      >
-        Add
-      </button>
-      <button
-        onClick={e => {
-          if (currentLength > 0) {
-            setCurrentLength(currentLength - 1);
-          }
-          e.preventDefault();
-        }}
-      >
-        Remove
-      </button>
-    </div>
-  );
-}
-
-const client = axios.create({
-  baseURL: "http://localhost:4000",
-  headers: {
-    // https://github.com/axios/axios/issues/1383
-    Authorization: {
-      toString() {
-        const token = localStorage.getItem("cool-jwt");
-        return `Bearer ${token}`;
-      }
-    }
-  }
-});
 
 function Profile() {
   const [user, setUser] = useState({ loading: true });
@@ -165,7 +171,9 @@ function Profile() {
   if (user.loading) {
     return (
       <div>
-        <h1>Loading...</h1>
+        <div className="spinner-grow" style={{width: '3rem', height: '3rem',}} role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     );
   }
@@ -194,7 +202,7 @@ function Profile() {
     <TabPanel>
       <h2>Education</h2>
       <p>Please list your education in reverse order</p>
-      <SchoolList length={user.schools.length} />
+      {/* <SchoolList length={user.schools.length} /> */}
     </TabPanel>
   );
 
@@ -237,6 +245,7 @@ function Profile() {
             Email
           </Field>
           <Circle />
+          
 
           <Tabs forceRenderTabPanel={true}>
             <TabList>
