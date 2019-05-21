@@ -83,52 +83,8 @@ function JobList({ length }) {
   );
 }
 
-// function SchoolList({ length }) {
-//   const [currentLength, setCurrentLength] = useState(length);
-
-//   const els = [];
-//   for (let i = 0; i < currentLength; i++) {
-//     els.push(
-//       <div key={`schools.${i}`}>
-//         <Field name={`schools.${i}.start_date`} type="date">
-//           Date education started
-//         </Field>
-//         <Field name={`schools.${i}.end_date`} type="date">
-//           Date education finished
-//         </Field>
-//         <Field name={`schools.${i}.program`} type="area">
-//           Program, Institution, Place
-//         </Field>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div>
-//       {els}
-//       <button
-//         onClick={e => {
-//           setCurrentLength(currentLength + 1);
-//           e.preventDefault();
-//         }}
-//       >
-//         Add
-//       </button>
-//       <button
-//         onClick={e => {
-//           if (currentLength > 0) {
-//             setCurrentLength(currentLength - 1);
-//           }
-//           e.preventDefault();
-//         }}
-//       >
-//         Remove
-//       </button>
-//     </div>
-//   );
-// }
-
-
+function SchoolList({ length }) {
+  const [currentLength, setCurrentLength] = useState(length);
 
   const els = [];
   for (let i = 0; i < currentLength; i++) {
@@ -140,11 +96,40 @@ function JobList({ length }) {
         <Field name={`schools.${i}.end_date`} type="date">
           Date education finished
         </Field>
-        <Field name={`schools.${i}.program`} type="text">
+        <Field name={`schools.${i}.program`} type="area">
           Program, Institution, Place
         </Field>
       </div>
     );
+  }
+  
+
+  return (
+    <div>
+      {els}
+      <button
+        onClick={e => {
+          setCurrentLength(currentLength + 1);
+          e.preventDefault();
+        }}
+      >
+        Add
+      </button>
+      <button
+        onClick={e => {
+          if (currentLength > 0) {
+            setCurrentLength(currentLength - 1);
+          }
+          e.preventDefault();
+        }}
+      >
+        Remove
+      </button>
+    </div>
+  );
+}
+
+
 
 
 function Profile() {
@@ -202,7 +187,7 @@ function Profile() {
     <TabPanel>
       <h2>Education</h2>
       <p>Please list your education in reverse order</p>
-      {/* <SchoolList length={user.schools.length} /> */}
+      <SchoolList length={user.schools.length} />
     </TabPanel>
   );
 
