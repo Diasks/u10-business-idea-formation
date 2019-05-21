@@ -25,11 +25,11 @@ var db = mongoose.connection;
 db.on("error", function() {
   console.error("whoops, something went wrong!");
 });
+
 db.once("open", function() {
   console.log("DB connection is up an running");
 });
 
-var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var templatesRouter = require("./routes/templates");
 
@@ -41,9 +41,9 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "../client/public")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.post("/api/login", function(req, res) {
   //auth user
@@ -70,7 +70,6 @@ app.post("/api/login", function(req, res) {
   });
 });
 
-app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/templates", templatesRouter);
 

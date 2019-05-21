@@ -32,6 +32,13 @@ router.patch("/me", middleware.checkToken, function(req, res) {
 
 /* POST users  */
 router.post("/", function(req, res) {
+  debugger;
+  User.find({email: req.body.email}, function(user) {
+    console.log(user);
+    debugger;
+if (!user)
+{
+  debugger;
   var hashedPassword = bcrypt.hashSync(req.body.password, 10);
   var newUser = new User();
   (newUser._id = new mongoose.Types.ObjectId()),
@@ -46,6 +53,12 @@ router.post("/", function(req, res) {
         res.json({ status: "OK", data: `recieved, ${res}` });
       }
     });
+
+} else {
+  res.json({ status: "you are already a user!" });
+}
+  })
+ 
 });
 
 //Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
