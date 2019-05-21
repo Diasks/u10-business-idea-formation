@@ -66,20 +66,21 @@ const Body = styled.div`
     }
   });
 
-
+  
   function Coverletter() {
-      
+
     async function addCoverletter(item) { //item = formdatan
-        console.log(item);
-        // *** TODO ***
-        // *** send form to db (later connect it to user_id)
-        // *** route to /my-templates ?
-        await client.post("/coverletters/save", item);
+
+      await client.post("/coverletters/save", item);
+
+      // *** TODO ***
+      // *** send form to db (later connect it to user_id)
+      // *** route to /my-templates ?
     }
   
     return (
       <div>
-        <Header/>
+        <Header />
         <Body>
           <Formol onSubmit={addCoverletter}>
             <Field name="company">Company</Field>
