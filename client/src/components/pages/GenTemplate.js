@@ -121,9 +121,55 @@ const Reference = styled.div`
   font-style: italic;
 `;
 
-const Print = styled.button`
-  
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 `;
+
+const Print = styled.button`
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ border: none;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
+ transition: all 0.2s;
+
+
+:hover {
+   background-color:#4095c6;
+  }
+
+`;
+
+const Back = styled.button`
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ border: none;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
+ transition: all 0.2s;
+
+:hover {
+   background-color:#4095c6;
+  }
+
+`;
+
 
 function handlePrint(user, quality = 1) {
  const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
@@ -135,6 +181,10 @@ function handlePrint(user, quality = 1) {
      pdf.save(filename);
    }
  );
+}
+
+function goBack() {
+  window.history.back();
 }
 
 function GenTemplate() {
@@ -152,16 +202,20 @@ function GenTemplate() {
  if (user.loading) {
    return (
      <div>
-       <h1>Loading...</h1>
+       <div className="spinner-grow" style={{width: '3rem', height: '3rem',}} role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
      </div>
    );
  }
 
- console.log(user);
-
  return (
    <div>
-     <Print onClick={e => handlePrint(user)}>Print</Print>
+     <Buttons>
+        <Print onClick={e => handlePrint(user)}>Spara (PDF)</Print>
+        <Back onClick={e => goBack()}>Tillbaka</Back>
+     </Buttons>
+
      <Body id="body">
 
        <HeaderWrapper>
@@ -209,7 +263,6 @@ function GenTemplate() {
             {user.schools.map(school =>
             <Education key={school.id}>
               {/* <p>{school.program}</p> */}
-              
             </Education>
             )}
           </ul>
