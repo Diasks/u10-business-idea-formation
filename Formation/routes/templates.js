@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Template = require('../models/Template');
-
-
-
+var User = require('../models/User');
 
 
 

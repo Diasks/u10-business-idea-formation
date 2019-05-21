@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 import { colors } from "../Common";
+import axios from "axios";
 
 const Navbar = styled.div`
   background-color: ${colors.Cerulean};
@@ -48,12 +49,39 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Header = ({ user }) => {
+const client = axios.create({
+  baseURL: "http://localhost:4000",
+  headers: {
+    // https://github.com/axios/axios/issues/1383
+    Authorization: {
+      toString() {
+        const token = localStorage.getItem("cool-jwt");
+        return `Bearer ${token}`;
+      }
+    }
+  }
+});
+
+const Header = () => {
+  const [user, setUser] = useState({ loading: true });
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await client.get("/users/me");
+
+      setUser({ ...result.data, loading: false });
+    }
+
+    fetchData();
+  }, []);
+
+  const firstName = user.loading ? "" : user.first_name;
+
   return (
     <Navbar>
       <Dropdown>
         <Options>
-          <StyledLink to="/profile"> </StyledLink>
+          <StyledLink to="/profile">{firstName}</StyledLink>
           <StyledLink to="/My templates">My templates</StyledLink>
           <StyledLink to="/Profession">Add new</StyledLink>
           <StyledLink to="/coverletters">Add new Coverletter (denna länk ska flyttas sen!)</StyledLink>
