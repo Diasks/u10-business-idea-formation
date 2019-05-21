@@ -32,6 +32,7 @@ db.once("open", function() {
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var templatesRouter = require("./routes/templates");
+var coverlettersRouter = require("./routes/coverletters");
 
 // view engine setup
 app.set("view engine", "pug");
@@ -73,6 +74,7 @@ app.post("/api/login", function(req, res) {
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/templates", templatesRouter);
+app.use("/coverletters", coverlettersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
