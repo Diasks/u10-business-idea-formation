@@ -1,44 +1,62 @@
-import React from "react";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
-import styled from 'styled-components';
+import React, { Component } from "react";
+import UserDetails from "./UserDetails";
+import MessageForm from "./MessageForm";
+import Success from "./Success";
 
-const Header1 = styled.h1`
- color: #55273c;
- font-size: 46px;
- `;
- const Paragraph = styled.p`
- color: #55273c;
- font-size: 14px;
- `;
- 
- const StyleInput = styled.input`
- width: 60%;
- margin: 53px;
- background: #0000;
- border: none;
- border-bottom: 1px solid #55273c;
- input:focus {outline:none;};
- `
-function Contact () {
-  return(
-    <div>
-      < Header />
-      <Header1>Contact Us</Header1>
-      <Paragraph>lorem ipsum är en utfyllnadstext från tryck- och förlagsindustrin. lorem ipsum har varit standard ända sen 1500-talet
-        av en okänd boksättare
-      </Paragraph>
-      <StyleInput type="text" placeholder="Name"></StyleInput>
-      <StyleInput type="text" placeholder="E-Mail"></StyleInput>
-      <StyleInput type="text" placeholder="Message"></StyleInput>
-      <Footer />
-    </div>
-  )
+export class Contact extends Component {
+  state = {
+    step: 1,
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: ""
+  };
+
+  nextStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step + 1
+    });
+  };
+
+  prevStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step - 1
+    });
+  };
+
+  handleChange = input => e => {
+    this.setState({ [input]: e.target.value });
+  };
+
+  render() {
+    const { step } = this.state;
+    const { firstName, lastName, email, message } = this.state;
+    const values = { firstName, lastName, email, message };
+
+    switch (step) {
+      case 1:
+        return (
+          <UserDetails
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 2:
+        return (
+          <MessageForm
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 3:
+        return <Success />;
+    }
+  }
 }
 
 export default Contact;
-
-
-
-
-
