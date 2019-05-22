@@ -146,6 +146,7 @@ function Profile() {
   }, []);
 
   async function updateProfile(item) {
+    console.log(item);
     setUser({ loading: true });
 
     const result = await client.patch("/users/me", item);
@@ -163,7 +164,7 @@ function Profile() {
     );
   }
 
-  console.log(user);
+  //console.log(user);
 
   const Objective = (
     <TabPanel>
