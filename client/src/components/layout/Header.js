@@ -69,9 +69,8 @@ const Header = () => {
       <Dropdown>
         <Options>
           <StyledLink to="/profile">{firstName}</StyledLink>
-          <StyledLink to="/My templates">My templates</StyledLink>
-          <StyledLink to="/Profession">Add new</StyledLink>
-          <StyledLink to="/coverletters">Add new Coverletter (denna länk ska flyttas sen!)</StyledLink>
+          <StyledLink to="/my-coverletters">My Coverletters</StyledLink>
+          <StyledLink to="/my-cv">My CV</StyledLink>
           <StyledLink to="/" onClick={() => { localStorage.clear()  }}>Log out</StyledLink>
         </Options>
       </Dropdown>

@@ -1,7 +1,8 @@
-import React, {Component} from 'react';	
+import React, { Component } from 'react';
 import  Header  from "../layout/Header";
 import  Footer  from "../layout/Footer";
 import styled from "styled-components/macro";
+
 
 const Button = styled.button`
 @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
@@ -79,45 +80,42 @@ const Buttons = styled.div`
 `;
 
 
-class Profession extends Component {
-  constructor() {
+class MyCoverletterTemplates extends Component {
+constructor() {
     super();
     this.routeChange = this.routeChange.bind(this);
-  }
-
-  routeChange() {
-    const path = `GenTemplate`;
-    this.props.history.push(path);
-  }
- 
-  render() {
-    function goBack() {
-      window.history.back();
-    }
-    
-    return (
-      <div> 
-        <Header/>
-        <ProfessionHeader>My CV Templates</ProfessionHeader>
-
-        <Professions>
-            <Button onClick={this.routeChange}>Generell</Button>
-            <Button onClick={this.routeChange}>IT/Teknik</Button>
-            <Button onClick={this.routeChange}>Bygg/Hantverk</Button>
-            <Button onClick={this.routeChange}>Media/Kultur</Button>  
-        </Professions>
-
-        <Buttons>
-          <Back onClick={e => goBack()}>Tillbaka</Back>
-        </Buttons>
-
-        <Footer/>
-      </div>
-            
-    )
-  }
 }
-            
-export default Profession;
-            
-        
+
+
+routeChange() {
+    const path = `MyTemplates`;
+    this.props.history.push(path);
+}
+ 
+render() {
+    function goBack() {
+        window.history.back();
+    }
+
+	return (
+        <div> 
+            <Header/>
+            <ProfessionHeader>My Coverletters</ProfessionHeader>
+
+            <Professions>
+                <Button onClick={this.routeChange}>Spotify</Button>
+                <Button onClick={this.routeChange}>Google</Button>
+                <Button onClick={this.routeChange}>Facebook</Button>
+            </Professions>
+
+            <Buttons>
+                <Back onClick={e => goBack()}>Tillbaka</Back>
+            </Buttons>
+
+            <Footer/>
+        </div>
+           
+    )}
+}
+
+export default MyCoverletterTemplates;
