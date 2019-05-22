@@ -13,6 +13,13 @@ var SchoolSchema = new Schema({
   program: String
 });
 
+var CoverletterSchema = new Schema({
+  company: String,
+  title: String,
+  location: String,
+  coverletter: String
+});
+
 var UserSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   first_name: String,
@@ -24,6 +31,7 @@ var UserSchema = new Schema({
   objective: String,
   jobs: [JobSchema],
   schools: [SchoolSchema],
+  coverletters: [CoverletterSchema],
   skills: String,
   others: String
 });

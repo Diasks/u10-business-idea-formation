@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 import {Nav, Navbar, NavDropdown } from 'react-bootstrap';
-
-
-import axios from "axios";
+import client from "../../client";
 
 const StyledLink = styled(Link)`
   color: gray;
@@ -18,21 +16,6 @@ const StyledLink = styled(Link)`
     text-decoration: none;
   }
 `;
-
-
-
-const client = axios.create({
-  baseURL: "http://localhost:4000",
-  headers: {
-    // https://github.com/axios/axios/issues/1383
-    Authorization: {
-      toString() {
-        const token = localStorage.getItem("cool-jwt");
-        return `Bearer ${token}`;
-      }
-    }
-  }
-});
 
 const Header = () => {
   const [user, setUser] = useState({ loading: true });

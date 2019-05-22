@@ -1,9 +1,9 @@
-import React from 'react';	
+import React, { useState, useEffect } from "react";
 import Formol, { Field } from "formol/lib/formol";
 import styled from "styled-components/macro";
-import axios from "axios";
 import  Header  from "../layout/Header";
 import  Footer  from "../layout/Footer";
+import client from "../../client";
 
 const Body = styled.div`
   max-width: 980px;
@@ -51,38 +51,42 @@ const Body = styled.div`
 //  font-size: 14px;
 //  `;
 
- 
-
- const client = axios.create({
-    baseURL: "http://localhost:4000",
-    headers: {
-      // https://github.com/axios/axios/issues/1383
-      Authorization: {
-        toString() {
-          const token = localStorage.getItem("cool-jwt");
-          return `Bearer ${token}`;
-        }
-      }
-    }
-  });
 
   
   function Coverletter() {
 
-    async function addCoverletter(item) { //item = formdatan
+    const [user, setUser] = useState({ loading: true });
 
-      await client.post("/coverletters/save", item);
+    useEffect(() => {
+      async function fetchData() {
+        const result = await client.get("/users/me");
 
-      // *** TODO ***
-      // *** send form to db (later connect it to user_id)
-      // *** route to /my-templates ?
+        setUser({ coverletters: [], ...result.data, loading: false });
+      }
+
+      fetchData();
+    }, []);
+
+  
+    async function addCoverletter(item) {
+      setUser({ loading: true });
+
+      const result = await client.post("/coverletters/save", item);
+
+      setUser({ coverletters: [], ...result.data, loading: false });
     }
+
+    console.log(user);
+
+    // async function addCoverletter(item) { //item = formdatan
+    //   await client.patch("/coverletters/save", item);
+    // }
   
     return (
       <div>
         <Header />
         <Body>
-          <Formol onSubmit={addCoverletter}>
+          <Formol item={user} onSubmit={addCoverletter}>
             <Field name="company">Company</Field>
             <Field name="title">Title</Field>
             <Field name="location">Location</Field>

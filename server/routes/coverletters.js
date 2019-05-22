@@ -1,31 +1,33 @@
 var express = require('express');
 var router = express.Router();
-var Coverletter = require('../models/Coverletter');
+let middleware = require("../middleware");
+
+//var Coverletter = require('../models/Coverletter');
+var User = require("../models/User");
 
 
 router.get('/', (req, res) => {});
 
-
 // @route   POST /coverletter/save
-// @desc    Create a new coverletter
+// @desc    Create a coverletter
 // @access  Private
-router.post("/save", function(req, res) {
-    const newCoverletter = new Coverletter ({
-        user_id: req.body._id,
-        company: req.body.company,
-        title: req.body.title,
-        location: req.body.location,
-        coverletter: req.body.coverletter
-    });
-
-        newCoverletter.save(function(error) {
+router.post("/save", middleware.checkToken, function(req, res) {
+    User.findByIdAndUpdate(
+      req.decoded.user_id,
+      { coverletters: {
+          company: req.body.company,
+          title: req.body.title,
+          location: req.body.location,
+          coverletter: req.body.coverletter
+      }},
+      function(error, user) {
         if (error) {
-          res.json({"status": "error", "message": `${error}`});
+          res.json({ status: "error", message: `${error}` });
         }
-        
-        res.json({"status": "OK", "data" : `recieved, ${res}`});
-      });
-});
+        res.status(200).json(user);
+      }
+    );
+  });
 
 
 router.put('/', (req, res) => {});

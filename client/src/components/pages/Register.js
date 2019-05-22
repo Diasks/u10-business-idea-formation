@@ -1,5 +1,6 @@
 import React, { Component } from 'react';	
-			import axios from 'axios';
+import client from "../../client";
+
 			import styled from "styled-components/macro";
 		
 
@@ -151,7 +152,7 @@ let formValid = formErrors => {
 			email: this.state.email
 			};
 			
-			axios.post(`http://localhost:4000/users`,  user )
+			client.post(`/users`,  user )
 			.then(res => {
 			this.props.history.push("/login");
 			}).catch(err => {

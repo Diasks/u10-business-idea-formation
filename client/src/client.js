@@ -1,15 +1,18 @@
-import axios from "axios";
+import axios from "../node_modules/axios";
+
+const isDev = process.env.NODE_ENV === "development";
+const baseURL = isDev ? "http://localhost:4000/api" : "/api";
 
 const client = axios.create({
- baseURL: "http://localhost:4000",
- headers: {
-   Authorization: {
-     toString() {
-       const token = localStorage.getItem("cool-jwt");
-       return `Bearer ${token}`;
-     }
-   }
- }
+  baseURL,
+  headers: {
+    Authorization: {
+      toString() {
+        const token = localStorage.getItem("cool-jwt");
+        return `Bearer ${token}`;
+      }
+    }
+  }
 });
 
 export default client;
