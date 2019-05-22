@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 		
 
 			export const FormWrap = styled.div `
-			margin-bottom: 100px;
+			margin: 50px 100px 100px 10px;
 			`;
 
 			export const FormInputs = styled.form `	
@@ -15,21 +15,26 @@ import React, { Component } from 'react';
 			display: block;
 			text-transform: uppercase;
 			font-size: .9em;
-			color: white;
-			margin-top: 5px;
+			font-weight: bold;
+			color: darkgray;
+			margin-top: 20px;
 			`;
 
 			export const FormControl = styled.input `
 			    width: 100%;
 				background-color: transparent;
-				border: none;
-				color: white;
+				border: 2px solid lightgray;
+				border-radius: 20px;
+				color: gray;
 				outline: none;
-				border-bottom: 1px solid #445366;
 				font-size: 1em;
 				font-weight: 300;
-				padding-bottom: 10px;
-				margin-top: 10px;
+				padding: 10px;
+				margin: 10px 0;
+
+				:focus {
+					border: 2px solid gray;
+				}
 			`; 
 			  
 			export const ErrorMessage = styled.span `
@@ -39,15 +44,20 @@ import React, { Component } from 'react';
 
 
 			export const FormButton = styled.button `
-			background-color: #00BFFF;
-			margin-top: 10px;
-			color: white;
+			background-color: lightgray;
+			margin-top: 40px;
+			color: gray;
 			border: none;
 			outline: none;
 			border-radius: 25px;
 			padding: 15px 70px;
 			font-size: .8em;
 			font-weight: 500;
+
+			:hover {
+				background-color: gray;
+				color: white;
+			}
 			`; 
 
 

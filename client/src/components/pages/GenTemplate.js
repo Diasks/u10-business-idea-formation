@@ -77,7 +77,12 @@ const Date = styled.div`
   font-style: italic;
 `;
 
-const EducationWrapper = styled.div`
+const AllEducationWrapper = styled.div`
+  margin: 40px 0 20px 0;
+`;
+
+const EducationWrapper = styled.ul`
+  padding: 0;
   margin: 35px 0 20px 0;
 `;
 
@@ -249,25 +254,22 @@ function GenTemplate() {
 
        </WorkExperienceWrapper>
 
-       <EducationWrapper>
+       <AllEducationWrapper>
           <h6>Utbildning</h6>
           <hr />
           
-          {/* Tillfälligt med fake-data*/}
-          <Program>Företagsekonomi, Stockholms Universitet, Stockholm</Program>
-          <EdDate>2013-08-01 - 2016-06-01</EdDate>
-          <Program>Samhällsvetenskapliga programmet, Fyrisskolan, Uppsala</Program>
-          <EdDate>2010-08-01 - 2013-06-01</EdDate>
+          
 
-          <ul>
+          <EducationWrapper>
             {user.schools.map(school =>
             <Education key={school.id}>
-              {/* <p>{school.program}</p> */}
+              <Program>{school.program}</Program>
+              <EdDate>{school.start_date} - {school.end_date}</EdDate>
             </Education>
             )}
-          </ul>
+          </EducationWrapper>
 
-       </EducationWrapper>
+       </AllEducationWrapper>
 
        <SkillsWrapper>
           <h6>Kompetens</h6>

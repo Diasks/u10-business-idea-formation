@@ -38,6 +38,16 @@ const Circle = styled.div`
     display: none;
 `;
 
+const Headers = styled.h3`
+  color: black;
+`;
+
+const HeadersP = styled.p`
+  color: black;
+`;
+
+
+
 function JobList({ length }) {
   const [currentLength, setCurrentLength] = useState(length);
 
@@ -164,8 +174,8 @@ function Profile() {
 
   const Objective = (
     <TabPanel>
-      <h2>Objective</h2>
-      <p>Please think of the main objective you want to reach with you CV</p>
+      <Headers>Objective</Headers>
+      <HeadersP>Please think of the main objective you want to reach with you CV</HeadersP>
       <Field name="objective" type="text">
         Objective
       </Field>
@@ -174,36 +184,36 @@ function Profile() {
 
   const WorkExperience = (
     <TabPanel>
-      <h2>Work experience</h2>
-      <p>Please list all your jobs in reverse order</p>
+      <Headers>Work experience</Headers>
+      <HeadersP>Please list all your jobs in reverse order</HeadersP>
       <JobList length={user.jobs.length} />
     </TabPanel>
   );
 
   const Education = (
     <TabPanel>
-      <h2>Education</h2>
-      <p>Please list your education in reverse order</p>
+      <Headers>Education</Headers>
+      <HeadersP>Please list your education in reverse order</HeadersP>
       <SchoolList length={user.schools.length} />
     </TabPanel>
   );
 
   const Skills = (
     <TabPanel>
-      <h2>Skills</h2>
-      <p>Please list all your skills relevant to the job you want to get</p>
-      <Field type="text" name="skills">
-        Skills
-      </Field>
+      <Headers>Skills</Headers>
+      <HeadersP>Please list all your skills relevant to the job you want to get</HeadersP>
+        <Field type="text" name="skills">
+          Skills
+        </Field>
     </TabPanel>
   );
 
   const Others = (
     <TabPanel>
-      <h2>Others</h2>
-      <p>
+      <Headers>Others</Headers>
+      <HeadersP>
         Please list other important things you want your future employer to know
-      </p>
+        </HeadersP>
       <Field type="text" name="others">
         Others
       </Field>

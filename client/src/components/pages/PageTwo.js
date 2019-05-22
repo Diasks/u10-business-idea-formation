@@ -5,14 +5,14 @@ import Register from './Register';
 import styled from "styled-components/macro";
 
 const FormTitle = styled.div `
-    color: #DA70D6;
+    color: gray;
     font-weight: 300;
     margin-bottom: 50px;
   `;
 
   const PageTwosAside = styled.div `
-  width: 10%;
-  background-color: #00BFFF;
+    width: 10%;
+    background-color: lightgray;
   `; 
    
   const PageTwos = styled.div `   
@@ -24,50 +24,49 @@ const FormTitle = styled.div `
 
   const PageTwoForm = styled.div `
   width: 90%;
-  background-color: #D8BFD8;
+  background-color: #ececec;
   padding: 25px 40px;
   overflow: auto;
   `; 
   
 
   const FormTitleLink = styled(NavLink) `
-  color: #DA70D6;
+  color: gray;
   text-decoration: none;
   display: inline-block;
   font-size: 1.5em;
   margin: 0 10px;
   padding-bottom: 5px;
 
-  &:active {
+  :active {
     color: white;
-    border-bottom: 1px solid #DA70D6;
+    border-bottom: 1px solid lightgray;
+  }
 
+  :hover {
+    text-decoration: none;
+    font-weight: 600;
+    color: gray;
   }
   `; 
   
   
-  
- 
-
-
  class PageTwo extends Component {
     render(){  
-return (
+      
+      return (
 
-<Router>	
-<PageTwos> 
+        <Router>	
+          <PageTwos> 
            <PageTwosAside></PageTwosAside> 
            <PageTwoForm> 
             <FormTitle> 
-        <FormTitleLink to="/Login">Sign In</FormTitleLink> or <FormTitleLink exact to="/Register">Register</FormTitleLink>
-        </FormTitle>
-        <Route exact path="/Register" component={Register}>
-        </Route>
-        <Route exact path="/Login" component={Login}> 
-        </Route>
-      
-        </PageTwoForm>	
-        </PageTwos>
+              <FormTitleLink to="/Login">Sign In</FormTitleLink> / <FormTitleLink exact to="/Register">Register</FormTitleLink>
+              </FormTitle>
+              <Route exact path="/Register" component={Register}></Route>
+              <Route exact path="/Login" component={Login}></Route>
+            </PageTwoForm>	
+          </PageTwos>
         </Router>
 )
 

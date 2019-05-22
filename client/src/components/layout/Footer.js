@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import { colors } from "../Common";
 
 const FooterDiv = styled.div`
-  background-color: ${colors.LividBrown};
+  background-color: #cecdcd;
   color: white;
   display: flex;
   flex-direction: column;
@@ -78,7 +77,7 @@ const Copyright = styled.span`
 `;
 
 const linkStyle = {
-  color: "#fff",
+  color: "gray",
   textDecoration: "none",
   fontSize: "16px"
 };
@@ -86,7 +85,7 @@ const linkStyle = {
 function Footer() {
   return (
     <FooterDiv>
-      <Connect>Connect with us!</Connect>
+      <Connect>Connect with us</Connect>
       <Social>
         <InstaIcon />
         <FacebookIcon />
