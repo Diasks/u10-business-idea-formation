@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
-var User = require("../models/User");
+var user = require("../models/User");
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
-let middleware = require("../middleware");
+var middleware = require("../middleware");
 
 /* GET users/me  */
 router.get("/me", middleware.checkToken, function(req, res) {
-  User.findById(req.decoded.user_id, function(error, user) {
+  user.findById(req.decoded.user_id, function(error, user) {
     if (error) {
       res.json({ status: "error", message: `${error}` });
     }
@@ -17,7 +17,7 @@ router.get("/me", middleware.checkToken, function(req, res) {
 
 /* PUT users/me  */
 router.patch("/me", middleware.checkToken, function(req, res) {
-  User.findByIdAndUpdate(
+  user.findByIdAndUpdate(
     req.decoded.user_id,
     { $set: req.body },
     { new: true },
@@ -33,7 +33,7 @@ router.patch("/me", middleware.checkToken, function(req, res) {
 /* POST users  */
 router.post("/", function(req, res) {
   debugger;
-  User.find({email: req.body.email}, function(user) {
+  user.find({email: req.body.email}, function(user) {
     console.log(user);
     debugger;
 if (!user)
@@ -64,7 +64,7 @@ if (!user)
 //Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
 /* DELETE user  */
 router.delete("/:userId/delete", function(req, res) {
-  User.findByIdAndRemove(req.params.userId, function(error) {
+  user.findByIdAndRemove(req.params.userId, function(error) {
     if (error) {
       res.json({ status: "error", message: `${error}` });
     }
