@@ -78,9 +78,6 @@ const Body = styled.div`
 
     console.log(user);
 
-    // async function addCoverletter(item) { //item = formdatan
-    //   await client.patch("/coverletters/save", item);
-    // }
   
     return (
       <div>
@@ -107,47 +104,12 @@ const Body = styled.div`
 
 
 
-
-
-// ***** IGONORE THIS FOR NOW ******
-
-// class Coverletter extends Component {
-//     constructor(props) {
-//         super(props);
-    
-//         this.state = {
-//           coverletter: ''
-//         };
-    
-//         this.handleChange = this.handleChange.bind(this);
-//     }
-    
-//     handleChange(e) {
-//         console.log('blomma');
-//         // this.setState({
-//         //   value: e.target.value
-//         // });
-
-//         //skriver till databasen för varje typad bokstav
-//         //renderar ut i preview template direkt
-//     }
-
 // render() {
 // 	return (
 //         <div> 
 //             <Header/>
 //             <Body>
-//             <FlexContainer>
-//                 <Header1>Create a smashing coverletter</Header1>
-//                     <Paragraph>Here you can create a coverletter to add to your application if needed. Some tips: <br>
-//                         </br>
-//                         1. hwjkh skjdhk ksjdhf <br />
-//                         2. saa asfjla alsjdl <br />
-//                         3. asjd asdj laksdjl <br />
-
-//                         Happy job hunting! <br />
-//                     </Paragraph>
-//                 </FlexContainer>
+//             
 
 //                 <FlexContainer>
 //                     <FlexItem1>

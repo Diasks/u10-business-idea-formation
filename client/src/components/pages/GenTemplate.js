@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 import client from '../../client';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -175,6 +176,27 @@ const Back = styled.button`
 
 `;
 
+const StyledLink = styled(Link)`
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ border: none;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
+ transition: all 0.2s;
+
+:hover {
+   background-color:#4095c6;
+  }
+
+`;
+
 
 function handlePrint(user, quality = 1) {
  const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
@@ -219,6 +241,7 @@ function GenTemplate() {
      <Buttons>
         <Print onClick={e => handlePrint(user)}>Spara (PDF)</Print>
         <Back onClick={e => goBack()}>Tillbaka</Back>
+        <StyledLink to="/coverletters">Add Coverletter</StyledLink>
      </Buttons>
 
      <Body id="body">
