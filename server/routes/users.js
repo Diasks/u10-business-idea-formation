@@ -30,23 +30,33 @@ router.patch("/me", middleware.checkToken, function(req, res) {
   );
 });
 
-/* POST users  */ 
-//Ska kolla om emailen redan finns? Om den finns säg till användaren!
-router.post("/", function(req, res) {
-  var hashedPassword = bcrypt.hashSync(req.body.password, 10);
-  var newUser = new User();
-  (newUser._id = new mongoose.Types.ObjectId()),
-    (newUser.first_name = req.body.first_name),
-    (newUser.last_name = req.body.last_name),
-    (newUser.password = hashedPassword),
-    (newUser.email = req.body.email),
-    newUser.save(function(error) {
-      if (error) {
-        res.json({ status: "error", message: `${error}` });
-      } else {
-        res.json({ status: "OK", data: `recieved, ${res}` });
-      }
-    });
+
+router.post("/", function(req, res) {;
+var emailQuery = {email: req.body.email};
+User.findOne(emailQuery, function(err, user) {
+  if(err) throw err;
+  if(user) {
+    res.json({status: 'Email already exist'});
+ 
+  }
+  if (!user) {
+    var hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    var newUser = new User();
+    (newUser._id = new mongoose.Types.ObjectId()),
+      (newUser.first_name = req.body.first_name),
+      (newUser.last_name = req.body.last_name),
+      (newUser.password = hashedPassword),
+      (newUser.email = req.body.email),
+      newUser.save(function(error) {
+        if (error) {
+          res.json({ status: "error", message: `${error}` });
+        } else {
+          res.json({ status: "OK", data: `recieved, ${res}` });
+        }
+      });
+  }
+})
+
   });
 
 //Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
