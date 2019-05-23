@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
-var user = require("../models/User");
+var User = require("../models/User");
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 var middleware = require("../middleware");
 
 /* GET users/me  */
 router.get("/me", middleware.checkToken, function(req, res) {
-  user.findById(req.decoded.user_id, function(error, user) {
+  User.findById(req.decoded.user_id, function(error, user) {
     if (error) {
       res.json({ status: "error", message: `${error}` });
     }
@@ -17,7 +17,7 @@ router.get("/me", middleware.checkToken, function(req, res) {
 
 /* PUT users/me  */
 router.patch("/me", middleware.checkToken, function(req, res) {
-  user.findByIdAndUpdate(
+  User.findByIdAndUpdate(
     req.decoded.user_id,
     { $set: req.body },
     { new: true },
@@ -30,15 +30,9 @@ router.patch("/me", middleware.checkToken, function(req, res) {
   );
 });
 
-/* POST users  */
+/* POST users  */ 
+//Ska kolla om emailen redan finns? Om den finns säg till användaren!
 router.post("/", function(req, res) {
-  debugger;
-  user.find({email: req.body.email}, function(user) {
-    console.log(user);
-    debugger;
-if (!user)
-{
-  debugger;
   var hashedPassword = bcrypt.hashSync(req.body.password, 10);
   var newUser = new User();
   (newUser._id = new mongoose.Types.ObjectId()),
@@ -53,18 +47,12 @@ if (!user)
         res.json({ status: "OK", data: `recieved, ${res}` });
       }
     });
-
-} else {
-  res.json({ status: "you are already a user!" });
-}
-  })
- 
-});
+  });
 
 //Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
 /* DELETE user  */
 router.delete("/:userId/delete", function(req, res) {
-  user.findByIdAndRemove(req.params.userId, function(error) {
+  User.findByIdAndRemove(req.params.userId, function(error) {
     if (error) {
       res.json({ status: "error", message: `${error}` });
     }

@@ -3,7 +3,7 @@ var router = express.Router();
 var middleware = require("../middleware");
 
 //var Coverletter = require('../models/Coverletter');
-var user = require("../models/User");
+var User = require("../models/User");
 
 
 router.get('/', (req, res) => {});
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {});
 // @desc    Create a coverletter
 // @access  Private
 router.post("/save", middleware.checkToken, function(req, res) {
-    user.findByIdAndUpdate(
+    User.findByIdAndUpdate(
       req.decoded.user_id,
       { coverletters: {
           company: req.body.company,

@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var Template = require('../models/Template');
-var user = require('../models/User');
+var User = require('../models/User');
 
 
 
 //WORKING WITH POSTMAN
 /* GET templates  */
 router.get('/', function(req, res) {
-  user.find(function(error, users){
+  User.find(function(error, users){
     if(error) {
       res.json({"Status" : "Error", "message": `${error}`});
     }
@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
 //WORKING WITH POSTMAN
 /* GET  specific template by ID  */
 router.get('/:userId', function(req, res) {
-  user.findById(req.params.userId, function(error, user) {
+  User.findById(req.params.userId, function(error, user) {
 if (error) {
   res.json({"status" : "error", "message" : `${error}`});
 }
@@ -54,7 +54,7 @@ newTemplate.save(function(error) {
 //WORKING (!!)
 /* PUT update user  */
 router.patch('/:userId/update', function(req, res) {
-  user.findByIdAndUpdate(req.params.userId, {$set: req.body}, function (error, user) {
+  User.findByIdAndUpdate(req.params.userId, {$set: req.body}, function (error, user) {
     if (error) {
       res.json({"status": "error", "message": `${error}`});
     }
@@ -67,7 +67,7 @@ router.patch('/:userId/update', function(req, res) {
 //Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
 /* DELETE user  */
 router.delete('/:userId/delete', function(req, res) {
-  user.findByIdAndRemove(req.params.userId, function(error) {
+  User.findByIdAndRemove(req.params.userId, function(error) {
 if (error) {
   res.json({"status": "error", "message" : `${error}`});
 }
