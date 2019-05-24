@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require("../models/User");
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
-let middleware = require("../middleware");
+var middleware = require("../middleware");
 
 /* GET users/me  */
 router.get("/me", middleware.checkToken, function(req, res) {
@@ -30,36 +30,34 @@ router.patch("/me", middleware.checkToken, function(req, res) {
   );
 });
 
-/* POST users  */
-router.post("/", function(req, res) {
-  debugger;
-  User.find({email: req.body.email}, function(user) {
-    console.log(user);
-    debugger;
-if (!user)
-{
-  debugger;
-  var hashedPassword = bcrypt.hashSync(req.body.password, 10);
-  var newUser = new User();
-  (newUser._id = new mongoose.Types.ObjectId()),
-    (newUser.first_name = req.body.first_name),
-    (newUser.last_name = req.body.last_name),
-    (newUser.password = hashedPassword),
-    (newUser.email = req.body.email),
-    newUser.save(function(error) {
-      if (error) {
-        res.json({ status: "error", message: `${error}` });
-      } else {
-        res.json({ status: "OK", data: `recieved, ${res}` });
-      }
-    });
 
-} else {
-  res.json({ status: "you are already a user!" });
-}
-  })
+router.post("/", function(req, res) {;
+var emailQuery = {email: req.body.email};
+User.findOne(emailQuery, function(err, user) {
+  if(err) throw err;
+  if(user) {
+    res.json({status: 'Email already exist'});
  
-});
+  }
+  if (!user) {
+    var hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    var newUser = new User();
+    (newUser._id = new mongoose.Types.ObjectId()),
+      (newUser.first_name = req.body.first_name),
+      (newUser.last_name = req.body.last_name),
+      (newUser.password = hashedPassword),
+      (newUser.email = req.body.email),
+      newUser.save(function(error) {
+        if (error) {
+          res.json({ status: "error", message: `${error}` });
+        } else {
+          res.json({ status: "OK", data: `recieved, ${res}` });
+        }
+      });
+  }
+})
+
+  });
 
 //Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
 /* DELETE user  */

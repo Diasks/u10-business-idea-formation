@@ -8,7 +8,7 @@ var config = require("dotenv").config();
 var mongoose = require("mongoose");
 var cors = require("cors");
 var jwt = require("jsonwebtoken");
-var User = require("./models/User");
+var user = require("./models/User");
 var pug = require("pug");
 
 var app = express();
@@ -49,8 +49,8 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 app.post("/api/login", function(req, res) {
   //auth user
 
-  User.findOne({ email: req.body.email }, function(err, user) {
-    const user_id = user._id;
+  user.findOne({ email: req.body.email }, function(err, user) {
+    var user_id = user._id;
 
     if (!err) {
       var token = jwt.sign({ user_id }, process.env.SECRET_OR_KEY, {

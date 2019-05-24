@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let middleware = require("../middleware");
+var middleware = require("../middleware");
 
 //var Coverletter = require('../models/Coverletter');
 var User = require("../models/User");
