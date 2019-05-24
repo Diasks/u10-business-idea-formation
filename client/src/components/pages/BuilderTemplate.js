@@ -197,6 +197,24 @@ const StyledLink = styled(Link)`
 
 `;
 
+const Wrapper = styled.div`
+  width: 70%;
+  margin-left: 10px;
+`;
+
+const WrapperTwo = styled.div`
+  width: 30%;
+  padding-left: 20px;
+  border-left: 0.5px gray dotted;
+  margin-top: 35px;
+`;
+
+const WrapWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+
 
 function handlePrint(user, quality = 1) {
  const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
@@ -244,8 +262,7 @@ function BuilderTemplate() {
 
        <HeaderWrapper>
           <CvHeader>
-            <FirstName>{user.first_name.toUpperCase()}</FirstName>
-            <LastName>{user.last_name.toUpperCase()}</LastName>
+            {user.first_name} {user.last_name}
           </CvHeader>
           <Contacts>
             
@@ -254,14 +271,11 @@ function BuilderTemplate() {
             <Email>{user.email}</Email>
           </Contacts>
        </HeaderWrapper>
-
-       <ObjectiveWrapper>
-         <p>{user.objective}</p>
-       </ObjectiveWrapper>
-
+<WrapWrapper>
+<Wrapper>
        <WorkExperienceWrapper>
-          <h6>Arbetslivserfarenhet</h6>
-          <hr />
+          <h6>Work experience</h6>
+
           <WorkWrapper>
             {user.jobs.map(job =>
             <Work key={job.id}>
@@ -274,11 +288,8 @@ function BuilderTemplate() {
        </WorkExperienceWrapper>
 
        <AllEducationWrapper>
-          <h6>Utbildning</h6>
-          <hr />
+          <h6>Education</h6>
           
-          
-
           <EducationWrapper>
             {user.schools.map(school =>
             <Education key={school.id}>
@@ -290,27 +301,25 @@ function BuilderTemplate() {
 
        </AllEducationWrapper>
 
+       </Wrapper>
+
+<WrapperTwo>
        <SkillsWrapper>
-          <h6>Kompetens</h6>
-          <hr />
+          <h6>Skills</h6>
+     
 
           <Skill>{user.skills}</Skill>
 
        </SkillsWrapper>
 
        <OthersWrapper>
-          <h6>Övriga meriter</h6>
-          <hr />
-
+          <h6>Other</h6>
           <Other>{user.others}</Other>
-
        </OthersWrapper>
 
-       <ReferencesWrapper>
-          <h6>Referenser</h6>
-          <hr />
-          <Reference>Lämnas på begäran</Reference>
-       </ReferencesWrapper>
+</WrapperTwo>
+</WrapWrapper>
+
        
      </Body>
    </div>

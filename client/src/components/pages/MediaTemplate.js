@@ -17,24 +17,34 @@ const Body = styled.div`
 
 const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffc886;
+`;
+
+const ObjectiveWrapper = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Rajdhani);
+  display: flex;
+  justify-content: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  padding-top: 5px;
 `;
 
 const CvHeader = styled.h1`
-  
+  @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-family: 'Poiret One', cursive;
+  padding: 20px 0 10px 0;
+  border-bottom: thin solid black;
+  margin: 0 50px 0 50px
 `; 
 
 const Contacts = styled.div`
-  
-`;
-
-const FirstName = styled.div`
-  
-`;
-
-const LastName = styled.div`
-  font-weight: bold;
+  @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
+  font-family: 'Julius Sans One', sans-serif;
 `;
 
 const Place = styled.div`
@@ -49,13 +59,12 @@ const Email = styled.div`
   font-size: 10px;
 `;
 
-const ObjectiveWrapper = styled.div`
-  font-size: 10px;
-  width: 70%;
-`;
+
 
 
 const WorkExperienceWrapper = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=JuliusSans+One);
+  font-family: 'Julius Sans One', 'sans-serif';
   margin: 40px 0 20px 0;
 `;
 
@@ -79,12 +88,9 @@ const Date = styled.div`
 `;
 
 const AllEducationWrapper = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
+  font-family: 'Julius Sans One', 'sans-serif';
   margin: 40px 0 20px 0;
-`;
-
-const EducationWrapper = styled.ul`
-  padding: 0;
-  margin: 35px 0 20px 0;
 `;
 
 const Education = styled.li`
@@ -103,6 +109,8 @@ const EdDate = styled.div`
 `;
 
 const OthersWrapper = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
+  font-family: 'Julius Sans One', 'sans-serif';
   margin: 35px 0 20px 0;
 `;
 
@@ -111,20 +119,13 @@ const Other = styled.div`
 `;
 
 const SkillsWrapper = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
+  font-family: 'Julius Sans One', 'sans-serif';
   margin: 35px 0 20px 0;
 `;
 
 const Skill = styled.div`
   font-size: 12px;
-`;
-
-const ReferencesWrapper = styled.div`
- margin: 35px 0 20px 0;
-`;
-
-const Reference = styled.div`
-  font-size: 12px;
-  font-style: italic;
 `;
 
 const Buttons = styled.div`
@@ -197,6 +198,23 @@ const StyledLink = styled(Link)`
 
 `;
 
+const Wrapper = styled.div`
+  width: 70%;
+  margin-left: 20px;
+`;
+
+const WrapperTwo = styled.div`
+  width: 30%;
+  padding-left: 30px;
+  border-left: 1px #ffc886 dotted;
+  margin-top: 35px;
+`;
+
+const WrapWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
 
 function handlePrint(user, quality = 1) {
  const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
@@ -236,7 +254,7 @@ function MediaTemplate() {
    <div>
      <Buttons>
         <Print onClick={e => handlePrint(user)}>Spara (PDF)</Print>
-        <StyledLink to="/my-cv">Tillbaka</StyledLink>
+        <StyledLink to="/my-cv">Go Back</StyledLink>
         <StyledLink to="/coverletters">Add Coverletter</StyledLink>
      </Buttons>
 
@@ -244,24 +262,20 @@ function MediaTemplate() {
 
        <HeaderWrapper>
           <CvHeader>
-            <FirstName>{user.first_name.toUpperCase()}</FirstName>
-            <LastName>{user.last_name.toUpperCase()}</LastName>
+            {user.first_name} {user.last_name}
           </CvHeader>
-          <Contacts>
-            
-            <Place>{user.place}</Place>
-            <Telephone>{user.telephone}</Telephone>
-            <Email>{user.email}</Email>
-          </Contacts>
+
+          <ObjectiveWrapper>
+            <p>{user.objective.toUpperCase()}</p>
+          </ObjectiveWrapper>
        </HeaderWrapper>
 
-       <ObjectiveWrapper>
-         <p>{user.objective}</p>
-       </ObjectiveWrapper>
+       
 
+       <WrapWrapper>
+       <Wrapper>
        <WorkExperienceWrapper>
-          <h6>Arbetslivserfarenhet</h6>
-          <hr />
+          <h6>WORK EXPERIENCE</h6>
           <WorkWrapper>
             {user.jobs.map(job =>
             <Work key={job.id}>
@@ -274,43 +288,40 @@ function MediaTemplate() {
        </WorkExperienceWrapper>
 
        <AllEducationWrapper>
-          <h6>Utbildning</h6>
-          <hr />
-          
-          
+          <h6>EDUCATION</h6>
 
-          <EducationWrapper>
             {user.schools.map(school =>
             <Education key={school.id}>
               <Program>{school.program}</Program>
               <EdDate>{school.start_date} - {school.end_date}</EdDate>
             </Education>
             )}
-          </EducationWrapper>
+      
 
        </AllEducationWrapper>
+       </Wrapper>
+       
 
-       <SkillsWrapper>
-          <h6>Kompetens</h6>
-          <hr />
+          <WrapperTwo>
 
-          <Skill>{user.skills}</Skill>
-
-       </SkillsWrapper>
+          <Contacts>
+          <h6>CONTACTS</h6>
+            <Telephone>☎ {user.telephone}</Telephone>
+            <Email>✉ {user.email}</Email>
+            <Place>☖ {user.place}</Place>
+          </Contacts>
+          <SkillsWrapper>
+           <h6>SKILLS</h6>
+           <Skill>{user.skills}</Skill>
+          </SkillsWrapper>
 
        <OthersWrapper>
-          <h6>Övriga meriter</h6>
-          <hr />
-
+          <h6>OTHER</h6>
           <Other>{user.others}</Other>
-
        </OthersWrapper>
 
-       <ReferencesWrapper>
-          <h6>Referenser</h6>
-          <hr />
-          <Reference>Lämnas på begäran</Reference>
-       </ReferencesWrapper>
+</WrapperTwo>
+</WrapWrapper>
        
      </Body>
    </div>
