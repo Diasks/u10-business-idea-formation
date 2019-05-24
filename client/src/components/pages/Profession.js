@@ -1,7 +1,8 @@
-import React, {Component} from 'react';	
-import  Header  from "../layout/Header";
-import  Footer  from "../layout/Footer";
+import React, { Component } from 'react';	
+import Header  from "../layout/Header";
+import Footer  from "../layout/Footer";
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 const Button = styled.button`
 @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
@@ -53,42 +54,59 @@ font-size: 4em;
   
 `;
 
-const Back = styled.button`
- padding: 0.3em 1.2em;
- margin: 0 0.3em 0.3em 0;
- border-radius: 2em;
+const StyledLink = styled(Link)`
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
  border: none;
- text-decoration: none;
- font-family: 'Roboto',sans-serif;
- font-weight: 300;
- color: #FFFFFF;
- background-color: #4eb5f1;
- text-align: center;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
  transition: all 0.2s;
 
 :hover {
-   background-color: #4095c6;
+   background-color:#4095c6;
   }
 
 `;
 
-const Buttons = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 20px 0 70px 0;
-`;
 
 
 class Profession extends Component {
   constructor() {
     super();
     this.routeChange = this.routeChange.bind(this);
+    this.itRouteChange = this.itRouteChange.bind(this);
+    this.builderRouteChange = this.builderRouteChange.bind(this);
+    this.mediaRouteChange = this.mediaRouteChange.bind(this);
   }
 
   routeChange() {
     const path = `GenTemplate`;
     this.props.history.push(path);
+    
   }
+
+  itRouteChange() {
+    const path = `ItTemplate`;
+    this.props.history.push(path);
+  }
+
+  builderRouteChange() {
+    const path = `BuilderTemplate`;
+    this.props.history.push(path);
+  }
+
+  mediaRouteChange() {
+    const path = `MediaTemplate`;
+    this.props.history.push(path);
+  }
+ 
  
   render() {
     function goBack() {
@@ -102,14 +120,12 @@ class Profession extends Component {
 
         <Professions>
             <Button onClick={this.routeChange}>Generell</Button>
-            <Button onClick={this.routeChange}>IT/Teknik</Button>
-            <Button onClick={this.routeChange}>Bygg/Hantverk</Button>
-            <Button onClick={this.routeChange}>Media/Kultur</Button>  
+            <Button onClick={this.itRouteChange}>IT/Teknik</Button>
+            <Button onClick={this.builderRouteChange}>Bygg/Hantverk</Button>
+            <Button onClick={this.mediaRouteChange}>Media/Kultur</Button>  
         </Professions>
 
-        <Buttons>
-          <Back onClick={e => goBack()}>Tillbaka</Back>
-        </Buttons>
+        <StyledLink to="/profile">Back to profile</StyledLink>
 
         <Footer/>
       </div>

@@ -210,7 +210,7 @@ function handlePrint(user, quality = 1) {
  );
 }
 
-function GenTemplate() {
+function ItTemplate() {
  const [user, setUser] = useState({ loading: true });
  useEffect(() => {
    async function fetchData() {
@@ -277,8 +277,6 @@ function GenTemplate() {
           <h6>Utbildning</h6>
           <hr />
           
-          
-
           <EducationWrapper>
             {user.schools.map(school =>
             <Education key={school.id}>
@@ -298,23 +296,10 @@ function GenTemplate() {
 
        </SkillsWrapper>
 
-       <OthersWrapper>
-          <h6>Övriga meriter</h6>
-          <hr />
-
-          <Other>{user.others}</Other>
-
-       </OthersWrapper>
-
-       <ReferencesWrapper>
-          <h6>Referenser</h6>
-          <hr />
-          <Reference>Lämnas på begäran</Reference>
-       </ReferencesWrapper>
        
      </Body>
    </div>
  );
 }
 
-export default GenTemplate;
+export default ItTemplate;

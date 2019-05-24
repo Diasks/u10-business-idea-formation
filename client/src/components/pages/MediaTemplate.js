@@ -210,7 +210,7 @@ function handlePrint(user, quality = 1) {
  );
 }
 
-function GenTemplate() {
+function MediaTemplate() {
  const [user, setUser] = useState({ loading: true });
  useEffect(() => {
    async function fetchData() {
@@ -317,4 +317,4 @@ function GenTemplate() {
  );
 }
 
-export default GenTemplate;
+export default MediaTemplate;

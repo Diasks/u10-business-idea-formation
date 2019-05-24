@@ -9,6 +9,9 @@ import PageTwo from "./components/pages/PageTwo";
 import Profession from "./components/pages/Profession";
 import Coverletter from "./components/pages/Coverletter";
 import GenTemplate from "./components/pages/GenTemplate";
+import ItTemplate from "./components/pages/ItTemplate";
+import MediaTemplate from "./components/pages/MediaTemplate";
+import BuilderTemplate from "./components/pages/BuilderTemplate";
 import MyCoverletterTemplates from "./components/pages/MyCoverletterTemplates";
 
 
@@ -20,14 +23,17 @@ class App extends Component {
         <div className="App">
           <div>
             <Route exact path="/" component={Welcome} />
-            <Route exact path="/PageTwo" component={PageTwo} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/my-cv" component={Profession} />
-            <Route exact path="/coverletters" component={Coverletter} />
-            <Route exact path="/GenTemplate" component={GenTemplate} />
-            <Route exact path="/my-coverletters" component={MyCoverletterTemplates} />
-            <Route exact path="/About" component={About} />
-            <Route exact path="/Contact" component={Contact} />
+            <Route path="/PageTwo" component={PageTwo} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/my-cv" component={Profession} />
+            <Route path="/coverletters" component={Coverletter} />
+            <Route path="/GenTemplate" component={GenTemplate} />
+            <Route path="/ItTemplate" component={ItTemplate} />
+            <Route path="/MediaTemplate" component={MediaTemplate} />
+            <Route path="/BuilderTemplate" component={BuilderTemplate} />
+            <Route path="/my-coverletters" component={MyCoverletterTemplates} />
+            <Route path="/About" component={About} />
+            <Route path="/Contact" component={Contact} />
           </div>
         </div>
       </Router>
