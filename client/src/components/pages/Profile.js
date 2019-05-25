@@ -12,7 +12,6 @@ import client from "../../client";
 const Body = styled.div`
   height: 100%;
   width: 100%;
-  
 `;
 
 const CircleWrap = styled.div`
@@ -27,6 +26,11 @@ const Circle = styled.div`
   background: lightgray;
   background-position: 50% 50%;
   background-size: cover;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    height: 150px;
+    width: 150px;
+  }
 `;
 
 const Headers = styled.h3`
@@ -40,11 +44,35 @@ const HeadersP = styled.p`
 const FullName = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: row;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
 `;
 
 const Contacts = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+  }
+
 `;
 
 const TabsWrap = styled.div`
@@ -123,6 +151,12 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     color: #fafafa;
   }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 120px;
+    font-size: 12px;
+    font-weight: 600;
+  }
 `;
 
 const UserHeaderWrap = styled.div`
@@ -137,6 +171,14 @@ const UserHeader = styled.div`
   margin: 50px 0 10px 0;
   font-size: 26px;
   color: #737373;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    font-size: 26px;
+  }
 `;
 
 const UserParagraph = styled.div`
@@ -145,6 +187,21 @@ const UserParagraph = styled.div`
   margin: 10px 300px;
   text-align: center;
   color: gray;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    margin: 10px 60px;
+    font-size: 13px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    margin: 10px 60px;
+    font-size: 13px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    margin: 10px 80px;
+    font-size: 20px;
+  }
 `;
 
 function JobList({ length }) {

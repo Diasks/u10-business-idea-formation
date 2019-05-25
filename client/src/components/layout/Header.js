@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components/macro";
-import { colors } from "../Common";
+// import { Link } from "react-router-dom";
+// import styled from "styled-components/macro";
+// import { colors } from "../Common";
 import client from "../../client";
 
 // const Navbar = styled.div`
@@ -36,18 +36,18 @@ import client from "../../client";
 //   }
 // `;
 
-const StyledLink = styled(Link)`
-  color: #fff;
-  text-decoration: none;
-  padding: 20px;
-  display: block;
-  font-weight: 700;
+// const StyledLink = styled(Link)`
+//   color: #fff;
+//   text-decoration: none;
+//   padding: 20px;
+//   display: block;
+//   font-weight: 700;
 
-  &:hover {
-    color: ${colors.DarkCerulean};
-    text-decoration: none;
-  }
-`;
+//   &:hover {
+//     color: ${colors.DarkCerulean};
+//     text-decoration: none;
+//   }
+// `;
 
 const Header = () => {
   const [user, setUser] = useState({ loading: true });
@@ -67,7 +67,7 @@ const Header = () => {
   return (
 
     <div>
-      
+      <p style={{color: 'white'}}>{firstName}</p>
     </div>
 
     // <Navbar>

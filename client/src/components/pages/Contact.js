@@ -55,6 +55,8 @@ export class Contact extends Component {
         );
       case 3:
         return <Success />;
+        default:
+          console.log('Default case needed!');
     }
   }
 }

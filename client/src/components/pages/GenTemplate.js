@@ -155,27 +155,6 @@ const Print = styled.button`
 
 `;
 
-const Back = styled.button`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
-
-:hover {
-   background-color:#4095c6;
-  }
-
-`;
-
 const StyledLink = styled(Link)`
  display:inline-block;
  padding:0.3em 1.2em;

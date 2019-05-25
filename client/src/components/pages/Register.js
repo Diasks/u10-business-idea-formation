@@ -160,7 +160,7 @@ export class Register extends Component {
         .post(`/users`, user)
         .then(res => {
           debugger;
-          if (res.data.status == "Email already exist") {
+          if (res.data.status === "Email already exist") {
             formErrors.email = "email already exist!";
             this.setState({ formErrors });
           } else {

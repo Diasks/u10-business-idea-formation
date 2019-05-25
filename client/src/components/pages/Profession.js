@@ -109,9 +109,6 @@ class Profession extends Component {
  
  
   render() {
-    function goBack() {
-      window.history.back();
-    }
     
     return (
       <div> 
