@@ -7,7 +7,7 @@ import jsPDF from 'jspdf';
 
 
 const Body = styled.div`
- max-height: 900px;
+ max-height: 800px;
  max-width: 700px;
  margin: 30px auto;
  padding: 30px;
@@ -241,7 +241,7 @@ function handlePrint(user, quality = 1) {
  html2canvas(document.querySelector("#body"), { scale: quality }).then(
    canvas => {
      let pdf = new jsPDF("p", "mm", "a4");
-     pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 211, 298);
+     pdf.addImage(canvas.toDataURL("image/jpg"), "jpg", 0, 0, 211, 298);
      pdf.save(filename);
    }
  );

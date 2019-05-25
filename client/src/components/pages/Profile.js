@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
-import { colors } from "../Common";
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "formol/lib/default.css";
@@ -10,43 +10,142 @@ import Formol, { Field } from "formol/lib/formol";
 import client from "../../client";
 
 const Body = styled.div`
-  margin: 30px;
   height: 100%;
   width: 100%;
+  
+`;
+
+const CircleWrap = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const Circle = styled.div`
-  position: absolute;
-  z-index: -1;
-  right: 200px;
-  top: 150px;
   border-radius: 50%;
-  height: 400px;
-  width: 400px;
-  background: ${colors.LightLily};
+  height: 200px;
+  width: 200px;
+  background: lightgray;
   background-position: 50% 50%;
   background-size: cover;
-
-  @media (max-width: 1110px) {
-    right: 100px;
-    top: 200px;
-    height: 300px;
-    width: 300px;
-  }
-
-  @media (max-width: 800px) {
-    display: none;
 `;
 
 const Headers = styled.h3`
-  color: black;
+  color: rgb(202, 161, 197);
 `;
 
 const HeadersP = styled.p`
-  color: black;
+  color: gray;
 `;
 
+const FullName = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
+const Contacts = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const TabsWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+const ButtonAdd = styled.button`
+  cursor: pointer;
+  font: inherit;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(219, 171, 213);
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  width: 100px;
+  border: none;
+
+  :hover {
+    background-color: rgb(202, 161, 197);
+  }
+`;
+
+const ButtonRemove = styled.button`
+  cursor: pointer;
+  font: inherit;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: #ab89a6;
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  width: 100px;
+  border: none;
+
+  :hover {
+    background-color: rgb(202, 161, 197);
+  }
+`;
+
+const Menu = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin: 20px 0;
+`;
+
+const StyledLink = styled(Link)`
+  cursor: pointer;
+  font: inherit;
+  padding: 0.8em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(219, 171, 213);
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  width: 200px;
+  border: none;
+
+  :hover {
+    background-color: rgb(202, 161, 197);
+    text-decoration: none;
+    color: #fafafa;
+  }
+`;
+
+const UserHeaderWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const UserHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 10px 0;
+  font-size: 26px;
+  color: #737373;
+`;
+
+const UserParagraph = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px 300px;
+  text-align: center;
+  color: gray;
+`;
 
 function JobList({ length }) {
   const [currentLength, setCurrentLength] = useState(length);
@@ -71,15 +170,15 @@ function JobList({ length }) {
   return (
     <div>
       {els}
-      <button
+      <ButtonAdd
         onClick={e => {
           setCurrentLength(currentLength + 1);
           e.preventDefault();
         }}
       >
         Add
-      </button>
-      <button
+      </ButtonAdd>
+      <ButtonRemove
         onClick={e => {
           if (currentLength > 0) {
             setCurrentLength(currentLength - 1);
@@ -88,7 +187,7 @@ function JobList({ length }) {
         }}
       >
         Remove
-      </button>
+      </ButtonRemove>
     </div>
   );
 }
@@ -112,20 +211,19 @@ function SchoolList({ length }) {
       </div>
     );
   }
-  
 
   return (
     <div>
       {els}
-      <button
+      <ButtonAdd
         onClick={e => {
           setCurrentLength(currentLength + 1);
           e.preventDefault();
         }}
       >
         Add
-      </button>
-      <button
+      </ButtonAdd>
+      <ButtonRemove
         onClick={e => {
           if (currentLength > 0) {
             setCurrentLength(currentLength - 1);
@@ -134,7 +232,7 @@ function SchoolList({ length }) {
         }}
       >
         Remove
-      </button>
+      </ButtonRemove>
     </div>
   );
 }
@@ -164,19 +262,21 @@ function Profile() {
   if (user.loading) {
     return (
       <div>
-        <div className="spinner-grow" style={{width: '3rem', height: '3rem',}} role="status">
+        <div
+          className="spinner-grow"
+          style={{ width: "3rem", height: "3rem" }}
+          role="status"
+        >
           <span className="sr-only">Loading...</span>
         </div>
       </div>
     );
   }
 
-  //console.log(user);
-
   const Objective = (
     <TabPanel>
       <Headers>Objective</Headers>
-      <HeadersP>Please think of the main objective you want to reach with you CV</HeadersP>
+      <HeadersP>Optional. Please fill in your role or an objective.</HeadersP>
       <Field name="objective" type="text">
         Objective
       </Field>
@@ -186,7 +286,7 @@ function Profile() {
   const WorkExperience = (
     <TabPanel>
       <Headers>Work experience</Headers>
-      <HeadersP>Please list all your jobs in reverse order</HeadersP>
+      <HeadersP>Please list your employment.</HeadersP>
       <JobList length={user.jobs.length} />
     </TabPanel>
   );
@@ -194,7 +294,7 @@ function Profile() {
   const Education = (
     <TabPanel>
       <Headers>Education</Headers>
-      <HeadersP>Please list your education in reverse order</HeadersP>
+      <HeadersP>Please list your education.</HeadersP>
       <SchoolList length={user.schools.length} />
     </TabPanel>
   );
@@ -202,65 +302,85 @@ function Profile() {
   const Skills = (
     <TabPanel>
       <Headers>Skills</Headers>
-      <HeadersP>Please list all your skills relevant to the job you want to get</HeadersP>
-        <Field type="text" name="skills">
-          Skills
-        </Field>
+      <HeadersP>Please list your skills. E.g. Spanish.</HeadersP>
+      <Field type="text" name="skills">
+        Skills
+      </Field>
     </TabPanel>
   );
 
   const Others = (
     <TabPanel>
-      <Headers>Others</Headers>
+      <Headers>Qualifications</Headers>
       <HeadersP>
-        Please list other important things you want your future employer to know
-        </HeadersP>
+        Please list your qualifications. E.g. driving license.
+      </HeadersP>
       <Field type="text" name="others">
-        Others
+        Qualifications
       </Field>
     </TabPanel>
   );
+
 
   return (
     <div>
       <Header />
       <Body>
-        <Formol item={user} onSubmit={updateProfile}>
-          <Field name="first_name">First name</Field>
-          <Field name="last_name">Last name</Field>
-          <Field name="place" type="text">
-            Place (City, Country)
-          </Field>
-          <Field type="tel" name="telephone">
-            Telephone (XXX-XXX-XXXX)
-          </Field>
-          <Field readOnly type="text">
-            Email
-          </Field>
+
+        <UserHeaderWrap>
+          <UserHeader>Hello there, {user.first_name}!</UserHeader>
+          <UserParagraph>Welcome to your profile page! Here you can change your contacts, work experience etc. Feel free to change however you want. Click on My CV for all the branch specific templates and on My Coverletters for all your coverletters to different companies.</UserParagraph>
+        </UserHeaderWrap>
+
+        <Menu>
+          <StyledLink to="/my-coverletters">My Coverletters</StyledLink>
+          <StyledLink to="/my-cv">My CV</StyledLink>
+        </Menu>
+
+        <CircleWrap>
           <Circle />
-          
+        </CircleWrap>
+        <Formol item={user} onSubmit={updateProfile}>
+          <FullName>
+            <Field style={{ formolColor: "red !default" }} name="first_name">
+              First name
+            </Field>
+            <Field name="last_name">Last name</Field>
+          </FullName>
+          <Contacts>
+            <Field name="place" type="text">
+              Place (City, Country)
+            </Field>
+            <Field type="tel" name="telephone">
+              Telephone (XXX-XXX-XXXX)
+            </Field>
+            <Field readOnly type="text">
+              Email
+            </Field>
+          </Contacts>
 
-          <Tabs forceRenderTabPanel={true}>
-            <TabList>
-              <Tab>Objective</Tab>
-              <Tab>Work experience</Tab>
-              <Tab>Education</Tab>
-              <Tab>Skills</Tab>
-              <Tab>Others</Tab>
-            </TabList>
+          <TabsWrap>
+            <Tabs forceRenderTabPanel={true}>
+              <TabList>
+                <Tab>Objective</Tab>
+                <Tab>Work experience</Tab>
+                <Tab>Education</Tab>
+                <Tab>Skills</Tab>
+                <Tab>Qualifications</Tab>
+              </TabList>
 
-            {Objective}
-            {WorkExperience}
-            {Education}
-            {Skills}
-            {Others}
-          </Tabs>
+              {Objective}
+              {WorkExperience}
+              {Education}
+              {Skills}
+              {Others}
+            </Tabs>
+          </TabsWrap>
         </Formol>
       </Body>
       <Footer />
     </div>
   );
 }
-
 
 export default Profile;
