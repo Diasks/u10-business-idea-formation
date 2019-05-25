@@ -10,8 +10,10 @@ import Formol, { Field } from "formol/lib/formol";
 import client from "../../client";
 
 const Body = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
   height: 100%;
   width: 100%;
+  font-family: 'Didact Gothic', sans-serif;
 `;
 
 const CircleWrap = styled.div`

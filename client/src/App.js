@@ -14,6 +14,11 @@ import MediaTemplate from "./components/pages/MediaTemplate";
 import BuilderTemplate from "./components/pages/BuilderTemplate";
 import MyCoverletterTemplates from "./components/pages/MyCoverletterTemplates";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+
+library.add(fab);
 
 
 class App extends Component {
