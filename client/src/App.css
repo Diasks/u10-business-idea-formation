@@ -134,6 +134,7 @@
     border: none;
 }
 
+
 @media (min-width: 320px) and (max-width: 480px) {
     
     .Formol_Field__element {
@@ -213,5 +214,3 @@
     }
     
   }
-
-
