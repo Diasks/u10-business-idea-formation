@@ -4,17 +4,13 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import Footer from "../layout/Footer";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Body = styled.div`
-  height: 850px;
-
-  @media (min-width: 320px) and (max-width: 480px) {
-    height: 400px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    height: 500px;
-  }
+  background: linear-gradient(#f7e5f0, #fffbfd);
+  padding: 40px;
 `;
 
 const StyleHeader1 = styled.h1`
@@ -25,16 +21,10 @@ const StyleHeader1 = styled.h1`
   color: #616161;
 
   @media (min-width: 320px) and (max-width: 480px) {
-    margin-top: 0.8em;
     font-size: 35px;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    margin-top: 1.5em;
-  }
-
   @media (min-width: 1025px) {
-    margin-top: 3em;
     font-size: 45px;
   }
 `;
@@ -55,9 +45,10 @@ const MyButton = styled(Button)`
   cursor: pointer;
   font: inherit;
   padding: 0.3em 1.2em;
-  margin: 3em 0 4em 0;
+  margin: 3em 0 0em 0;
   border-radius: 2em;
   text-decoration: none;
+  text-transform: capitalize;
   font-family: "Didact Gothic", sans-serif;
   font-weight: 300;
   background-color: rgb(219, 171, 213);
@@ -71,7 +62,47 @@ const MyButton = styled(Button)`
     background-color: rgb(202, 161, 197);
     }
 
+    @media (min-width: 320px) and (max-width: 480px) {
+      margin: 1em 0 1em 0;
+    }
+    
   }
+`;
+
+const StyledLink = styled(Link)`
+ display: flex;
+ justify-content: center;
+ padding: 0.3em 1.2em;
+ border-radius:2em;
+ border: none;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-weight: 700;
+ color: rgb(219, 171, 213);
+ text-align: center;
+ transition: all 0.2s;
+
+:hover {
+  color: darkgray;
+  text-decoration: none;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    margin: 0.5em 0.3em 0.3em 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    margin: 1em 0.3em 0.3em 0;
+  }
+
+  @media (min-width: 1025px) {
+    margin: 1em 0.3em 0.3em 0;
+  }
+
+`;
+
+const MyFontAwesomeIcon = styled(FontAwesomeIcon)`
+  margin: 5px;
 `;
 
 const theme = createMuiTheme({
@@ -127,9 +158,12 @@ export class UserDetails extends Component {
               margin="auto"
               onClick={this.continue}
             >
-              Continue
+              Send
             </MyButton>
           </FormButton>
+
+          <StyledLink to="/"><MyFontAwesomeIcon icon={faArrowAltCircleLeft} /> Back to Home</StyledLink>
+
           </Body>
           <Footer />
         </React.Fragment>

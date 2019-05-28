@@ -48,22 +48,7 @@ const Professions = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 60px 0 80px 0;
-
-  :hover .card {
-    filter: blur(3px);
-    opacity: 0.5;
-    transform: scale(0.98);
-    box-shadow: none;
-  }
-
-  :hover .card:hover {
-    transform: scale(1);
-    filter: blur(0px);
-    opacity: 1;
-    box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
-    border-radius: 20%;
-  }
+  margin: 20px 0 50px 0;
 
   @media (min-width: 320px) and (max-width: 480px) {
     flex-direction: column;
@@ -86,7 +71,7 @@ const ProfessionHeader = styled.h1`
   @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
   display: flex;
   justify-content: center;
-  margin: 40px 10px 40px 10px;
+  margin: 100px 10px 40px 10px;
   text-align: justify;
   font-family: "BenchNine";
   line-height: 0.8;
@@ -152,10 +137,8 @@ const Card = styled.div`
   margin: 40px;
 
   :hover {
-    filter: blur(3px);
-    opacity: 0.5;
-    transform: scale(0.98);
-    box-shadow: none;
+    box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
   }
 
   @media (min-width: 320px) and (max-width: 480px) {

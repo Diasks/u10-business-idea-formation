@@ -14,6 +14,7 @@ const Body = styled.div`
   height: 100%;
   width: 100%;
   font-family: 'Didact Gothic', sans-serif;
+  background: linear-gradient(#fffbfd, #fff);
 `;
 
 const CircleWrap = styled.div`
