@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Header from "../layout/Header";
 import styled from "styled-components";
 import Footer from "../layout/Footer";
 
@@ -91,7 +90,6 @@ export class UserDetails extends Component {
     return (
       
       <MuiThemeProvider theme={theme}>
-        <Header />
         <React.Fragment>
         <Body>
           <StyleHeader1>Connect with us</StyleHeader1>

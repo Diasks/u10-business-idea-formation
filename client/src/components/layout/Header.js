@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-// import { colors } from "../Common";
 import client from "../../client";
 import LogoImg from "../../assets/formation.png";
 
@@ -50,7 +49,7 @@ const Header = () => {
   return (
 
     <Navbar>
-      <Logo><img src={LogoImg} width="35px" style={{borderRadius: '50%'}} /></Logo>
+      <Logo><img src={LogoImg} alt="Formation Logo" width="35px" style={{borderRadius: '50%'}} /></Logo>
       <StyledLink to="/" onClick={() => { localStorage.clear()  }}>Log out</StyledLink>
     </Navbar>
 
