@@ -103,7 +103,7 @@ function Footer() {
           </Link>
         </LinkSection>
       </Links>
-      <Copyright>© FORMATION 2018</Copyright>
+      <Copyright>© FORMATION 2019</Copyright>
     </FooterDiv>
   );
 }
