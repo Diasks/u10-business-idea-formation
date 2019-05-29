@@ -214,7 +214,7 @@ class Profession extends Component {
           <Card className="card">
             <img src={BuilderImg} className="card-img-top" alt="..." />
             <CardBody className="card-body">
-              <Button onClick={this.builderRouteChange}>Builing Industry</Button>
+              <Button onClick={this.builderRouteChange}>Construction Business</Button>
             </CardBody>
           </Card>
 

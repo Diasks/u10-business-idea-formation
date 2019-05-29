@@ -15,11 +15,11 @@ import BuilderTemplate from "./components/pages/BuilderTemplate";
 import MyCoverletterTemplates from "./components/pages/MyCoverletterTemplates";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit, faSignInAlt, faDownload, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faSignInAlt, faDownload, faArrowAltCircleLeft, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 
-library.add(fab, faEdit, faSignInAlt, faDownload, faArrowAltCircleLeft);
+library.add(fab, faEdit, faSignInAlt, faDownload, faArrowAltCircleLeft, faExclamationCircle);
 
 
 class App extends Component {

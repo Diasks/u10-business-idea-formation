@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import client from "../../client";
 import styled from "styled-components/macro";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 export const FormWrap = styled.div`
   margin: 50px 100px 100px 10px;
@@ -54,8 +56,13 @@ export const FormControl = styled.input`
 `;
 
 export const ErrorMessage = styled.span`
-  font-size: 1, 5em;
+  font-size: 12px;
   margin: 10px;
+  color: #751313;
+`;
+
+export const MyFontAwesomeIcon = styled(FontAwesomeIcon)`
+
 `;
 
 export const FormButton = styled.button`
@@ -191,7 +198,9 @@ export class Register extends Component {
             onChange={this.handleChange}
           />
           {formErrors.first_name.length > 0 && (
-            <ErrorMessage>{formErrors.first_name}</ErrorMessage>
+            <ErrorMessage>
+              <MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.first_name}
+            </ErrorMessage>
           )}
           <FormInputLabel htmlFor="last_name">Lastname</FormInputLabel>
           <FormControl
@@ -204,7 +213,7 @@ export class Register extends Component {
             onChange={this.handleChange}
           />
           {formErrors.last_name.length > 0 && (
-            <ErrorMessage>{formErrors.last_name}</ErrorMessage>
+            <ErrorMessage><MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.last_name}</ErrorMessage>
           )}
           <FormInputLabel htmlFor="password">Password</FormInputLabel>
           <FormControl
@@ -217,7 +226,7 @@ export class Register extends Component {
             onChange={this.handleChange}
           />
           {formErrors.password.length > 0 && (
-            <ErrorMessage>{formErrors.password}</ErrorMessage>
+            <ErrorMessage><MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.password}</ErrorMessage>
           )}
           <FormInputLabel htmlFor="email">Email</FormInputLabel>
           <FormControl
@@ -230,9 +239,13 @@ export class Register extends Component {
             onChange={this.handleChange}
           />
           {formErrors.email.length > 0 && (
-            <ErrorMessage>{formErrors.email}</ErrorMessage>
+            <ErrorMessage>
+              <MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.email}
+            </ErrorMessage>
           )}
+          <div>
           <FormButton type="submit">Register</FormButton>
+          </div>
         </FormInputs>
       </FormWrap>
     );

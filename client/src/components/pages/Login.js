@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import client from "../../client";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 import {
   FormWrap,
@@ -7,6 +9,7 @@ import {
   FormInputLabel,
   FormControl,
   ErrorMessage,
+  MyFontAwesomeIcon,
   FormButton
 } from "./Register";
 const emailRegex = RegExp(
@@ -101,7 +104,7 @@ export class Login extends Component {
             onChange={this.handleChange}
           />{" "}
           {formErrors.email.length > 0 && (
-            <ErrorMessage>{formErrors.email}</ErrorMessage>
+            <ErrorMessage><MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.email}</ErrorMessage>
           )}
           <FormInputLabel htmlFor="password" className="FormInputLabel">
             Password
@@ -116,9 +119,11 @@ export class Login extends Component {
             onChange={this.handleChange}
           />
           {formErrors.password.length > 0 && (
-            <ErrorMessage>{formErrors.password}</ErrorMessage>
+            <ErrorMessage><MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.password}</ErrorMessage>
           )}
+          <div>
           <FormButton type="submit">Sign in</FormButton>
+          </div>
         </FormInputs>
       </FormWrap>
     );
