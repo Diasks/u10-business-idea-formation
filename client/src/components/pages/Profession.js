@@ -7,6 +7,8 @@ import BuilderImg from "../../assets/build.png";
 import ItImg from "../../assets/IT.png";
 import MediaImg from "../../assets/media.png";
 import GeneralImg from "../../assets/general.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Button = styled.button`
   @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
@@ -14,7 +16,7 @@ const Button = styled.button`
   display: inline-block;
   padding: 20px 60px 20px 60px;
   margin: 20px;
-  color: rgb(219, 171, 213) !important;
+  color: #bb8fa9 !important;
   text-transform: uppercase;
   background: #ffffff;
   padding: 10px;
@@ -27,9 +29,9 @@ const Button = styled.button`
   :hover {
     color: #fff !important;
     border-radius: 50px;
-    border-color: #4eb5f1 !important;
+    border-color: #d8c1cf !important;
     transition: all 0.3s ease 0s;
-    background: rgb(219, 171, 213);
+    background-color: #d8c1cf;
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
@@ -77,7 +79,7 @@ const ProfessionHeader = styled.h1`
   line-height: 0.8;
   text-transform: uppercase;
   letter-spacing: 0px;
-  color: rgb(219, 171, 213);
+  color: #bb8fa9;
   font-size: 4em;
 
   @media (min-width: 320px) and (max-width: 480px) {
@@ -90,42 +92,42 @@ const ProfessionHeader = styled.h1`
   }
 `;
 
+const ProfessionParagraph = styled.p`
+  @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+  font-family: "BenchNine";
+  font-size: 1.9em;
+  text-align: center;
+  margin: 0 30px;
+  color: lightgray;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1.5em;
+  }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledLink = styled(Link)`
-   @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
-   display: flex;
-   align-item: center;
-   justify-content: center;
-   padding: 1em 1.2em;
-   margin: 0 35em 5em 35em;
+   padding: 1em 2em;
+   margin-bottom: 4em;
    border-radius: 2em;
    border: none;
    box-sizing: border-box;
    text-decoration: none;
-   font-family: "Didact Gothic", sans-serif;
    font-weight: 300;
    color: #ffffff;
-   background-color: rgb(219, 171, 213);
+   background-color: #bb8fa9;
    text-align: center;
    transition: all 0.2s;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
     text-decoration: none;
     color: #ffffff;
-  }
-
-  @media (min-width: 320px) and (max-width: 480px) {
-    margin: 0 5.5em 5em 5.5em;
-  }
-
-  @media (min-width: 481px) and (max-width: 767px) {
-    margin: 0 10.6em 5em 10.6em;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    font-size: 30px;
-    margin: 0 9.5em 5em 9.5em;
-    padding: 20px;
   }
 
 `;
@@ -192,6 +194,7 @@ class Profession extends Component {
       <div>
         <Header />
         <ProfessionHeader>My CV Templates</ProfessionHeader>
+        <ProfessionParagraph>Click on the template you would like to use for your resumé.</ProfessionParagraph>
 
         <Professions>
           
@@ -226,9 +229,9 @@ class Profession extends Component {
           </Card>
           
         </Professions>
-
-        <StyledLink to="/profile">Back to profile</StyledLink>
-
+        <Buttons>
+          <StyledLink to="/profile"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile</StyledLink>
+        </Buttons>
         <Footer />
       </div>
     );

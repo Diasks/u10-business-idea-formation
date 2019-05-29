@@ -63,7 +63,7 @@
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    background-color: rgb(219, 171, 213);
+    background-color: #bb8fa9;
     color: #fafafa;
     text-align: center;
     transition: all 0.2s;
@@ -71,7 +71,7 @@
 }
 
 .Formol_Formol .Formol_Formol__submit:hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
 }
 
 .Formol_Formol .Formol_Formol__cancel {
@@ -103,7 +103,7 @@
 }
 
 .react-tabs__tab {
-    background-color: rgb(219, 171, 213);
+    background-color: #bb8fa9;
     color: #fafafa;
     display: inline-block;
     position: relative;
@@ -116,13 +116,13 @@
 
 .react-tabs__tab--selected {
     background-color: #fafafa;
-    color: rgb(197, 138, 189);
+    color: #bb8fa9;
     border-radius: 15px 15px 3px 3px;
     border: none;
 }
 
 .react-tabs__tab:hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
     color: #fafafa;
     border-radius: 15px 15px 3px 3px;
 }

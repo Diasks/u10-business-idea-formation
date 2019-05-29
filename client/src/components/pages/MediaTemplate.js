@@ -157,10 +157,13 @@ const Skill = styled.div`
 `;
 
 const Buttons = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
+  font-family: "Didact Gothic", sans-serif;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 0 10px 15px 10px;
+  
 
   @media (min-width: 320px) and (max-width: 480px) {
     display: flex;
@@ -182,16 +185,15 @@ const Print = styled.button`
   margin: 0 0.3em 0.3em 0;
   border-radius: 2em;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: rgb(219, 171, 213);
+  background-color: #bb8fa9;
   color: #fafafa;
   text-align: center;
   transition: all 0.2s;
   border: none;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
@@ -212,16 +214,17 @@ const StyledLink = styled(Link)`
   margin: 0 0.3em 0.3em 0;
   border-radius: 2em;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: rgb(219, 171, 213);
+  background-color: #bb8fa9;
   color: #fafafa;
   text-align: center;
   transition: all 0.2s;
   border: none;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
+    text-decoration: none;
+    color: white;
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
@@ -298,7 +301,7 @@ function MediaTemplate() {
             <FontAwesomeIcon icon={faFileDownload} /> PDF
           </Print>
           <StyledLink to="/my-cv">
-            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> My CV
           </StyledLink>
           <StyledLink to="/coverletters">
             <FontAwesomeIcon icon={faPlusCircle} /> Cover letter

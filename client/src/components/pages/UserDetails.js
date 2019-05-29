@@ -51,7 +51,7 @@ const MyButton = styled(Button)`
   text-transform: capitalize;
   font-family: "Didact Gothic", sans-serif;
   font-weight: 300;
-  background-color: rgb(219, 171, 213);
+  background-color: #bb8fa9;
   color: #fafafa;
   text-align: center;
   transition: all 0.2s;
@@ -59,7 +59,7 @@ const MyButton = styled(Button)`
   border: none;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
@@ -69,23 +69,29 @@ const MyButton = styled(Button)`
   }
 `;
 
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledLink = styled(Link)`
- display: flex;
- justify-content: center;
- padding: 0.3em 1.2em;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-weight: 700;
- color: rgb(219, 171, 213);
- text-align: center;
- transition: all 0.2s;
+cursor: pointer;
+font: inherit;
+padding: 0.5em 1em;
+border-radius: 2em;
+text-decoration: none;
+background-color: #bb8fa9;
+color: #fafafa;
+text-align: center;
+transition: all 0.2s;
+border: none;
 
 :hover {
-  color: darkgray;
+  background-color: #d8c1cf;
   text-decoration: none;
-  }
+  color: white;
+}
 
   @media (min-width: 320px) and (max-width: 480px) {
     margin: 0.5em 0.3em 0.3em 0;
@@ -99,10 +105,6 @@ const StyledLink = styled(Link)`
     margin: 1em 0.3em 0.3em 0;
   }
 
-`;
-
-const MyFontAwesomeIcon = styled(FontAwesomeIcon)`
-  margin: 5px;
 `;
 
 const theme = createMuiTheme({
@@ -161,9 +163,10 @@ export class UserDetails extends Component {
               Send
             </MyButton>
           </FormButton>
-
-          <StyledLink to="/"><MyFontAwesomeIcon icon={faArrowAltCircleLeft} /> Back to Home</StyledLink>
-
+          
+          <Buttons>
+          <StyledLink to="/"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home</StyledLink>
+          </Buttons>
           </Body>
           <Footer />
         </React.Fragment>

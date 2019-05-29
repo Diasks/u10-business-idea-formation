@@ -5,14 +5,13 @@ import client from "../../client";
 import LogoImg from "../../assets/formation.png";
 
 const Navbar = styled.div`
-  background-color: #d3d4d8;
+  background-color: #d8c1cf;
   color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
-
 
 const StyledLink = styled(Link)`
   @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
@@ -23,7 +22,7 @@ const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
-    color: #4d606e;
+    color: #bb8fa9;
   }
 `;
 
@@ -44,25 +43,34 @@ const Header = () => {
     fetchData();
   }, []);
 
-  // const firstName = user.loading ? "" : user.first_name;
+  const firstName = user.loading ? "" : user.first_name;
 
   return (
-
     <Navbar>
-      <Logo><img src={LogoImg} alt="Formation Logo" width="35px" style={{borderRadius: '50%'}} /></Logo>
-      <StyledLink to="/" onClick={() => { localStorage.clear()  }}>Log out</StyledLink>
+      <Logo>
+        <Link
+          to="/"
+          onClick={() => {
+            localStorage.clear();
+          }}
+        >
+          <img
+            src={LogoImg}
+            alt="Formation Logo"
+            width="35px"
+            style={{ borderRadius: "50%" }}
+          />
+        </Link>
+      </Logo>
+      <StyledLink
+        to="/"
+        onClick={() => {
+          localStorage.clear();
+        }}
+      >
+        Log out
+      </StyledLink>
     </Navbar>
-
-    // <Navbar>
-    //   <Dropdown>
-    //     <Options>
-    //       <StyledLink to="/profile">{firstName}</StyledLink>
-    //       <StyledLink to="/my-coverletters">My Coverletters</StyledLink>
-    //       <StyledLink to="/my-cv">My CV</StyledLink>
-    //       
-    //     </Options>
-    //   </Dropdown>
-    // </Navbar>
   );
 };
 

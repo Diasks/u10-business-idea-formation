@@ -91,9 +91,8 @@ const ButtonAdd = styled.button`
   margin: 0 0.3em 0.3em 0;
   border-radius: 2em;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: rgb(219, 171, 213);
+  background-color: #bb8fa9;
   color: #fafafa;
   text-align: center;
   transition: all 0.2s;
@@ -101,7 +100,7 @@ const ButtonAdd = styled.button`
   border: none;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #c1b4b9;
   }
 `;
 
@@ -112,9 +111,8 @@ const ButtonRemove = styled.button`
   margin: 0 0.3em 0.3em 0;
   border-radius: 2em;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: #ab89a6;
+  background-color: #d8c1cf;
   color: #fafafa;
   text-align: center;
   transition: all 0.2s;
@@ -122,7 +120,7 @@ const ButtonRemove = styled.button`
   border: none;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #c1b4b9;
   }
 `;
 
@@ -136,13 +134,12 @@ const Menu = styled.div`
 const StyledLink = styled(Link)`
   cursor: pointer;
   font: inherit;
-  padding: 0.8em 1.2em;
-  margin: 0 0.3em 0.3em 0;
+  padding: 1em 2em;
+  margin: 0 10px;
   border-radius: 2em;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: rgb(219, 171, 213);
+  background-color: #bb8fa9;
   color: #fafafa;
   text-align: center;
   transition: all 0.2s;
@@ -150,13 +147,12 @@ const StyledLink = styled(Link)`
   border: none;
 
   :hover {
-    background-color: rgb(202, 161, 197);
+    background-color: #d8c1cf;
     text-decoration: none;
     color: #fafafa;
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
-    width: 120px;
     font-size: 12px;
     font-weight: 600;
   }

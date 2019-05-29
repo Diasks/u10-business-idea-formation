@@ -41,24 +41,30 @@ margin: 10px 40px;
 }
 `;
 
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+`;
+
 const StyledLink = styled(Link)`
- display: flex;
- justify-content: center;
- padding: 0.3em 1.2em;
- margin-top: 10px;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-weight: 700;
- color: rgb(219, 171, 213);
- text-align: center;
- transition: all 0.2s;
+cursor: pointer;
+font: inherit;
+padding: 0.5em 1em;
+border-radius: 2em;
+text-decoration: none;
+background-color: #bb8fa9;
+color: #fafafa;
+text-align: center;
+transition: all 0.2s;
+border: none;
 
 :hover {
-  color: darkgray;
+  background-color: #d8c1cf;
   text-decoration: none;
-  }
+  color: white;
+}
 
 `;
 
@@ -80,7 +86,9 @@ function About () {
         Formation is made by Diana Skshipek, Astrid Sinabian, Jennifer Söderberg, Oksana Kanterova and Diego Pinones who study at Chas Academy, Stockholm. This application was made for our 10th assignment as an buisness idea. 
       </StyleParagraph>
 
-      <StyledLink to="/"><MyFontAwesomeIcon icon={faArrowAltCircleLeft} /> Back to Home</StyledLink>
+      <Buttons>
+          <StyledLink to="/"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home</StyledLink>
+      </Buttons>
 
       </Body>
       <Footer />
