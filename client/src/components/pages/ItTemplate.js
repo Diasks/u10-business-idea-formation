@@ -4,14 +4,43 @@ import { Link } from "react-router-dom";
 import client from "../../client";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faPlusCircle,
+  faFileDownload
+} from "@fortawesome/free-solid-svg-icons";
+
+const ItTemplateAll = styled.div`
+  height: 1000px;
+  width: 700px;
+  padding: 30px;
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0;
+    width: 595px;
+    height: 842px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 30px 0 30px 50px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0 30px 50px;
+  }
+`;
 
 const Body = styled.div`
-  max-height: 900px;
-  max-width: 700px;
-  margin: 30px auto;
+  height: 842px;
+  width: 595px;
+  border: 1px gray dotted;
   padding: 30px;
-  height: 100%;
-  width: 100%;
 `;
 
 const HeaderWrapper = styled.div`
@@ -21,7 +50,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const CvHeader = styled.h1`
-  @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+  @import url(https://fonts.googleapis.com/css?family=Press+Start+2p);
   font-family: "Press Start 2P", sans-serif;
   display: flex;
   justify-content: center;
@@ -133,11 +162,11 @@ const Other = styled.div`
 `;
 
 const SkillsWrapper = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding: 5px;
-margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+  margin: 10px 0;
 `;
 
 const Skill = styled.div`
@@ -147,47 +176,80 @@ const Skill = styled.div`
 
 const Buttons = styled.div`
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 10px 15px 10px;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 10px 15px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 10px 15px;
+  }
 `;
 
 const Print = styled.button`
-  display: inline-block;
-   padding: 0.3em 1.2em;
-   margin: 0 0.3em 0.3em 0;
-   border-radius: 2em;
+  cursor: pointer;
+  font: inherit;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(219, 171, 213);
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
   border: none;
-   box-sizing: border-box;
-   text-decoration: none;
-   font-family: "Roboto", sans-serif;
-   font-weight: 300;
-   color: #ffffff;
-   background-color: #4eb5f1;
-   text-align: center;
-   transition: all 0.2s;
 
   :hover {
-     background-color: #4095c6;
+    background-color: rgb(202, 161, 197);
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
   }
 `;
 
 const StyledLink = styled(Link)`
-  display: inline-block;
-   padding: 0.3em 1.2em;
-   margin: 0 0.3em 0.3em 0;
-   border-radius: 2em;
+  cursor: pointer;
+  font: inherit;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(219, 171, 213);
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
   border: none;
-   box-sizing: border-box;
-   text-decoration: none;
-   font-family: "Roboto", sans-serif;
-   font-weight: 300;
-   color: #ffffff;
-   background-color: #4eb5f1;
-   text-align: center;
-   transition: all 0.2s;
 
   :hover {
-     background-color: #4095c6;
+    background-color: rgb(202, 161, 197);
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
   }
 `;
 
@@ -206,7 +268,6 @@ const WrapperTwo = styled.div`
 const WrapWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  
 `;
 
 function handlePrint(user, quality = 1) {
@@ -249,79 +310,87 @@ function ItTemplate() {
 
   return (
     <div>
-      <Buttons>
-        <Print onClick={e => handlePrint(user)}>Spara (PDF)</Print>
-        <StyledLink to="/my-cv">Tillbaka</StyledLink>
-        <StyledLink to="/coverletters">Add Coverletter</StyledLink>
-      </Buttons>
+      <ItTemplateAll>
+        <Buttons>
+          <Print onClick={e => handlePrint(user)}>
+            <FontAwesomeIcon icon={faFileDownload} /> PDF
+          </Print>
+          <StyledLink to="/my-cv">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back
+          </StyledLink>
+          <StyledLink to="/coverletters">
+            <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
+          </StyledLink>
+        </Buttons>
 
-      <Body id="body">
-        <HeaderWrapper>
-          <CvHeader>
-            {user.first_name.toUpperCase()} {user.last_name.toUpperCase()}
-          </CvHeader>
+        <Body id="body">
+          <HeaderWrapper>
+            <CvHeader>
+              {user.first_name.toUpperCase()} {user.last_name.toUpperCase()}
+            </CvHeader>
 
-          <ObjectiveWrapper>
-            <p>{user.objective.toUpperCase()}</p>
-          </ObjectiveWrapper>
-        </HeaderWrapper>
-        <WrapWrapper>
-          <WrapperTwo>
-            <Contacts>
-              <InfoHeader>
-                <div>Contacts</div>
-              </InfoHeader>
-              <Telephone>☎ {user.telephone}</Telephone>
-              <Email>✉ {user.email}</Email>
-              <Place>☖ {user.place}</Place>
-            </Contacts>
+            <ObjectiveWrapper>
+              <p>{user.objective.toUpperCase()}</p>
+            </ObjectiveWrapper>
+          </HeaderWrapper>
+          <WrapWrapper>
+            <WrapperTwo>
+              <Contacts>
+                <InfoHeader>
+                  <div>Contacts</div>
+                </InfoHeader>
+                <Telephone>☎ {user.telephone}</Telephone>
+                <Email>✉ {user.email}</Email>
+                <Place>☖ {user.place}</Place>
+              </Contacts>
 
-            <SkillsWrapper>
-              <InfoHeader>
-                <div>Skills</div>
-              </InfoHeader>
+              <SkillsWrapper>
+                <InfoHeader>
+                  <div>Skills</div>
+                </InfoHeader>
 
-              <Skill>{user.skills}</Skill>
-            </SkillsWrapper>
+                <Skill>{user.skills}</Skill>
+              </SkillsWrapper>
 
-            <OthersWrapper>
-              <InfoHeader>
-                <div>Other</div>
-              </InfoHeader>
-              <Other>{user.others}</Other>
-            </OthersWrapper>
-          </WrapperTwo>
-          <Wrapper>
-            <WorkExperienceWrapper>
-              <InfoHeaderTwo>Work experience</InfoHeaderTwo>
+              <OthersWrapper>
+                <InfoHeader>
+                  <div>Other</div>
+                </InfoHeader>
+                <Other>{user.others}</Other>
+              </OthersWrapper>
+            </WrapperTwo>
+            <Wrapper>
+              <WorkExperienceWrapper>
+                <InfoHeaderTwo>Work experience</InfoHeaderTwo>
 
-              <WorkWrapper>
-                {user.jobs.map(job => (
-                  <Work key={job.id}>
-                    <Role>{job.role}</Role>
-                    <Date>
-                      {job.start_date} - {job.end_date}
-                    </Date>
-                  </Work>
+                <WorkWrapper>
+                  {user.jobs.map(job => (
+                    <Work key={job.id}>
+                      <Role>{job.role}</Role>
+                      <Date>
+                        {job.start_date} - {job.end_date}
+                      </Date>
+                    </Work>
+                  ))}
+                </WorkWrapper>
+              </WorkExperienceWrapper>
+
+              <AllEducationWrapper>
+                <InfoHeaderTwo>Education</InfoHeaderTwo>
+
+                {user.schools.map(school => (
+                  <Education key={school.id}>
+                    <Program>{school.program}</Program>
+                    <EdDate>
+                      {school.start_date} - {school.end_date}
+                    </EdDate>
+                  </Education>
                 ))}
-              </WorkWrapper>
-            </WorkExperienceWrapper>
-
-            <AllEducationWrapper>
-              <InfoHeaderTwo>Education</InfoHeaderTwo>
-
-              {user.schools.map(school => (
-                <Education key={school.id}>
-                  <Program>{school.program}</Program>
-                  <EdDate>
-                    {school.start_date} - {school.end_date}
-                  </EdDate>
-                </Education>
-              ))}
-            </AllEducationWrapper>
-          </Wrapper>
-        </WrapWrapper>
-      </Body>
+              </AllEducationWrapper>
+            </Wrapper>
+          </WrapWrapper>
+        </Body>
+      </ItTemplateAll>
     </div>
   );
 }

@@ -1,18 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import client from '../../client';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import client from "../../client";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faPlusCircle,
+  faFileDownload,
+  faMobileAlt,
+  faEnvelope,
+  faHome
+} from "@fortawesome/free-solid-svg-icons";
 
+const MediaTemplateAll = styled.div`
+  height: 1000px;
+  width: 700px;
+  padding: 30px;
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0;
+    width: 595px;
+    height: 842px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 30px 0 30px 50px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0 30px 50px;
+  }
+`;
 
 const Body = styled.div`
- max-height: 900px;
- max-width: 700px;
- margin: 30px auto;
- padding: 30px;
- height: 100%;
- width: 100%;
+  height: 842px;
+  width: 595px;
+  border: 1px gray dotted;
+  padding: 30px;
 `;
 
 const HeaderWrapper = styled.div`
@@ -26,7 +57,7 @@ const ObjectiveWrapper = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Rajdhani);
   display: flex;
   justify-content: center;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-size: 18px;
   padding-top: 5px;
 `;
@@ -36,32 +67,32 @@ const CvHeader = styled.h1`
   display: flex;
   justify-content: center;
   font-weight: bold;
-  font-family: 'Poiret One', cursive;
+  font-family: "Poiret One", cursive;
   padding: 20px 0 10px 0;
   border-bottom: thin solid black;
-  margin: 0 50px 0 50px
-`; 
+  margin: 0 50px 0 50px;
+`;
 
 const Contacts = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
-  font-family: 'Julius Sans One', sans-serif;
+  font-family: "Julius Sans One", sans-serif;
 `;
 
 const Place = styled.div`
-  font-size: 10px;
+  font-size: 8px;
 `;
 
 const Telephone = styled.div`
-  font-size: 10px;
+  font-size: 8px;
 `;
 
 const Email = styled.div`
-  font-size: 10px;
+  font-size: 8px;
 `;
 
 const WorkExperienceWrapper = styled.div`
   @import url(https://fonts.googleapis.com/css?family=JuliusSans+One);
-  font-family: 'Julius Sans One', 'sans-serif';
+  font-family: "Julius Sans One", "sans-serif";
   margin: 40px 0 20px 0;
 `;
 
@@ -86,7 +117,7 @@ const Date = styled.div`
 
 const AllEducationWrapper = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
-  font-family: 'Julius Sans One', 'sans-serif';
+  font-family: "Julius Sans One", "sans-serif";
   margin: 40px 0 20px 0;
 `;
 
@@ -107,7 +138,7 @@ const EdDate = styled.div`
 
 const OthersWrapper = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
-  font-family: 'Julius Sans One', 'sans-serif';
+  font-family: "Julius Sans One", "sans-serif";
   margin: 35px 0 20px 0;
 `;
 
@@ -117,7 +148,7 @@ const Other = styled.div`
 
 const SkillsWrapper = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
-  font-family: 'Julius Sans One', 'sans-serif';
+  font-family: "Julius Sans One", "sans-serif";
   margin: 35px 0 20px 0;
 `;
 
@@ -127,51 +158,81 @@ const Skill = styled.div`
 
 const Buttons = styled.div`
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 10px 15px 10px;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 10px 15px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 10px 15px;
+  }
 `;
 
 const Print = styled.button`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
+  cursor: pointer;
+  font: inherit;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(219, 171, 213);
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
 
-
-:hover {
-   background-color:#4095c6;
+  :hover {
+    background-color: rgb(202, 161, 197);
   }
 
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
 `;
 
 const StyledLink = styled(Link)`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
+  cursor: pointer;
+  font: inherit;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(219, 171, 213);
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
 
-:hover {
-   background-color:#4095c6;
+  :hover {
+    background-color: rgb(202, 161, 197);
   }
 
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -191,117 +252,128 @@ const WrapWrapper = styled.div`
   justify-content: space-evenly;
 `;
 
-
 function handlePrint(user, quality = 1) {
- const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
+  const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
 
- html2canvas(document.querySelector("#body"), { scale: quality }).then(
-   canvas => {
-     let pdf = new jsPDF("p", "mm", "a4");
-     pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 211, 298);
-     pdf.save(filename);
-   }
- );
+  html2canvas(document.querySelector("#body"), { scale: quality }).then(
+    canvas => {
+      let pdf = new jsPDF("p", "mm", "a4");
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 211, 298);
+      pdf.save(filename);
+    }
+  );
 }
 
 function MediaTemplate() {
- const [user, setUser] = useState({ loading: true });
- useEffect(() => {
-   async function fetchData() {
-     const result = await client.get("/users/me");
+  const [user, setUser] = useState({ loading: true });
+  useEffect(() => {
+    async function fetchData() {
+      const result = await client.get("/users/me");
 
-     setUser({ jobs: [], ...result.data, loading: false });
-   }
+      setUser({ jobs: [], ...result.data, loading: false });
+    }
 
-   fetchData();
- }, []);
+    fetchData();
+  }, []);
 
- if (user.loading) {
-   return (
-     <div>
-       <div className="spinner-grow" style={{width: '3rem', height: '3rem',}} role="status">
+  if (user.loading) {
+    return (
+      <div>
+        <div
+          className="spinner-grow"
+          style={{ width: "3rem", height: "3rem" }}
+          role="status"
+        >
           <span className="sr-only">Loading...</span>
         </div>
-     </div>
-   );
- }
+      </div>
+    );
+  }
 
- return (
-   <div>
-     <Buttons>
-        <Print onClick={e => handlePrint(user)}>Spara (PDF)</Print>
-        <StyledLink to="/my-cv">Go Back</StyledLink>
-        <StyledLink to="/coverletters">Add Coverletter</StyledLink>
-     </Buttons>
+  return (
+    <div>
+      <MediaTemplateAll>
+        <Buttons>
+          <Print onClick={e => handlePrint(user)}>
+            <FontAwesomeIcon icon={faFileDownload} /> PDF
+          </Print>
+          <StyledLink to="/my-cv">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back
+          </StyledLink>
+          <StyledLink to="/coverletters">
+            <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
+          </StyledLink>
+        </Buttons>
 
-     <Body id="body">
+        <Body id="body">
+          <HeaderWrapper>
+            <CvHeader>
+              {user.first_name} {user.last_name}
+            </CvHeader>
 
-       <HeaderWrapper>
-          <CvHeader>
-            {user.first_name} {user.last_name}
-          </CvHeader>
+            <ObjectiveWrapper>
+              <p>{user.objective.toUpperCase()}</p>
+            </ObjectiveWrapper>
+          </HeaderWrapper>
 
-          <ObjectiveWrapper>
-            <p>{user.objective.toUpperCase()}</p>
-          </ObjectiveWrapper>
-       </HeaderWrapper>
+          <WrapWrapper>
+            <Wrapper>
+              <WorkExperienceWrapper>
+                <h6>WORK EXPERIENCE</h6>
+                <WorkWrapper>
+                  {user.jobs.map(job => (
+                    <Work key={job.id}>
+                      <Role>{job.role}</Role>
+                      <Date>
+                        {job.start_date} - {job.end_date}
+                      </Date>
+                    </Work>
+                  ))}
+                </WorkWrapper>
+              </WorkExperienceWrapper>
 
-       
+              <AllEducationWrapper>
+                <h6>EDUCATION</h6>
 
-       <WrapWrapper>
-       <Wrapper>
-       <WorkExperienceWrapper>
-          <h6>WORK EXPERIENCE</h6>
-          <WorkWrapper>
-            {user.jobs.map(job =>
-            <Work key={job.id}>
-              <Role>{job.role}</Role>
-              <Date>{job.start_date} - {job.end_date}</Date>
-            </Work>
-            )}
-          </WorkWrapper>
+                {user.schools.map(school => (
+                  <Education key={school.id}>
+                    <Program>{school.program}</Program>
+                    <EdDate>
+                      {school.start_date} - {school.end_date}
+                    </EdDate>
+                  </Education>
+                ))}
+              </AllEducationWrapper>
+            </Wrapper>
 
-       </WorkExperienceWrapper>
+            <WrapperTwo>
+              <Contacts>
+                <h6>CONTACTS</h6>
+                <Telephone>
+                  <FontAwesomeIcon icon={faMobileAlt} /> {user.telephone}
+                </Telephone>
+                <Email>
+                  <FontAwesomeIcon icon={faEnvelope} /> {user.email}
+                </Email>
+                <Place>
+                  <FontAwesomeIcon icon={faHome} /> {user.place}
+                </Place>
+              </Contacts>
+              <SkillsWrapper>
+                <h6>SKILLS</h6>
+                <Skill>{user.skills}</Skill>
+              </SkillsWrapper>
 
-       <AllEducationWrapper>
-          <h6>EDUCATION</h6>
-
-            {user.schools.map(school =>
-            <Education key={school.id}>
-              <Program>{school.program}</Program>
-              <EdDate>{school.start_date} - {school.end_date}</EdDate>
-            </Education>
-            )}
-      
-
-       </AllEducationWrapper>
-       </Wrapper>
-       
-
-          <WrapperTwo>
-
-          <Contacts>
-          <h6>CONTACTS</h6>
-            <Telephone>☎ {user.telephone}</Telephone>
-            <Email>✉ {user.email}</Email>
-            <Place>☖ {user.place}</Place>
-          </Contacts>
-          <SkillsWrapper>
-           <h6>SKILLS</h6>
-           <Skill>{user.skills}</Skill>
-          </SkillsWrapper>
-
-       <OthersWrapper>
-          <h6>OTHER</h6>
-          <Other>{user.others}</Other>
-       </OthersWrapper>
-
-</WrapperTwo>
-</WrapWrapper>
-       
-     </Body>
-   </div>
- );
+              <OthersWrapper>
+                <h6>OTHER</h6>
+                <Other>{user.others}</Other>
+              </OthersWrapper>
+            </WrapperTwo>
+          </WrapWrapper>
+        </Body>
+      </MediaTemplateAll>
+    </div>
+  );
 }
 
 export default MediaTemplate;
