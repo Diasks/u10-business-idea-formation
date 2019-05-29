@@ -1,52 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import { colors } from "../Common";
 import client from "../../client";
+import LogoImg from "../../assets/formation.png";
 
 const Navbar = styled.div`
-  background-color: ${colors.Cerulean};
+  background-color: #d8c1cf;
   color: white;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 `;
 
-const Dropdown = styled.div`
-  display: block;
-  position: relative;
-  min-height: 60px;
-`;
-
-const Options = styled.div`
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 60px;
-  background-color: ${colors.Cerulean};
-  min-width: 160px;
-  z-index: 1;
-  overflow: hidden;
-
-  &:hover,
-  &:focus-within {
-    height: auto;
-  }
-`;
-
 const StyledLink = styled(Link)`
+  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
   color: #fff;
   text-decoration: none;
-  padding: 20px;
-  display: block;
-  font-weight: 700;
+  padding: 10px 20px;
+  font-family: "Didact Gothic", sans-serif;
 
   &:hover {
-    color: ${colors.DarkCerulean};
     text-decoration: none;
+    color: #bb8fa9;
   }
+`;
+
+const Logo = styled.div`
+  padding: 5px 0 5px 8px;
 `;
 
 const Header = () => {
@@ -66,14 +47,29 @@ const Header = () => {
 
   return (
     <Navbar>
-      <Dropdown>
-        <Options>
-          <StyledLink to="/profile">{firstName}</StyledLink>
-          <StyledLink to="/my-coverletters">My Coverletters</StyledLink>
-          <StyledLink to="/my-cv">My CV</StyledLink>
-          <StyledLink to="/" onClick={() => { localStorage.clear()  }}>Log out</StyledLink>
-        </Options>
-      </Dropdown>
+      <Logo>
+        <Link
+          to="/"
+          onClick={() => {
+            localStorage.clear();
+          }}
+        >
+          <img
+            src={LogoImg}
+            alt="Formation Logo"
+            width="35px"
+            style={{ borderRadius: "50%" }}
+          />
+        </Link>
+      </Logo>
+      <StyledLink
+        to="/"
+        onClick={() => {
+          localStorage.clear();
+        }}
+      >
+        Log out
+      </StyledLink>
     </Navbar>
   );
 };

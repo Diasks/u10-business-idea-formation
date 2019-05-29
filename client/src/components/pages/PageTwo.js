@@ -27,6 +27,7 @@ const FormTitle = styled.div `
   background-color: #ececec;
   padding: 25px 40px;
   overflow: auto;
+  
   `; 
   
 

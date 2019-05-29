@@ -1,40 +1,81 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import client from '../../client';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import client from "../../client";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faPlusCircle,
+  faFileDownload
+} from "@fortawesome/free-solid-svg-icons";
 
+const ItTemplateAll = styled.div`
+  height: 1000px;
+  width: 700px;
+  padding: 30px;
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0;
+    width: 595px;
+    height: 842px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 30px 0 30px 50px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0 30px 50px;
+  }
+`;
 
 const Body = styled.div`
- max-height: 900px;
- max-width: 700px;
- margin: 30px auto;
- padding: 30px;
- height: 100%;
- width: 100%;
+  height: 842px;
+  width: 595px;
+  border: 1px gray dotted;
+  padding: 30px;
 `;
 
 const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const CvHeader = styled.h1`
-  
-`; 
+  @import url(https://fonts.googleapis.com/css?family=Press+Start+2p);
+  font-family: "Press Start 2P", sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 10px 0;
+  font-size: 22px;
+  background-color: #f5f5f5;
+  margin: 0;
+`;
+
+const ObjectiveWrapper = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Rajdhani);
+  display: flex;
+  justify-content: center;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 14px;
+  padding: 10px 0;
+  margin: 0;
+  background-color: #f5f5f5;
+`;
 
 const Contacts = styled.div`
-  
-`;
-
-const FirstName = styled.div`
-  
-`;
-
-const LastName = styled.div`
-  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
 `;
 
 const Place = styled.div`
@@ -43,17 +84,12 @@ const Place = styled.div`
 
 const Telephone = styled.div`
   font-size: 10px;
+  margin-top: 10px;
 `;
 
 const Email = styled.div`
   font-size: 10px;
 `;
-
-const ObjectiveWrapper = styled.div`
-  font-size: 10px;
-  width: 70%;
-`;
-
 
 const WorkExperienceWrapper = styled.div`
   margin: 40px 0 20px 0;
@@ -82,9 +118,19 @@ const AllEducationWrapper = styled.div`
   margin: 40px 0 20px 0;
 `;
 
-const EducationWrapper = styled.ul`
-  padding: 0;
-  margin: 35px 0 20px 0;
+const InfoHeader = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Rajdhani);
+  font-family: "Rajdhani", sans-serif;
+  border: 0.5px solid black;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+`;
+
+const InfoHeaderTwo = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Rajdhani);
+  font-family: "Rajdhani", sans-serif;
+  border-bottom: 1px solid gray;
 `;
 
 const Education = styled.li`
@@ -103,203 +149,252 @@ const EdDate = styled.div`
 `;
 
 const OthersWrapper = styled.div`
-  margin: 35px 0 20px 0;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0;
 `;
 
 const Other = styled.div`
   font-size: 12px;
+  margin-top: 10px;
 `;
 
 const SkillsWrapper = styled.div`
-  margin: 35px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+  margin: 10px 0;
 `;
 
 const Skill = styled.div`
   font-size: 12px;
-`;
-
-const ReferencesWrapper = styled.div`
- margin: 35px 0 20px 0;
-`;
-
-const Reference = styled.div`
-  font-size: 12px;
-  font-style: italic;
+  margin-top: 10px;
 `;
 
 const Buttons = styled.div`
+  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
+  font-family: "Didact Gothic", sans-serif;
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 10px 15px 10px;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 10px 15px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0 10px 15px;
+  }
 `;
 
 const Print = styled.button`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
+  cursor: pointer;
+  font: inherit;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-weight: 300;
+  background-color: #bb8fa9;
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
 
-
-:hover {
-   background-color:#4095c6;
+  :hover {
+    background-color: #d8c1cf;
   }
 
-`;
-
-const Back = styled.button`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
-
-:hover {
-   background-color:#4095c6;
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
   }
 
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
 `;
 
 const StyledLink = styled(Link)`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
+  cursor: pointer;
+  font: inherit;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  font-weight: 300;
+  background-color: #bb8fa9;
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
 
-:hover {
-   background-color:#4095c6;
+  :hover {
+    background-color: #d8c1cf;
+    text-decoration: none;
+    color: white;
   }
 
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
 `;
 
+const Wrapper = styled.div`
+  width: 70%;
+  padding-left: 30px;
+`;
+
+const WrapperTwo = styled.div`
+  width: 30%;
+  padding: 20px;
+  border-right: 1px gray solid;
+  margin-top: 35px;
+`;
+
+const WrapWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 function handlePrint(user, quality = 1) {
- const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
+  const filename = `${user.first_name}_${user.last_name}_CV.pdf`;
 
- html2canvas(document.querySelector("#body"), { scale: quality }).then(
-   canvas => {
-     let pdf = new jsPDF("p", "mm", "a4");
-     pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 211, 298);
-     pdf.save(filename);
-   }
- );
+  html2canvas(document.querySelector("#body"), { scale: quality }).then(
+    canvas => {
+      let pdf = new jsPDF("p", "mm", "a4");
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 211, 298);
+      pdf.save(filename);
+    }
+  );
 }
 
 function ItTemplate() {
- const [user, setUser] = useState({ loading: true });
- useEffect(() => {
-   async function fetchData() {
-     const result = await client.get("/users/me");
+  const [user, setUser] = useState({ loading: true });
+  useEffect(() => {
+    async function fetchData() {
+      const result = await client.get("/users/me");
 
-     setUser({ jobs: [], ...result.data, loading: false });
-   }
+      setUser({ jobs: [], ...result.data, loading: false });
+    }
 
-   fetchData();
- }, []);
+    fetchData();
+  }, []);
 
- if (user.loading) {
-   return (
-     <div>
-       <div className="spinner-grow" style={{width: '3rem', height: '3rem',}} role="status">
+  if (user.loading) {
+    return (
+      <div>
+        <div
+          className="spinner-grow"
+          style={{ width: "3rem", height: "3rem" }}
+          role="status"
+        >
           <span className="sr-only">Loading...</span>
         </div>
-     </div>
-   );
- }
+      </div>
+    );
+  }
 
- return (
-   <div>
-     <Buttons>
-        <Print onClick={e => handlePrint(user)}>Spara (PDF)</Print>
-        <StyledLink to="/my-cv">Tillbaka</StyledLink>
-        <StyledLink to="/coverletters">Add Coverletter</StyledLink>
-     </Buttons>
+  return (
+    <div>
+      <ItTemplateAll>
+        <Buttons>
+          <Print onClick={e => handlePrint(user)}>
+            <FontAwesomeIcon icon={faFileDownload} /> PDF
+          </Print>
+          <StyledLink to="/my-cv">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> My CV
+          </StyledLink>
+          <StyledLink to="/coverletters">
+            <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
+          </StyledLink>
+        </Buttons>
 
-     <Body id="body">
+        <Body id="body">
+          <HeaderWrapper>
+            <CvHeader>
+              {user.first_name.toUpperCase()} {user.last_name.toUpperCase()}
+            </CvHeader>
 
-       <HeaderWrapper>
-          <CvHeader>
-            <FirstName>{user.first_name.toUpperCase()}</FirstName>
-            <LastName>{user.last_name.toUpperCase()}</LastName>
-          </CvHeader>
-          <Contacts>
-            
-            <Place>{user.place}</Place>
-            <Telephone>{user.telephone}</Telephone>
-            <Email>{user.email}</Email>
-          </Contacts>
-       </HeaderWrapper>
+            <ObjectiveWrapper>
+              <p>{user.objective.toUpperCase()}</p>
+            </ObjectiveWrapper>
+          </HeaderWrapper>
+          <WrapWrapper>
+            <WrapperTwo>
+              <Contacts>
+                <InfoHeader>
+                  <div>Contacts</div>
+                </InfoHeader>
+                <Telephone>☎ {user.telephone}</Telephone>
+                <Email>✉ {user.email}</Email>
+                <Place>☖ {user.place}</Place>
+              </Contacts>
 
-       <ObjectiveWrapper>
-         <p>{user.objective}</p>
-       </ObjectiveWrapper>
+              <SkillsWrapper>
+                <InfoHeader>
+                  <div>Skills</div>
+                </InfoHeader>
 
-       <WorkExperienceWrapper>
-          <h6>Arbetslivserfarenhet</h6>
-          <hr />
-          <WorkWrapper>
-            {user.jobs.map(job =>
-            <Work key={job.id}>
-              <Role>{job.role}</Role>
-              <Date>{job.start_date} - {job.end_date}</Date>
-            </Work>
-            )}
-          </WorkWrapper>
+                <Skill>{user.skills}</Skill>
+              </SkillsWrapper>
 
-       </WorkExperienceWrapper>
+              <OthersWrapper>
+                <InfoHeader>
+                  <div>Other</div>
+                </InfoHeader>
+                <Other>{user.others}</Other>
+              </OthersWrapper>
+            </WrapperTwo>
+            <Wrapper>
+              <WorkExperienceWrapper>
+                <InfoHeaderTwo>Work experience</InfoHeaderTwo>
 
-       <AllEducationWrapper>
-          <h6>Utbildning</h6>
-          <hr />
-          
-          <EducationWrapper>
-            {user.schools.map(school =>
-            <Education key={school.id}>
-              <Program>{school.program}</Program>
-              <EdDate>{school.start_date} - {school.end_date}</EdDate>
-            </Education>
-            )}
-          </EducationWrapper>
+                <WorkWrapper>
+                  {user.jobs.map(job => (
+                    <Work key={job.id}>
+                      <Role>{job.role}</Role>
+                      <Date>
+                        {job.start_date} - {job.end_date}
+                      </Date>
+                    </Work>
+                  ))}
+                </WorkWrapper>
+              </WorkExperienceWrapper>
 
-       </AllEducationWrapper>
+              <AllEducationWrapper>
+                <InfoHeaderTwo>Education</InfoHeaderTwo>
 
-       <SkillsWrapper>
-          <h6>Kompetens</h6>
-          <hr />
-
-          <Skill>{user.skills}</Skill>
-
-       </SkillsWrapper>
-
-       
-     </Body>
-   </div>
- );
+                {user.schools.map(school => (
+                  <Education key={school.id}>
+                    <Program>{school.program}</Program>
+                    <EdDate>
+                      {school.start_date} - {school.end_date}
+                    </EdDate>
+                  </Education>
+                ))}
+              </AllEducationWrapper>
+            </Wrapper>
+          </WrapWrapper>
+        </Body>
+      </ItTemplateAll>
+    </div>
+  );
 }
 
 export default ItTemplate;

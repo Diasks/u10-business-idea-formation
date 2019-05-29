@@ -1,81 +1,164 @@
-import React, { Component } from 'react';	
-import Header  from "../layout/Header";
-import Footer  from "../layout/Footer";
+import React, { Component } from "react";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
+import BuilderImg from "../../assets/build.png";
+import ItImg from "../../assets/IT.png";
+import MediaImg from "../../assets/media.png";
+import GeneralImg from "../../assets/general.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Button = styled.button`
-@import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+  @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 
- display: inline-block;
- padding: 20px 60px 20px 60px;
- margin: 20px;
- color: #4eb5f1 !important;
- text-transform: uppercase;
- background: #ffffff;
- padding: 20px;
- border: 4px solid #4eb5f1 !important;
- border-radius: 30px;
- display: inline-block;
- font-family: "BenchNine";
- font-size: 30px;
+  display: inline-block;
+  padding: 20px 60px 20px 60px;
+  margin: 20px;
+  color: #bb8fa9 !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  display: inline-block;
+  font-family: "BenchNine";
+  font-size: 26px;
 
-:hover {
+  :hover {
     color: #fff !important;
     border-radius: 50px;
-    border-color: #4eb5f1 !important;
+    border-color: #d8c1cf !important;
     transition: all 0.3s ease 0s;
-    background: #4eb5f1;
+    background-color: #d8c1cf;
   }
-  
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 30px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    font-size: 32px;
+  }
+
+
 `;
 
 const Professions = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 60px 0 80px 0;
-`;
+  margin: 20px 0 50px 0;
 
-const ProfessionHeader = styled.h1`
-@import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+  @media (min-width: 320px) and (max-width: 480px) {
+    flex-direction: column;
+    margin: 60px 0 40px 0;
+  }
 
-display: flex;
-justify-content: center;
-margin: 40px 10px 40px 10px;
-text-align: justify;
-font-family: "BenchNine";
-line-height: 0.8;
-text-transform: uppercase;
-letter-spacing: 0px;
-color: #86cbf3;
-font-size: 4em;
+  @media (min-width: 481px) and (max-width: 767px) {
+    margin: 60px 40px 40px 40px;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex-flow: wrap
+  }
 
   
 `;
 
-const StyledLink = styled(Link)`
- display:inline-block;
- padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- border: none;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#4eb5f1;
- text-align:center;
- transition: all 0.2s;
+const ProfessionHeader = styled.h1`
+  @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+  display: flex;
+  justify-content: center;
+  margin: 100px 10px 40px 10px;
+  text-align: justify;
+  font-family: "BenchNine";
+  line-height: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  color: #bb8fa9;
+  font-size: 4em;
 
-:hover {
-   background-color:#4095c6;
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 3em;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    font-size: 8em;
+    margin: 110px 10px 40px 10px;
+  }
+`;
+
+const ProfessionParagraph = styled.p`
+  @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+  font-family: "BenchNine";
+  font-size: 1.9em;
+  text-align: center;
+  margin: 0 30px;
+  color: lightgray;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1.5em;
+  }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledLink = styled(Link)`
+   padding: 1em 2em;
+   margin-bottom: 4em;
+   border-radius: 2em;
+   border: none;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-weight: 300;
+   color: #ffffff;
+   background-color: #bb8fa9;
+   text-align: center;
+   transition: all 0.2s;
+
+  :hover {
+    background-color: #d8c1cf;
+    text-decoration: none;
+    color: #ffffff;
   }
 
 `;
 
+const Card = styled.div`
+  border: none;
+  display: flex;
+  align-items: center;
+  margin: 40px;
 
+  :hover {
+    box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    margin: 10px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 270px;
+  }
+  
+  
+`;
+
+const CardBody = styled.div``;
 
 class Profession extends Component {
   constructor() {
@@ -89,7 +172,6 @@ class Profession extends Component {
   routeChange() {
     const path = `GenTemplate`;
     this.props.history.push(path);
-    
   }
 
   itRouteChange() {
@@ -106,34 +188,54 @@ class Profession extends Component {
     const path = `MediaTemplate`;
     this.props.history.push(path);
   }
- 
- 
+
   render() {
-    function goBack() {
-      window.history.back();
-    }
-    
     return (
-      <div> 
-        <Header/>
+      <div>
+        <Header />
         <ProfessionHeader>My CV Templates</ProfessionHeader>
+        <ProfessionParagraph>Click on the template you would like to use for your resumé.</ProfessionParagraph>
 
         <Professions>
-            <Button onClick={this.routeChange}>Generell</Button>
-            <Button onClick={this.itRouteChange}>IT/Teknik</Button>
-            <Button onClick={this.builderRouteChange}>Bygg/Hantverk</Button>
-            <Button onClick={this.mediaRouteChange}>Media/Kultur</Button>  
+          
+          <Card className="card">
+            <img src={GeneralImg} className="card-img-top" alt="..." />
+            <CardBody className="card-body">
+              <Button onClick={this.routeChange}>General</Button>
+            </CardBody>
+          </Card>
+
+          <Card className="card">
+            <img src={ItImg} className="card-img-top" alt="..." />
+            <CardBody className="card-body">
+              <Button onClick={this.itRouteChange}>IT</Button>
+            </CardBody>
+          </Card>
+          
+
+         
+          <Card className="card">
+            <img src={BuilderImg} className="card-img-top" alt="..." />
+            <CardBody className="card-body">
+              <Button onClick={this.builderRouteChange}>Construction Business</Button>
+            </CardBody>
+          </Card>
+
+          <Card className="card">
+            <img src={MediaImg} className="card-img-top" alt="..." />
+            <CardBody className="card-body">
+              <Button onClick={this.mediaRouteChange}>Art/Culture</Button>
+            </CardBody>
+          </Card>
+          
         </Professions>
-
-        <StyledLink to="/profile">Back to profile</StyledLink>
-
-        <Footer/>
+        <Buttons>
+          <StyledLink to="/profile"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile</StyledLink>
+        </Buttons>
+        <Footer />
       </div>
-            
-    )
+    );
   }
 }
-            
+
 export default Profession;
-            
-        
