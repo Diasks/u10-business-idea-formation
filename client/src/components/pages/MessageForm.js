@@ -4,6 +4,15 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Header from "../layout/Header";
 import styled from "styled-components";
+import Footer from "../layout/Footer"
+
+const StyleFooter = styled.footer`
+position: absolute
+bottom: 0;
+width: 100%;
+height: 10rem;
+`
+
 
 const StyleHeader1 = styled.h1`
   font-size: 40px;
@@ -50,6 +59,8 @@ const MyButton = styled(Button)`
 
 
 
+
+
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true
@@ -73,6 +84,7 @@ export class MessageForm extends Component {
         <Header />
 
         <React.Fragment>
+          
           <StyleHeader1>Message</StyleHeader1>
           <TextField
             id="standard-multiline-static"
@@ -103,6 +115,10 @@ export class MessageForm extends Component {
               Submit
             </MyButton>
           </FormButton>
+          <StyleFooter>
+          <Footer />
+          </StyleFooter>
+          
         </React.Fragment>
       </MuiThemeProvider>
     );

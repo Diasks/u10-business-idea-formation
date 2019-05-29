@@ -9,8 +9,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Body = styled.div`
-  background: linear-gradient(#f7e5f0, #fffbfd);
-  padding: 40px;
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+min-height: 80vh;
+height: 100%;
+width: 100%;
+padding: 40px;
+font-family: 'Didact Gothic', sans-serif;
+background: linear-gradient(#f7e5f0, #fffbfd);
 `;
 
 const StyleHeader1 = styled.h1`
