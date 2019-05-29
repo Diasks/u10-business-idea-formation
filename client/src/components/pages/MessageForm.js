@@ -10,21 +10,42 @@ const StyleHeader1 = styled.h1`
   text-align: center;
 `;
 
-// blue button
-const FormButton = styled.form`
-position: relative;
-top: -37px;
-left: 700px;
-  
-`;
-// red button
-const FormButton2 = styled.form`
-position:relative;
-transition: .5s ease;
-top: -2px;
-left: 600px;
-right: 50px;
 
+const FormButton = styled.form`
+text-align: center;
+`;
+
+
+
+
+const MyButton = styled(Button)`
+  && { 
+  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.3em 1.2em;
+  margin: 3em 0 0em 0;
+  border-radius: 2em;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-family: "Didact Gothic", sans-serif;
+  font-weight: 300;
+  background-color: #bb8fa9;
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  width: 100px;
+  border: none;
+
+  :hover {
+    background-color: #d8c1cf;
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      margin: 1em 0 1em 0;
+    }
+    
+  }
 `;
 
 
@@ -64,15 +85,23 @@ export class MessageForm extends Component {
             defaultValue={values.message}
           />
           <br />
-          <FormButton2>
-          <Button variant="contained" color="secondary" onClick={this.back}>
-            Back
-          </Button>
-          </FormButton2>
           <FormButton>
-            <Button variant="contained" color="primary" onClick={this.continue}>
+          <MyButton
+            variant="contained" 
+            color="secondary"
+            margin="auto"
+            onClick={this.back}>
+            Back
+          </MyButton>
+          
+          
+            <MyButton 
+              variant="contained"
+              color="primary"
+              margin="auto"
+              onClick={this.continue}>
               Submit
-            </Button>
+            </MyButton>
           </FormButton>
         </React.Fragment>
       </MuiThemeProvider>
