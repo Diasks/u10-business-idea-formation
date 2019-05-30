@@ -3,7 +3,6 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import GeneralImg from "../../assets/general.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -62,31 +61,6 @@ const StyledLink = styled(Link)`
 
 `;
 
-const Card = styled.div`
-  border: none;
-  display: flex;
-  align-items: center;
-  margin: 40px;
-
-  :hover {
-    box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
-    border-radius: 5px;
-  }
-
-  @media (min-width: 320px) and (max-width: 480px) {
-    margin: 10px;
-  }
-
-  @media (min-width: 481px) and (max-width: 767px) {
-    margin: 0;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width: 270px;
-  }
-  
-  
-`;
 
 
 
@@ -103,18 +77,6 @@ class MyTemplates extends Component {
       <div>
         <Header />
         <ProfessionHeader>Future feature..</ProfessionHeader>
-       
-      
-          
-         
-
-      
-          
-
-         
-          
-          
- 
         <Buttons>
           <StyledLink to="/profile"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile</StyledLink>
         </Buttons>
