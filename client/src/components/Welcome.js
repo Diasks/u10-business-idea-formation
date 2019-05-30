@@ -342,7 +342,7 @@ function Welcome() {
               </Circle>
             </Circles>
           </Main>
-          <WelcomeFooter>© FORMATION 2018</WelcomeFooter>
+          <WelcomeFooter>© FORMATION 2019</WelcomeFooter>
         </BackgroundImg>
       </Body>
     </div>
