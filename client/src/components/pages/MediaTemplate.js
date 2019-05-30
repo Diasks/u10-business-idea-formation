@@ -303,7 +303,7 @@ function MediaTemplate() {
           <StyledLink to="/my-cv">
             <FontAwesomeIcon icon={faArrowAltCircleLeft} /> My CV
           </StyledLink>
-          <StyledLink to="/coverletters">
+          <StyledLink to="/MyTemplates">
             <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
           </StyledLink>
         </Buttons>
@@ -315,7 +315,7 @@ function MediaTemplate() {
             </CvHeader>
 
             <ObjectiveWrapper>
-              <p>{user.objective.toUpperCase()}</p>
+              <p>{user.objective}</p>
             </ObjectiveWrapper>
           </HeaderWrapper>
 

@@ -166,9 +166,6 @@ export class UserDetails extends Component {
           </StyleForm>
           <FormButton>
             <MyButton
-              variant="contained"
-              color="primary"
-              margin="auto"
               onClick={this.continue}
             >
               Send

@@ -320,7 +320,7 @@ function ItTemplate() {
           <StyledLink to="/my-cv">
             <FontAwesomeIcon icon={faArrowAltCircleLeft} /> My CV
           </StyledLink>
-          <StyledLink to="/coverletters">
+          <StyledLink to="/MyTemplates">
             <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
           </StyledLink>
         </Buttons>
@@ -332,7 +332,7 @@ function ItTemplate() {
             </CvHeader>
 
             <ObjectiveWrapper>
-              <p>{user.objective.toUpperCase()}</p>
+              <p>{user.objective}</p>
             </ObjectiveWrapper>
           </HeaderWrapper>
           <WrapWrapper>

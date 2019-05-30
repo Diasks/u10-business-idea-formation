@@ -99,16 +99,12 @@ export class MessageForm extends Component {
           <br />
           <FormButton>
           <MyButton
-            variant="contained" 
-            margin="auto"
             onClick={this.back}>
             Back
           </MyButton>
           
           
             <MyButton 
-              variant="contained"
-              margin="auto"
               onClick={this.continue}>
               Submit
             </MyButton>

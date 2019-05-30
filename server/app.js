@@ -32,7 +32,7 @@ db.once("open", function() {
 
 var usersRouter = require("./routes/users");
 var templatesRouter = require("./routes/templates");
-var coverlettersRouter = require("./routes/coverletters");
+
 
 // view engine setup
 app.set("view engine", "pug");
@@ -54,7 +54,7 @@ app.post("/api/login", function(req, res) {
 
     if (!err) {
       var token = jwt.sign({ user_id }, process.env.SECRET_OR_KEY, {
-        expiresIn: "24h" // expires in 24 hours
+        expiresIn: "24h" 
       });
       res.json({
         success: true,
@@ -70,7 +70,7 @@ app.post("/api/login", function(req, res) {
 
 app.use("/api/users", usersRouter);
 app.use("/api/templates", templatesRouter);
-app.use("/api/coverletters", coverlettersRouter);
+
 
 // catch 404 and forward to error handler
 app.use("/api/*", function(req, res, next) {

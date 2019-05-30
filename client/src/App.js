@@ -7,13 +7,12 @@ import Contact from "./components/pages/Contact";
 import "./App.css";
 import PageTwo from "./components/pages/PageTwo";
 import Profession from "./components/pages/Profession";
-import Coverletter from "./components/pages/Coverletter";
 import GenTemplate from "./components/pages/GenTemplate";
 import ItTemplate from "./components/pages/ItTemplate";
 import MediaTemplate from "./components/pages/MediaTemplate";
 import BuilderTemplate from "./components/pages/BuilderTemplate";
 import MyCoverletterTemplates from "./components/pages/MyCoverletterTemplates";
-
+import MyTemplates from "./components/pages/MyTemplates";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit, faSignInAlt, faDownload, faArrowAltCircleLeft, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -32,12 +31,12 @@ class App extends Component {
             <Route path="/PageTwo" component={PageTwo} />
             <Route path="/profile" component={Profile} />
             <Route path="/my-cv" component={Profession} />
-            <Route path="/coverletters" component={Coverletter} />
             <Route path="/GenTemplate" component={GenTemplate} />
             <Route path="/ItTemplate" component={ItTemplate} />
             <Route path="/MediaTemplate" component={MediaTemplate} />
             <Route path="/BuilderTemplate" component={BuilderTemplate} />
             <Route path="/my-coverletters" component={MyCoverletterTemplates} />
+            <Route path="/MyTemplates" component={MyTemplates} />
             <Route path="/About" component={About} />
             <Route path="/Contact" component={Contact} />
           </div>

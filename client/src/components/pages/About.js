@@ -69,9 +69,7 @@ border: none;
 
 `;
 
-const MyFontAwesomeIcon = styled(FontAwesomeIcon)`
-  margin: 5px;
-`;
+
 
 function About () {
   return (

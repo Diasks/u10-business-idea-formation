@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import client from "../../client";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 import {
