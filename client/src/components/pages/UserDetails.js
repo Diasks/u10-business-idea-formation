@@ -7,6 +7,7 @@ import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import Header from "../layout/Header";
 
 const Body = styled.div`
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
@@ -132,6 +133,7 @@ export class UserDetails extends Component {
     return (
       
       <MuiThemeProvider theme={theme}>
+      <Header />
         <React.Fragment>
         <Body>
           <StyleHeader1>Connect with us</StyleHeader1>

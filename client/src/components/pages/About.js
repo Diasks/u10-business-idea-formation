@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -75,6 +76,7 @@ const MyFontAwesomeIcon = styled(FontAwesomeIcon)`
 function About () {
   return (
     <div>
+      <Header />
       <Body>
       <StyleHeader1>Our Mission</StyleHeader1>
 
