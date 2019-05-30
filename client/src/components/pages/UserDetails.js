@@ -50,33 +50,23 @@ const FormButton = styled.form`
 `;
 
 const MyButton = styled(Button)`
-  && { 
-  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
-  cursor: pointer;
-  font: inherit;
-  padding: 0.3em 1.2em;
-  margin: 3em 0 0em 0;
-  border-radius: 2em;
-  text-decoration: none;
-  text-transform: capitalize;
-  font-family: "Didact Gothic", sans-serif;
-  font-weight: 300;
-  background-color: #bb8fa9;
-  color: #fafafa;
-  text-align: center;
-  transition: all 0.2s;
-  width: 100px;
-  border: none;
+cursor: pointer;
+font: inherit;
+padding: 0.3em 1.2em;
+margin: 0 0.3em 0.3em 0;
+border-radius: 2em;
+text-decoration: none;
+font-weight: 300;
+background-color: #bb8fa9;
+color: #fafafa;
+text-align: center;
+transition: all 0.2s;
+width: 100px;
+border: none;
 
-  :hover {
-    background-color: #d8c1cf;
-    }
-
-    @media (min-width: 320px) and (max-width: 480px) {
-      margin: 1em 0 1em 0;
-    }
-    
-  }
+:hover {
+  background-color: #c1b4b9;
+}
 `;
 
 const Buttons = styled.div`
@@ -165,9 +155,7 @@ export class UserDetails extends Component {
             <br />
           </StyleForm>
           <FormButton>
-            <MyButton
-              onClick={this.continue}
-            >
+            <MyButton onClick={this.continue}>
               Send
             </MyButton>
           </FormButton>
