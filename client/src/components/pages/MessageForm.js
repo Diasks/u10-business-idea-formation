@@ -100,7 +100,6 @@ export class MessageForm extends Component {
           <FormButton>
           <MyButton
             variant="contained" 
-            color="secondary"
             margin="auto"
             onClick={this.back}>
             Back
@@ -109,7 +108,6 @@ export class MessageForm extends Component {
           
             <MyButton 
               variant="contained"
-              color="primary"
               margin="auto"
               onClick={this.continue}>
               Submit
