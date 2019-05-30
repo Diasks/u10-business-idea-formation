@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 var middleware = require("../middleware");
 
-/* GET users/me  */
+
 router.get("/me", middleware.checkToken, function(req, res) {
   User.findById(req.decoded.user_id, function(error, user) {
     if (error) {
@@ -15,7 +15,7 @@ router.get("/me", middleware.checkToken, function(req, res) {
   });
 });
 
-/* PUT users/me  */
+
 router.patch("/me", middleware.checkToken, function(req, res) {
   User.findByIdAndUpdate(
     req.decoded.user_id,
@@ -59,15 +59,6 @@ User.findOne(emailQuery, function(err, user) {
 
   });
 
-//Raderar från databasen, men syns inte i postman eller terminalen typ som att connection timeout:ar
-/* DELETE user  */
-router.delete("/:userId/delete", function(req, res) {
-  User.findByIdAndRemove(req.params.userId, function(error) {
-    if (error) {
-      res.json({ status: "error", message: `${error}` });
-    }
-    res.status(200);
-  });
-});
+
 
 module.exports = router;

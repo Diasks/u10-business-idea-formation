@@ -106,9 +106,7 @@ class MyTemplates extends Component {
        
       
           
-          <Card className="card">
-            <img src={GeneralImg} className="card-img-top" alt="..." />
-          </Card>
+         
 
       
           

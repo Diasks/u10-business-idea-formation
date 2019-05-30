@@ -1,11 +1,9 @@
-// https://medium.com/dev-bits/a-guide-for-adding-jwt-token-based-authentication-to-your-single-page-nodejs-applications-c403f7cf04f4
 var jwt = require("jsonwebtoken");
 
 var checkToken = (req, res, next) => {
   var token = req.headers["x-access-token"] || req.headers["authorization"]; // Express headers are auto converted to lowercase
   if (token) {
     if (token.startsWith("Bearer ")) {
-      // Remove Bearer from string
       token = token.slice(7, token.length);
     }
 

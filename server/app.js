@@ -14,7 +14,6 @@ var pug = require("pug");
 var app = express();
 app.use(cors());
 
-//Connectar till mongoose utan problem
 mongoose.connect(`mongodb+srv://${process.env.MLAB_USERNAME}:${
   process.env.MLAB_PASSWORD
 }@formation-db-xw7ax.mongodb.net/test?retryWrites=true
@@ -43,15 +42,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use(express.static(path.join(__dirname, "../client/public")));
+
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.post("/api/login", function(req, res) {
-  //auth user
-
   user.findOne({ email: req.body.email }, function(err, user) {
     var user_id = user._id;
-
     if (!err) {
       var token = jwt.sign({ user_id }, process.env.SECRET_OR_KEY, {
         expiresIn: "24h" 
@@ -71,14 +67,11 @@ app.post("/api/login", function(req, res) {
 app.use("/api/users", usersRouter);
 app.use("/api/templates", templatesRouter);
 
-
 // catch 404 and forward to error handler
 app.use("/api/*", function(req, res, next) {
   next(createError(404));
 });
 
-// https://github.com/mars/heroku-cra-node/blob/master/server/index.js
-// All remaining requests return the React app, so it can handle routing.
 app.get("*", function(request, response) {
   response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
