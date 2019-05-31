@@ -1,0 +1,239 @@
+#root,
+body,
+html {
+  height: 100%;
+}
+
+.Formol_Field__element,
+.Formol_Field--type-calendar .Formol_CalendarField,
+.Formol_HTMLField,
+.Formol_Field--type-select-menu .Formol_SelectMenuField,
+.Formol_Field--type-checkbox .Formol_Field__label,
+.Formol_Field--type-radio .Formol_Field__label,
+.Formol_Field--type-checkbox-set .Formol_FieldSet__label,
+.Formol_Field--type-radio-set .Formol_FieldSet__label,
+.Formol_FileField,
+.Formol_PasswordField__wrapper,
+.Formol_SwitchButton input[type='checkbox']+label {
+  background-color: transparent;
+  border: solid 1px;
+  border-color: inherit;
+  border-radius: 13em;
+  box-sizing: border-box;
+  box-shadow: none;
+  color: #596275;
+  font: inherit;
+  margin: .5em 0.5em;
+  width: 100%;
+  padding: 0.75em;
+  transition: border-color .2s;
+}
+
+.Formol_Field__title {
+  color: inherit;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  font-size: 0.85em;
+  transition: color .2s;
+  width: 100%;
+}
+
+.Formol_Formol {
+  box-shadow: -1px 0 0 transparent;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #596275;
+  padding-left: 0;
+  font-size: 1em;
+  transition: box-shadow 250ms 250ms, opacity 500ms ease-in, padding 250ms;
+}
+
+.Formol_Field--readOnly .Formol_InputField,
+.Formol_Field--readOnly .Formol_TextAreaField,
+.Formol_Field--readOnly .Formol_PasswordField__wrapper,
+.Formol_Field--readOnly .Formol_FileField,
+.Formol_Field--readOnly .Formol_HTMLField {
+  background-color: transparent;
+  border-color: gray 1px solid;
+  color: #596275;
+  margin: 8px;
+  padding: 12px;
+  width: 100%;
+}
+
+.Formol_Field--readOnly .Formol_Field__title {
+  font-size: 0.85em;
+}
+
+.Formol_Field--type-area .Formol_Field__element {
+  width: 100%;
+}
+
+.Formol_Formol .Formol_Formol__submit {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.3em 1.2em;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: #bb8fa9;
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
+}
+
+.Formol_Formol .Formol_Formol__submit:hover {
+  background-color: #d8c1cf;
+}
+
+.Formol_Formol .Formol_Formol__cancel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.3em 1.2em;
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #fff;
+  background-color: lightgray;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
+}
+
+.Formol_Formol .Formol_Formol__cancel:hover {
+  background-color: rgb(190, 190, 190);
+}
+
+.react-tabs__tab-panel--selected {
+  border-radius: 15px;
+  padding: 40px 30px 30px 40px;
+  background-color: #fafafa;
+}
+
+.react-tabs__tab {
+  background-color: #bb8fa9;
+  color: #fafafa;
+  display: inline-block;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 15px 15px 3px 3px;
+
+}
+
+.react-tabs__tab--selected {
+  background-color: #fafafa;
+  color: #bb8fa9;
+  border-radius: 15px 15px 3px 3px;
+  border: none;
+}
+
+.react-tabs__tab:hover {
+  background-color: #d8c1cf;
+  color: #fafafa;
+  border-radius: 15px 15px 3px 3px;
+}
+
+
+.react-tabs__tab-list {
+  padding: 0;
+  margin: 0 0 0 20px;
+  border: none;
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .Formol_Field__element {
+    justify-content: center;
+  }
+
+  .react-tabs__tab-list {
+    font-size: 10px;
+    margin: 0 0 0 15px;
+  }
+
+  .react-tabs__tab {
+    padding: 5px;
+  }
+
+  .Formol_Formol .Formol_Formol__cancel {
+    margin: 0px 100px 50px 100px;
+  }
+
+  .Formol_Formol .Formol_Formol__submit {
+    margin: 20px 100px 5px 100px;
+  }
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  .Formol_Formol .Formol_Formol__cancel {
+    margin: 0 200px 30px 200px;
+  }
+
+  .Formol_Formol .Formol_Formol__submit {
+    margin: 30px 200px 5px 200px;
+  }
+
+  .react-tabs__tab-list {
+    font-size: 14px;
+    margin: 0 0 0 20px;
+  }
+
+  .react-tabs__tab {
+    padding: 5px;
+  }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  .Formol_Formol .Formol_Formol__cancel {
+    margin: 0 330px 30px 330px;
+  }
+
+  .Formol_Formol .Formol_Formol__submit {
+    margin: 30px 330px 5px 330px;
+  }
+
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  .Formol_Formol .Formol_Formol__cancel {
+    margin: 0 500px 30px 500px;
+  }
+
+  .Formol_Formol .Formol_Formol__submit {
+    margin: 30px 500px 5px 500px;
+  }
+
+}
+
+@media (min-width: 1281px) {
+
+  .Formol_Formol .Formol_Formol__cancel {
+    margin: 0 500px 30px 500px;
+  }
+
+  .Formol_Formol .Formol_Formol__submit {
+    margin: 30px 500px 5px 500px;
+  }
+
+}
