@@ -284,7 +284,7 @@ function handlePrint(user, quality = 1) {
   );
 }
 
-function ItTemplate() {
+export default function ItTemplate() {
   const [user, setUser] = useState({ loading: true });
   useEffect(() => {
     async function fetchData() {
@@ -396,5 +396,3 @@ function ItTemplate() {
     </div>
   );
 }
-
-export default ItTemplate;

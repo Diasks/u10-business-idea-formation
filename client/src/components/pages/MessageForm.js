@@ -61,7 +61,7 @@ const theme = createMuiTheme({
   }
 });
 
-export class MessageForm extends Component {
+export default class MessageForm extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -110,5 +110,3 @@ export class MessageForm extends Component {
     );
   }
 }
-
-export default MessageForm;

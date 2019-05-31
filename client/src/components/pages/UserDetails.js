@@ -85,7 +85,7 @@ const theme = createMuiTheme({
   }
 });
 
-export class UserDetails extends Component {
+export default class UserDetails extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -143,5 +143,3 @@ export class UserDetails extends Component {
     );
   }
 }
-
-export default UserDetails;

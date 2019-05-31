@@ -67,7 +67,7 @@ const Icon = styled.div`
   }
 `;
 
-function Footer() {
+export default function Footer() {
   return (
     <FooterDiv>
       <Social>
@@ -107,5 +107,3 @@ function Footer() {
     </FooterDiv>
   );
 }
-
-export default Footer;
