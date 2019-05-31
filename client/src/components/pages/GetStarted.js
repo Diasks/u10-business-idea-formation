@@ -48,7 +48,7 @@ const FormTitleLink = styled(NavLink)`
   }
 `;
 
-class PageTwo extends Component {
+class GetStarted extends Component {
   render() {
     return (
       <Router>
@@ -56,13 +56,13 @@ class PageTwo extends Component {
           <PageTwosAside />
           <PageTwoForm>
             <FormTitle>
-              <FormTitleLink to="/Login">Sign In</FormTitleLink> /{" "}
-              <FormTitleLink exact to="/Register">
+              <FormTitleLink to="/login">Sign In</FormTitleLink> /{" "}
+              <FormTitleLink exact to="/register">
                 Register
               </FormTitleLink>
             </FormTitle>
-            <Route exact path="/Register" component={Register} />
-            <Route exact path="/Login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
           </PageTwoForm>
         </PageTwos>
       </Router>
@@ -70,4 +70,4 @@ class PageTwo extends Component {
   }
 }
 
-export default PageTwo;
+export default GetStarted;

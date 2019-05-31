@@ -234,7 +234,7 @@ function handlePrint(user, quality = 1) {
   );
 }
 
-function GenTemplate() {
+function GeneralTemplate() {
   const [user, setUser] = useState({ loading: true });
   useEffect(() => {
     async function fetchData() {
@@ -270,7 +270,7 @@ function GenTemplate() {
           <StyledLink to="/my-cv">
             <FontAwesomeIcon icon={faArrowAltCircleLeft} /> My CV
           </StyledLink>
-          <StyledLink to="/MyTemplates">
+          <StyledLink to="/my-templates">
             <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
           </StyledLink>
         </Buttons>
