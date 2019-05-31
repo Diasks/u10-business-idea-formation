@@ -164,9 +164,12 @@ export class UserDetails extends Component {
 
             <br />
           </StyleForm>
-         <MyButton onClick={this.continue}
-         >Next
+          <MyButton>
+         <Buttons onClick={this.continue}
+         >Submit
+         </Buttons>
          </MyButton>
+         
           
           <Buttons>
           <StyledLink to="/"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home</StyledLink>
