@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "../layout/Header";
 
 const Body = styled.div`
@@ -164,13 +164,9 @@ export class UserDetails extends Component {
 
             <br />
           </StyleForm>
-          <MyButton>
-         <Button onClick={this.continue}
-         >Submit
-         </Button>
-         </MyButton>
-         
-          
+          <Buttons>
+            <StyledLink onClick={this.continue}><FontAwesomeIcon icon={faArrowAltCircleRight} /> Send</StyledLink>
+          </Buttons> 
           <Buttons>
           <StyledLink to="/"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home</StyledLink>
           </Buttons>
