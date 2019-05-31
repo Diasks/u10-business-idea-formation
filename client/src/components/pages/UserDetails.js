@@ -165,7 +165,7 @@ export class UserDetails extends Component {
             <br />
           </StyleForm>
          <MyButton onClick={this.continue}
-         >Send
+         >Next
          </MyButton>
           
           <Buttons>
