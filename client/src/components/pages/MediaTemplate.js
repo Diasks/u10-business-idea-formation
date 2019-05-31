@@ -266,7 +266,7 @@ function handlePrint(user, quality = 1) {
   );
 }
 
-function MediaTemplate() {
+export default function MediaTemplate() {
   const [user, setUser] = useState({ loading: true });
   useEffect(() => {
     async function fetchData() {
@@ -377,5 +377,3 @@ function MediaTemplate() {
     </div>
   );
 }
-
-export default MediaTemplate;

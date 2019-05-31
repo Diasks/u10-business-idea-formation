@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Profile from "./components/pages/Profile";
 import Welcome from "./components/Welcome";
@@ -32,29 +32,25 @@ library.add(
   faExclamationCircle
 );
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <div>
-            <Route exact path="/" component={Welcome} />
-            <Route path="/get-started" component={GetStarted} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/my-cv" component={Profession} />
-            <Route path="/general-template" component={GeneralTemplate} />
-            <Route path="/it-template" component={ItTemplate} />
-            <Route path="/media-template" component={MediaTemplate} />
-            <Route path="/builder-template" component={BuilderTemplate} />
-            <Route path="/my-coverletters" component={MyCoverletterTemplates} />
-            <Route path="/my-templates" component={MyTemplates} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
-          </div>
+export default function App() {
+  return (
+    <Router>
+      <div className="App">
+        <div>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/get-started" component={GetStarted} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/my-cv" component={Profession} />
+          <Route path="/general-template" component={GeneralTemplate} />
+          <Route path="/it-template" component={ItTemplate} />
+          <Route path="/media-template" component={MediaTemplate} />
+          <Route path="/builder-template" component={BuilderTemplate} />
+          <Route path="/my-coverletters" component={MyCoverletterTemplates} />
+          <Route path="/my-templates" component={MyTemplates} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
         </div>
-      </Router>
-    );
-  }
+      </div>
+    </Router>
+  );
 }
-
-export default App;

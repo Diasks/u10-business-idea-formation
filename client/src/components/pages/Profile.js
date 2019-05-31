@@ -289,7 +289,7 @@ function SchoolList({ length }) {
   );
 }
 
-function Profile() {
+export default function Profile() {
   const [user, setUser] = useState({ loading: true });
 
   useEffect(() => {
@@ -436,5 +436,3 @@ function Profile() {
     </div>
   );
 }
-
-export default Profile;

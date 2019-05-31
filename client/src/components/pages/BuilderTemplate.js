@@ -278,7 +278,7 @@ function handlePrint(user, quality = 1) {
   );
 }
 
-function BuilderTemplate() {
+export default function BuilderTemplate() {
   const [user, setUser] = useState({ loading: true });
   useEffect(() => {
     async function fetchData() {
@@ -373,5 +373,3 @@ function BuilderTemplate() {
     </div>
   );
 }
-
-export default BuilderTemplate;

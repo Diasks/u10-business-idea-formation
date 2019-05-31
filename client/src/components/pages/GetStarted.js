@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
@@ -48,26 +48,22 @@ const FormTitleLink = styled(NavLink)`
   }
 `;
 
-class GetStarted extends Component {
-  render() {
-    return (
-      <Router>
-        <PageTwos>
-          <PageTwosAside />
-          <PageTwoForm>
-            <FormTitle>
-              <FormTitleLink to="/login">Sign In</FormTitleLink> /{" "}
-              <FormTitleLink exact to="/register">
-                Register
-              </FormTitleLink>
-            </FormTitle>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-          </PageTwoForm>
-        </PageTwos>
-      </Router>
-    );
-  }
+export default function GetStarted() {
+  return (
+    <Router>
+      <PageTwos>
+        <PageTwosAside />
+        <PageTwoForm>
+          <FormTitle>
+            <FormTitleLink to="/login">Sign In</FormTitleLink> /{" "}
+            <FormTitleLink exact to="/register">
+              Register
+            </FormTitleLink>
+          </FormTitle>
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+        </PageTwoForm>
+      </PageTwos>
+    </Router>
+  );
 }
-
-export default GetStarted;

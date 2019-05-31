@@ -29,7 +29,7 @@ const Logo = styled.div`
   padding: 5px 0 5px 8px;
 `;
 
-function Header() {
+export default function Header() {
   return (
     <Navbar>
       <Logo>
@@ -58,5 +58,3 @@ function Header() {
     </Navbar>
   );
 }
-
-export default Header;

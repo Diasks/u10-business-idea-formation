@@ -66,7 +66,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export class Success extends Component {
+export default class Success extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -90,5 +90,3 @@ export class Success extends Component {
     );
   }
 }
-
-export default Success;

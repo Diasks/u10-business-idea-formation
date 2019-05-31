@@ -234,7 +234,7 @@ function handlePrint(user, quality = 1) {
   );
 }
 
-function GeneralTemplate() {
+export default function GeneralTemplate() {
   const [user, setUser] = useState({ loading: true });
   useEffect(() => {
     async function fetchData() {
@@ -347,5 +347,3 @@ function GeneralTemplate() {
     </div>
   );
 }
-
-export default GenTemplate;

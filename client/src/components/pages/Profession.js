@@ -153,7 +153,7 @@ const Card = styled.div`
 
 const CardBody = styled.div``;
 
-class Profession extends Component {
+export default class Profession extends Component {
   constructor() {
     super();
     this.routeChange = this.routeChange.bind(this);
@@ -188,7 +188,7 @@ class Profession extends Component {
         <Header />
         <ProfessionHeader>My CV Templates</ProfessionHeader>
         <ProfessionParagraph>
-          Click on the template you would like to use for your resumé.
+          Click on the template you would like to use for your resume.
         </ProfessionParagraph>
 
         <Professions>
@@ -232,5 +232,3 @@ class Profession extends Component {
     );
   }
 }
-
-export default Profession;

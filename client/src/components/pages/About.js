@@ -68,7 +68,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function About() {
+export default function About() {
   return (
     <div>
       <Header />
@@ -102,5 +102,3 @@ function About() {
     </div>
   );
 }
-
-export default About;

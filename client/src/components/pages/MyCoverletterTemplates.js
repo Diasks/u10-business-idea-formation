@@ -41,8 +41,6 @@ const Button = styled.button`
   @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
     font-size: 32px;
   }
-
-
 `;
 
 const Professions = styled.div`
@@ -63,10 +61,8 @@ const Professions = styled.div`
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    flex-flow: wrap
+    flex-flow: wrap;
   }
-
-  
 `;
 
 const ProfessionHeader = styled.h1`
@@ -112,10 +108,10 @@ const Buttons = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-   padding: 1em 2em;
-   margin-bottom: 4em;
+  padding: 1em 2em;
+  margin-bottom: 4em;
    border-radius: 2em;
-   border: none;
+  border: none;
    box-sizing: border-box;
    text-decoration: none;
    font-weight: 300;
@@ -129,7 +125,6 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     color: #ffffff;
   }
-
 `;
 
 const Card = styled.div`
@@ -154,13 +149,11 @@ const Card = styled.div`
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 270px;
   }
-  
-  
 `;
 
 const CardBody = styled.div``;
 
-class MyTemplates extends Component {
+export default class MyTemplates extends Component {
   constructor() {
     super();
     this.routeChange = this.routeChange.bind(this);
@@ -194,10 +187,11 @@ class MyTemplates extends Component {
       <div>
         <Header />
         <ProfessionHeader>My Coverletters</ProfessionHeader>
-        <ProfessionParagraph>Click on the template you would like to use for your coverletter.</ProfessionParagraph>
+        <ProfessionParagraph>
+          Click on the template you would like to use for your coverletter.
+        </ProfessionParagraph>
 
         <Professions>
-          
           <Card className="card">
             <img src={GeneralImg} className="card-img-top" alt="..." />
             <CardBody className="card-body">
@@ -211,13 +205,13 @@ class MyTemplates extends Component {
               <Button onClick={this.itRouteChange}>IT</Button>
             </CardBody>
           </Card>
-          
 
-         
           <Card className="card">
             <img src={BuilderImg} className="card-img-top" alt="..." />
             <CardBody className="card-body">
-              <Button onClick={this.builderRouteChange}>Construction Business</Button>
+              <Button onClick={this.builderRouteChange}>
+                Construction Business
+              </Button>
             </CardBody>
           </Card>
 
@@ -227,15 +221,14 @@ class MyTemplates extends Component {
               <Button onClick={this.mediaRouteChange}>Art/Culture</Button>
             </CardBody>
           </Card>
-          
         </Professions>
         <Buttons>
-          <StyledLink to="/profile"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile</StyledLink>
+          <StyledLink to="/profile">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile
+          </StyledLink>
         </Buttons>
         <Footer />
       </div>
     );
   }
 }
-
-export default MyTemplates;

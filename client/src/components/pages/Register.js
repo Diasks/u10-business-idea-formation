@@ -94,7 +94,7 @@ let formValid = formErrors => {
   return valid;
 };
 
-export class Register extends Component {
+export default class Register extends Component {
   constructor() {
     super();
 
@@ -255,4 +255,3 @@ export class Register extends Component {
     );
   }
 }
-export default Register;

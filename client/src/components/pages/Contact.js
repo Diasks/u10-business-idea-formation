@@ -3,7 +3,7 @@ import UserDetails from "./UserDetails";
 import MessageForm from "./MessageForm";
 import Success from "./Success";
 
-export class Contact extends Component {
+export default class Contact extends Component {
   state = {
     step: 1,
     firstName: "",
@@ -59,5 +59,3 @@ export class Contact extends Component {
     }
   }
 }
-
-export default Contact;

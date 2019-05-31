@@ -24,7 +24,7 @@ let formValid = formErrors => {
   return valid;
 };
 
-export class Login extends Component {
+export default class Login extends Component {
   constructor() {
     super();
 
@@ -134,5 +134,3 @@ export class Login extends Component {
     );
   }
 }
-
-export default Login;

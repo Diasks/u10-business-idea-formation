@@ -55,8 +55,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-class MyTemplates extends Component {
-
+export default class MyTemplates extends Component {
   render() {
     return (
       <div>
@@ -72,5 +71,3 @@ class MyTemplates extends Component {
     );
   }
 }
-
-export default MyTemplates;

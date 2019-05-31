@@ -293,7 +293,7 @@ const WelcomeFooter = styled.footer`
   }
 `;
 
-function Welcome() {
+export default function Welcome() {
   return (
     <div>
       <Body>
@@ -353,5 +353,3 @@ function Welcome() {
     </div>
   );
 }
-
-export default Welcome;
