@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import Header from "../layout/Header";
 import styled from "styled-components";
 import Footer from "../layout/Footer"
+import { Link } from "react-router-dom";
 
 const StyleFooter = styled.footer`
 position: absolute
@@ -13,53 +13,48 @@ width: 100%;
 height: 10rem;
 `
 
-
 const StyleHeader1 = styled.h1`
   font-size: 40px;
   text-align: center;
 `;
 
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const FormButton = styled.form`
+const StyledLink = styled(Link)`
+cursor: pointer;
+font: inherit;
+padding: 0.5em 1em;
+border-radius: 2em;
+text-decoration: none;
+background-color: #bb8fa9;
+color: #fafafa;
 text-align: center;
-`;
+transition: all 0.2s;
+border: none;
 
-
-
-
-const MyButton = styled(Button)`
-  && { 
-  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
-  cursor: pointer;
-  font: inherit;
-  padding: 0.3em 1.2em;
-  margin: 3em 0 0em 0;
-  border-radius: 2em;
+:hover {
+  background-color: #d8c1cf;
   text-decoration: none;
-  text-transform: capitalize;
-  font-family: "Didact Gothic", sans-serif;
-  font-weight: 300;
-  background-color: #bb8fa9;
-  color: #fafafa;
-  text-align: center;
-  transition: all 0.2s;
-  width: 100px;
-  border: none;
+  color: white;
+}
 
-  :hover {
-    background-color: #d8c1cf;
-    }
-
-    @media (min-width: 320px) and (max-width: 480px) {
-      margin: 1em 0 1em 0;
-    }
-    
+  @media (min-width: 320px) and (max-width: 480px) {
+    margin: 0.5em 0.3em 0.3em 0;
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    margin: 1em 0.3em 0.3em 0;
+  }
+
+  @media (min-width: 1025px) {
+    margin: 1em 0.3em 0.3em 0;
+  }
+
 `;
-
-
-
-
 
 const theme = createMuiTheme({
   typography: {
@@ -97,18 +92,12 @@ export class MessageForm extends Component {
             defaultValue={values.message}
           />
           <br />
-          <FormButton>
-          <MyButton
-            onClick={this.back}>
-            Back
-          </MyButton>
+
+          <Buttons>
+            <StyledLink to ="/"onClick={this.back}> Back</StyledLink>
+            <StyledLink to ="/"onClick={this.continue}> Send</StyledLink>
+          </Buttons> 
           
-          
-            <MyButton 
-              onClick={this.continue}>
-              Submit
-            </MyButton>
-          </FormButton>
           <StyleFooter>
           <Footer />
           </StyleFooter>

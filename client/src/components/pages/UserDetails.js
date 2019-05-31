@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons";
 import Header from "../layout/Header";
 
 const Body = styled.div`
@@ -42,41 +41,6 @@ const StyleHeader1 = styled.h1`
 const StyleForm = styled.form`
   text-align: center;
   
-`;
-
-const FormButton = styled.form`
-  text-align: center;
-  
-`;
-
-const MyButton = styled(Button)`
-  && { 
-  @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
-  cursor: pointer;
-  font: inherit;
-  padding: 0.3em 1.2em;
-  margin: 3em 0 0em 0;
-  border-radius: 2em;
-  text-decoration: none;
-  text-transform: capitalize;
-  font-family: "Didact Gothic", sans-serif;
-  font-weight: 300;
-  background-color: #bb8fa9;
-  color: #fafafa;
-  text-align: center;
-  transition: all 0.2s;
-  width: 100px;
-  border: none;
-
-  :hover {
-    background-color: #d8c1cf;
-    }
-
-    @media (min-width: 320px) and (max-width: 480px) {
-      margin: 1em 0 1em 0;
-    }
-    
-  }
 `;
 
 const Buttons = styled.div`
@@ -165,7 +129,7 @@ export class UserDetails extends Component {
             <br />
           </StyleForm>
           <Buttons>
-            <StyledLink onClick={this.continue}><FontAwesomeIcon icon={faArrowAltCircleRight} /> Send</StyledLink>
+            <StyledLink to ="/"onClick={this.continue}> Continue</StyledLink>
           </Buttons> 
           <Buttons>
           <StyledLink to="/"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home</StyledLink>
