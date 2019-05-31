@@ -1,17 +1,17 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var bodyParser = require("body-parser");
-var config = require("dotenv").config();
-var mongoose = require("mongoose");
-var cors = require("cors");
-var jwt = require("jsonwebtoken");
-var user = require("./models/User");
-var pug = require("pug");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const bodyParser = require("body-parser");
+const config = require("dotenv").config();
+const mongoose = require("mongoose");
+const cors = require("cors");
+const jwt = require("jsonwebtoken");
+const user = require("./models/User");
+const pug = require("pug");
 
-var app = express();
+const app = express();
 app.use(cors());
 
 mongoose.connect(`mongodb+srv://${process.env.MLAB_USERNAME}:${
@@ -19,7 +19,7 @@ mongoose.connect(`mongodb+srv://${process.env.MLAB_USERNAME}:${
 }@formation-db-xw7ax.mongodb.net/test?retryWrites=true
 `);
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on("error", function() {
   console.error("whoops, something went wrong!");
@@ -29,9 +29,8 @@ db.once("open", function() {
   console.log("DB connection is up an running");
 });
 
-var usersRouter = require("./routes/users");
-var templatesRouter = require("./routes/templates");
-
+const usersRouter = require("./routes/users");
+const templatesRouter = require("./routes/templates");
 
 // view engine setup
 app.set("view engine", "pug");
@@ -42,15 +41,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.post("/api/login", function(req, res) {
   user.findOne({ email: req.body.email }, function(err, user) {
-    var user_id = user._id;
+    const user_id = user._id;
     if (!err) {
-      var token = jwt.sign({ user_id }, process.env.SECRET_OR_KEY, {
-        expiresIn: "24h" 
+      const token = jwt.sign({ user_id }, process.env.SECRET_OR_KEY, {
+        expiresIn: "24h"
       });
       res.json({
         success: true,
