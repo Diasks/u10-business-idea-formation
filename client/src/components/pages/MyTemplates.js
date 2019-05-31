@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
-
-
-
 const ProfessionHeader = styled.h1`
   @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
   display: flex;
@@ -32,8 +29,6 @@ const ProfessionHeader = styled.h1`
   }
 `;
 
-
-
 const Buttons = styled.div`
   display: flex;
   justify-content: center;
@@ -41,10 +36,10 @@ const Buttons = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-   padding: 1em 2em;
-   margin-bottom: 4em;
+  padding: 1em 2em;
+  margin-bottom: 4em;
    border-radius: 2em;
-   border: none;
+  border: none;
    box-sizing: border-box;
    text-decoration: none;
    font-weight: 300;
@@ -58,19 +53,9 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     color: #ffffff;
   }
-
 `;
 
-
-
-
 class MyTemplates extends Component {
-  constructor() {
-    super();
-
-  }
-
-  
 
   render() {
     return (
@@ -78,7 +63,9 @@ class MyTemplates extends Component {
         <Header />
         <ProfessionHeader>Future feature..</ProfessionHeader>
         <Buttons>
-          <StyledLink to="/profile"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile</StyledLink>
+          <StyledLink to="/profile">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile
+          </StyledLink>
         </Buttons>
         <Footer />
       </div>

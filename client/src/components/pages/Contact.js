@@ -3,7 +3,6 @@ import UserDetails from "./UserDetails";
 import MessageForm from "./MessageForm";
 import Success from "./Success";
 
-
 export class Contact extends Component {
   state = {
     step: 1,
@@ -56,8 +55,7 @@ export class Contact extends Component {
         );
       case 3:
         return <Success />;
-        default:
-          console.log('Default case needed!');
+      default:
     }
   }
 }
