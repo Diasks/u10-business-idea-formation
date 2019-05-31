@@ -1,7 +1,7 @@
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
-var checkToken = (req, res, next) => {
-  var token = req.headers["x-access-token"] || req.headers["authorization"]; // Express headers are auto converted to lowercase
+const checkToken = (req, res, next) => {
+  let token = req.headers["x-access-token"] || req.headers["authorization"]; // Express headers are auto converted to lowercase
   if (token) {
     if (token.startsWith("Bearer ")) {
       token = token.slice(7, token.length);

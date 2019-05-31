@@ -1,31 +1,37 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var JobSchema = new Schema({
+const uniqueValidator = require("mongoose-unique-validator");
+
+const JobSchema = new Schema({
   start_date: String,
   end_date: String,
   role: String
 });
 
-var SchoolSchema = new Schema({
+const SchoolSchema = new Schema({
   start_date: String,
   end_date: String,
   program: String
 });
 
-var CoverletterSchema = new Schema({
+const CoverletterSchema = new Schema({
   company: String,
   title: String,
   location: String,
   coverletter: String
 });
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   first_name: String,
   last_name: String,
   password: String,
-  email: String,
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
   place: String,
   telephone: String,
   objective: String,
@@ -35,5 +41,7 @@ var UserSchema = new Schema({
   skills: String,
   others: String
 });
+
+UserSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("User", UserSchema);
