@@ -165,9 +165,9 @@ export class UserDetails extends Component {
             <br />
           </StyleForm>
           <MyButton>
-         <Buttons onClick={this.continue}
+         <Button onClick={this.continue}
          >Submit
-         </Buttons>
+         </Button>
          </MyButton>
          
           
