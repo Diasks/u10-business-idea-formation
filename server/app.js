@@ -30,7 +30,6 @@ db.once("open", function() {
 });
 
 const usersRouter = require("./routes/users");
-const templatesRouter = require("./routes/templates");
 
 // view engine setup
 app.set("view engine", "pug");
@@ -63,7 +62,6 @@ app.post("/api/login", function(req, res) {
 });
 
 app.use("/api/users", usersRouter);
-app.use("/api/templates", templatesRouter);
 
 // catch 404 and forward to error handler
 app.use("/api/*", function(req, res, next) {
