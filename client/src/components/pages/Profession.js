@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import BuilderImg from "../../assets/build.png";
@@ -185,7 +183,6 @@ export default class Profession extends Component {
   render() {
     return (
       <div>
-        <Header />
         <ProfessionHeader>My CV Templates</ProfessionHeader>
         <ProfessionParagraph>
           Click on the template you would like to use for your resume.
@@ -227,7 +224,6 @@ export default class Profession extends Component {
             <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile
           </StyledLink>
         </Buttons>
-        <Footer />
       </div>
     );
   }

@@ -13,6 +13,8 @@ import MediaTemplate from "./components/pages/MediaTemplate";
 import BuilderTemplate from "./components/pages/BuilderTemplate";
 import MyCoverletterTemplates from "./components/pages/MyCoverletterTemplates";
 import MyTemplates from "./components/pages/MyTemplates";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faEdit,
@@ -22,6 +24,7 @@ import {
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import styled from "styled-components/macro";
 
 library.add(
   fab,
@@ -32,25 +35,59 @@ library.add(
   faExclamationCircle
 );
 
+function addNav(component) {
+  const FooterWrapper = styled.div`
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  `;
+
+  const Wrapper = styled.div`
+    position: relative;
+    min-height: 100%;
+  `;
+
+  const Content = styled.div`
+    padding-bottom: 200px; // the same as height of footer
+  `;
+
+  return props => {
+    const el = React.createElement(component, props);
+
+    return (
+      <Wrapper>
+        <Header />
+        <Content>{el}</Content>
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper>
+      </Wrapper>
+    );
+  };
+}
+
 export default function App() {
   return (
     <Router>
-      <div className="App">
-        <div>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/get-started" component={GetStarted} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/my-cv" component={Profession} />
-          <Route path="/general-template" component={GeneralTemplate} />
-          <Route path="/it-template" component={ItTemplate} />
-          <Route path="/media-template" component={MediaTemplate} />
-          <Route path="/builder-template" component={BuilderTemplate} />
-          <Route path="/my-coverletters" component={MyCoverletterTemplates} />
-          <Route path="/my-templates" component={MyTemplates} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-        </div>
-      </div>
+      <Route path="/profile" component={addNav(Profile)} />
+      <Route path="/my-cv" component={addNav(Profession)} />
+      <Route
+        path="/my-coverletters"
+        component={addNav(MyCoverletterTemplates)}
+      />
+
+      <Route path="/my-templates" component={addNav(MyTemplates)} />
+      <Route path="/about" component={addNav(About)} />
+      <Route path="/contact" component={addNav(Contact)} />
+
+      <Route path="/general-template" component={GeneralTemplate} />
+      <Route path="/it-template" component={ItTemplate} />
+      <Route path="/media-template" component={MediaTemplate} />
+      <Route path="/builder-template" component={BuilderTemplate} />
+
+      <Route exact path="/" component={Welcome} />
+      <Route path="/get-started" component={GetStarted} />
     </Router>
   );
 }

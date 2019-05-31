@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -70,35 +68,31 @@ const StyledLink = styled(Link)`
 
 export default function About() {
   return (
-    <div>
-      <Header />
-      <Body>
-        <StyleHeader1>Our Mission</StyleHeader1>
+    <Body>
+      <StyleHeader1>Our Mission</StyleHeader1>
 
-        <StyleParagraph>
-          Welcome to Formation, the future world's leading platform for
-          showcasing your resume or cover letter. We provide you with seamless
-          interface, easily adjustable profiles and multiple ways to make your
-          job application stand out from the crowd. Our unique algorithm makes
-          sure that you will find exactly what you are looking for, without
-          waiting times or scrolling through useless search results. Try out our
-          product today - you won’t be looking back.
-        </StyleParagraph>
+      <StyleParagraph>
+        Welcome to Formation, the future world's leading platform for showcasing
+        your resume or cover letter. We provide you with seamless interface,
+        easily adjustable profiles and multiple ways to make your job
+        application stand out from the crowd. Our unique algorithm makes sure
+        that you will find exactly what you are looking for, without waiting
+        times or scrolling through useless search results. Try out our product
+        today - you won’t be looking back.
+      </StyleParagraph>
 
-        <StyleParagraph>
-          Formation is made by Diana Skshipek, Astrid Sinabian, Jennifer
-          Söderberg, Oksana Kanterova and Diego Pinones who study at Chas
-          Academy, Stockholm. This application was made for our 10th assignment
-          as a business idea.
-        </StyleParagraph>
+      <StyleParagraph>
+        Formation is made by Diana Skshipek, Astrid Sinabian, Jennifer
+        Söderberg, Oksana Kanterova and Diego Pinones who study at Chas Academy,
+        Stockholm. This application was made for our 10th assignment as a
+        business idea.
+      </StyleParagraph>
 
-        <Buttons>
-          <StyledLink to="/">
-            <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home
-          </StyledLink>
-        </Buttons>
-      </Body>
-      <Footer />
-    </div>
+      <Buttons>
+        <StyledLink to="/">
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home
+        </StyledLink>
+      </Buttons>
+    </Body>
   );
 }

@@ -14,7 +14,6 @@ const FooterDiv = styled.div`
   padding: 10px 10px 30px 10px;
   height: 200px;
   left: 0;
-  bottom: 0;
   right: 0;
   font-family: "Didact Gothic", sans-serif;
 `;
@@ -91,7 +90,7 @@ export default function Footer() {
 
         <LinkSection>
           <LinkSectionTitle>Resources</LinkSectionTitle>
-          <Link style={linkStyle}>
+          <Link style={linkStyle} to="#">
             Articles
           </Link>
         </LinkSection>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -373,66 +371,62 @@ export default function Profile() {
   );
 
   return (
-    <div>
-      <Header />
-      <Body>
-        <UserHeaderWrap>
-          <UserHeader>Hello there, {user.first_name}!</UserHeader>
-          <UserParagraph>
-            Welcome to your profile page! Here you can change your contacts,
-            work experience etc. Feel free to change however you want. Click on
-            My CV for all the branch specific templates and on My Coverletters
-            for all your coverletters to different companies.
-          </UserParagraph>
-        </UserHeaderWrap>
+    <Body>
+      <UserHeaderWrap>
+        <UserHeader>Hello there, {user.first_name}!</UserHeader>
+        <UserParagraph>
+          Welcome to your profile page! Here you can change your contacts, work
+          experience etc. Feel free to change however you want. Click on My CV
+          for all the branch specific templates and on My Coverletters for all
+          your coverletters to different companies.
+        </UserParagraph>
+      </UserHeaderWrap>
 
-        <Menu>
-          <StyledLink to="/my-coverletters">My Coverletters</StyledLink>
-          <StyledLink to="/my-cv">My CV</StyledLink>
-        </Menu>
+      <Menu>
+        <StyledLink to="/my-coverletters">My Coverletters</StyledLink>
+        <StyledLink to="/my-cv">My CV</StyledLink>
+      </Menu>
 
-        <CircleWrap>
-          <Circle />
-        </CircleWrap>
-        <Formol item={user} onSubmit={updateProfile}>
-          <FullName>
-            <Field style={{ formolColor: "red !default" }} name="first_name">
-              First name
-            </Field>
-            <Field name="last_name">Last name</Field>
-          </FullName>
-          <Contacts>
-            <Field name="place" type="text">
-              Place (City, Country)
-            </Field>
-            <Field type="tel" name="telephone">
-              Telephone (XXX-XXX-XXXX)
-            </Field>
-            <Field readOnly type="text">
-              Email
-            </Field>
-          </Contacts>
+      <CircleWrap>
+        <Circle />
+      </CircleWrap>
+      <Formol item={user} onSubmit={updateProfile}>
+        <FullName>
+          <Field style={{ formolColor: "red !default" }} name="first_name">
+            First name
+          </Field>
+          <Field name="last_name">Last name</Field>
+        </FullName>
+        <Contacts>
+          <Field name="place" type="text">
+            Place (City, Country)
+          </Field>
+          <Field type="tel" name="telephone">
+            Telephone (XXX-XXX-XXXX)
+          </Field>
+          <Field readOnly type="text">
+            Email
+          </Field>
+        </Contacts>
 
-          <TabsWrap>
-            <Tabs forceRenderTabPanel={true}>
-              <TabList>
-                <Tab>Objective</Tab>
-                <Tab>Work experience</Tab>
-                <Tab>Education</Tab>
-                <Tab>Skills</Tab>
-                <Tab>Qualifications</Tab>
-              </TabList>
+        <TabsWrap>
+          <Tabs forceRenderTabPanel={true}>
+            <TabList>
+              <Tab>Objective</Tab>
+              <Tab>Work experience</Tab>
+              <Tab>Education</Tab>
+              <Tab>Skills</Tab>
+              <Tab>Qualifications</Tab>
+            </TabList>
 
-              {Objective}
-              {WorkExperience}
-              {Education}
-              {Skills}
-              {Others}
-            </Tabs>
-          </TabsWrap>
-        </Formol>
-      </Body>
-      <Footer />
-    </div>
+            {Objective}
+            {WorkExperience}
+            {Education}
+            {Skills}
+            {Others}
+          </Tabs>
+        </TabsWrap>
+      </Formol>
+    </Body>
   );
 }

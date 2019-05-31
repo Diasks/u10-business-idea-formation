@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,14 +57,12 @@ export default class MyTemplates extends Component {
   render() {
     return (
       <div>
-        <Header />
         <ProfessionHeader>Future feature..</ProfessionHeader>
         <Buttons>
           <StyledLink to="/profile">
             <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Profile
           </StyledLink>
         </Buttons>
-        <Footer />
       </div>
     );
   }

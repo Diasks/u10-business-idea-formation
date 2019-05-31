@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
-import Header from "../layout/Header";
 import styled from "styled-components";
-import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -20,13 +18,6 @@ const StyleHeader1 = styled.h1`
 const StyleParagraph = styled.p`
   font-size: 20px;
   text-align: center;
-`;
-
-const StyleFooter = styled.footer`
-position: absolute
-bottom: 0;
-width: 100%;
-height: 10rem;
 `;
 
 const Buttons = styled.div`
@@ -70,7 +61,6 @@ export default class Success extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Header />
         <React.Fragment>
           <StyleHeader1>Thank You For Your Submission</StyleHeader1>
           <StyleParagraph>
@@ -82,9 +72,6 @@ export default class Success extends Component {
               <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Home
             </StyledLink>
           </Buttons>
-          <StyleFooter>
-            <Footer />
-          </StyleFooter>
         </React.Fragment>
       </MuiThemeProvider>
     );

@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
-import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import Header from "../layout/Header";
 
 const Body = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
@@ -94,7 +92,6 @@ export default class UserDetails extends Component {
     const { values, handleChange } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        <Header />
         <React.Fragment>
           <Body>
             <StyleHeader1>Connect with us</StyleHeader1>
@@ -137,7 +134,6 @@ export default class UserDetails extends Component {
               </StyledLink>
             </Buttons>
           </Body>
-          <Footer />
         </React.Fragment>
       </MuiThemeProvider>
     );

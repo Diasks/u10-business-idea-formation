@@ -1,17 +1,8 @@
 import React, { Component } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import Header from "../layout/Header";
 import styled from "styled-components";
-import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
-
-const StyleFooter = styled.footer`
-position: absolute
-bottom: 0;
-width: 100%;
-height: 10rem;
-`;
 
 const StyleHeader1 = styled.h1`
   font-size: 40px;
@@ -75,8 +66,6 @@ export default class MessageForm extends Component {
     const { values, handleChange } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        <Header />
-
         <React.Fragment>
           <StyleHeader1>Message</StyleHeader1>
           <TextField
@@ -101,10 +90,6 @@ export default class MessageForm extends Component {
               Send
             </StyledLink>
           </Buttons>
-
-          <StyleFooter>
-            <Footer />
-          </StyleFooter>
         </React.Fragment>
       </MuiThemeProvider>
     );
