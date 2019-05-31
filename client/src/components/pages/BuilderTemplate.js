@@ -314,7 +314,7 @@ function BuilderTemplate() {
           <StyledLink to="/my-cv">
             <FontAwesomeIcon icon={faArrowAltCircleLeft} /> My CV
           </StyledLink>
-          <StyledLink to="/MyTemplates">
+          <StyledLink to="/my-templates">
             <FontAwesomeIcon icon={faPlusCircle} /> Cover letter
           </StyledLink>
         </Buttons>

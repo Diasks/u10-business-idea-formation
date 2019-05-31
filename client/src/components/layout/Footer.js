@@ -84,7 +84,7 @@ function Footer() {
       <Links>
         <LinkSection>
           <LinkSectionTitle>Company</LinkSectionTitle>
-          <Link style={linkStyle} to="/About">
+          <Link style={linkStyle} to="/about">
             About Us
           </Link>
         </LinkSection>
@@ -98,7 +98,7 @@ function Footer() {
 
         <LinkSection>
           <LinkSectionTitle>Support</LinkSectionTitle>
-          <Link style={linkStyle} to="/Contact">
+          <Link style={linkStyle} to="/contact">
             Contact Us
           </Link>
         </LinkSection>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
-import PageTwo from "./pages/PageTwo";
+import GetStarted from "./pages/GetStarted";
 import background from "../assets/homepage.jpg";
 import LogoImg from "../assets/formation.png";
 import { Link } from "react-router-dom";
@@ -127,7 +127,7 @@ const HeaderThree = styled.h3`
   }
 `;
 
-const GetStarted = styled.div`
+const GetStartedButton = styled.div`
   text-align: center;
 `;
 
@@ -316,11 +316,11 @@ function Welcome() {
             </HeaderThree>
 
             <Router>
-              <MyNavLink to="/PageTwo">
-                <GetStarted>Get Started</GetStarted>
+              <MyNavLink to="/get-started">
+                <GetStartedButton>Get Started</GetStartedButton>
               </MyNavLink>
                        
-              <Route exact path="/PageTwo" component={PageTwo} />
+              <Route exact path="/get-started" component={GetStarted} />
             </Router>
 
             <Circles>
