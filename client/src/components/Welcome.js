@@ -62,7 +62,6 @@ const StyledLink = styled(Link)`
     padding: 14px 10px 0 10px;
     text-align: center;
   }
-  
 `;
 
 const Line = styled.div`
@@ -169,7 +168,6 @@ const MyNavLink = styled(NavLink)`
     border: 1px solid #bb8fa9;
     padding: 10px;
     margin: 35px 110px 18px 110px;
-
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
@@ -252,7 +250,6 @@ const Circle = styled.div`
     padding: 30px;
     font-size: 12px;
   }
-
 `;
 
 const MyFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -294,7 +291,6 @@ const WelcomeFooter = styled.footer`
   @media (min-width: 1281px) {
     padding-top: 28em;
   }
-  
 `;
 
 function Welcome() {
@@ -316,7 +312,7 @@ function Welcome() {
           <Main>
             <HeaderOne>CV Templates | Cover letters</HeaderOne>
             <HeaderThree>
-              Write your resumé using our bransch specific templates.
+              Write your resume using our branch specific templates.
             </HeaderThree>
 
             <Router>
@@ -330,15 +326,24 @@ function Welcome() {
             <Circles>
               <Circle>
                 <MyFontAwesomeIcon icon={faEdit} />
-                <p>As a registered user you can use our branch specific templates and write cover letters.</p>
+                <p>
+                  As a registered user you can use our branch specific templates
+                  and write cover letters.
+                </p>
               </Circle>
               <Circle>
                 <MyFontAwesomeIcon icon={faSignInAlt} />
-                <p>Click on the Get Started button to sign in or register to get started already today. </p>
+                <p>
+                  Click on the Get Started button to sign in or register to get
+                  started already today.{" "}
+                </p>
               </Circle>
               <Circle>
                 <MyFontAwesomeIcon icon={faDownload} />
-                <p>You can download your CV and cover letters in PDF format for free as a registered member. </p>
+                <p>
+                  You can download your CV and cover letters in PDF format for
+                  free as a registered member.{" "}
+                </p>
               </Circle>
             </Circles>
           </Main>

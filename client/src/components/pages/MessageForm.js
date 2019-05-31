@@ -3,7 +3,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Header from "../layout/Header";
 import styled from "styled-components";
-import Footer from "../layout/Footer"
+import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 
 const StyleFooter = styled.footer`
@@ -11,7 +11,7 @@ position: absolute
 bottom: 0;
 width: 100%;
 height: 10rem;
-`
+`;
 
 const StyleHeader1 = styled.h1`
   font-size: 40px;
@@ -25,22 +25,22 @@ const Buttons = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-cursor: pointer;
-font: inherit;
-padding: 0.5em 1em;
-border-radius: 2em;
-text-decoration: none;
-background-color: #bb8fa9;
-color: #fafafa;
-text-align: center;
-transition: all 0.2s;
-border: none;
-
-:hover {
-  background-color: #d8c1cf;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5em 1em;
+  border-radius: 2em;
   text-decoration: none;
-  color: white;
-}
+  background-color: #bb8fa9;
+  color: #fafafa;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
+
+  :hover {
+    background-color: #d8c1cf;
+    text-decoration: none;
+    color: white;
+  }
 
   @media (min-width: 320px) and (max-width: 480px) {
     margin: 0.5em 0.3em 0.3em 0;
@@ -53,7 +53,6 @@ border: none;
   @media (min-width: 1025px) {
     margin: 1em 0.3em 0.3em 0;
   }
-
 `;
 
 const theme = createMuiTheme({
@@ -79,7 +78,6 @@ export class MessageForm extends Component {
         <Header />
 
         <React.Fragment>
-          
           <StyleHeader1>Message</StyleHeader1>
           <TextField
             id="standard-multiline-static"
@@ -94,14 +92,19 @@ export class MessageForm extends Component {
           <br />
 
           <Buttons>
-            <StyledLink to ="/"onClick={this.back}> Back</StyledLink>
-            <StyledLink to ="/"onClick={this.continue}> Send</StyledLink>
-          </Buttons> 
-          
+            <StyledLink to="/" onClick={this.back}>
+              {" "}
+              Back
+            </StyledLink>
+            <StyledLink to="/" onClick={this.continue}>
+              {" "}
+              Send
+            </StyledLink>
+          </Buttons>
+
           <StyleFooter>
-          <Footer />
+            <Footer />
           </StyleFooter>
-          
         </React.Fragment>
       </MuiThemeProvider>
     );

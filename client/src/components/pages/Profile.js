@@ -13,7 +13,7 @@ const Body = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
   height: 100%;
   width: 100%;
-  font-family: 'Didact Gothic', sans-serif;
+  font-family: "Didact Gothic", sans-serif;
   background: linear-gradient(#fffbfd, #fff);
 `;
 
@@ -54,7 +54,6 @@ const FullName = styled.div`
     align-items: center;
     flex-direction: column;
   }
-  
 `;
 
 const Contacts = styled.div`
@@ -69,13 +68,10 @@ const Contacts = styled.div`
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
-
     display: flex;
     align-items: center;
     flex-direction: column;
-  
   }
-
 `;
 
 const TabsWrap = styled.div`
@@ -376,15 +372,18 @@ function Profile() {
     </TabPanel>
   );
 
-
   return (
     <div>
       <Header />
       <Body>
-
         <UserHeaderWrap>
           <UserHeader>Hello there, {user.first_name}!</UserHeader>
-          <UserParagraph>Welcome to your profile page! Here you can change your contacts, work experience etc. Feel free to change however you want. Click on My CV for all the branch specific templates and on My Coverletters for all your coverletters to different companies.</UserParagraph>
+          <UserParagraph>
+            Welcome to your profile page! Here you can change your contacts,
+            work experience etc. Feel free to change however you want. Click on
+            My CV for all the branch specific templates and on My Coverletters
+            for all your coverletters to different companies.
+          </UserParagraph>
         </UserHeaderWrap>
 
         <Menu>

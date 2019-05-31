@@ -103,7 +103,10 @@ export class Login extends Component {
             onChange={this.handleChange}
           />{" "}
           {formErrors.email.length > 0 && (
-            <ErrorMessage><MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.email}</ErrorMessage>
+            <ErrorMessage>
+              <MyFontAwesomeIcon icon={faExclamationCircle} />{" "}
+              {formErrors.email}
+            </ErrorMessage>
           )}
           <FormInputLabel htmlFor="password" className="FormInputLabel">
             Password
@@ -118,10 +121,13 @@ export class Login extends Component {
             onChange={this.handleChange}
           />
           {formErrors.password.length > 0 && (
-            <ErrorMessage><MyFontAwesomeIcon icon={faExclamationCircle} /> {formErrors.password}</ErrorMessage>
+            <ErrorMessage>
+              <MyFontAwesomeIcon icon={faExclamationCircle} />{" "}
+              {formErrors.password}
+            </ErrorMessage>
           )}
           <div>
-          <FormButton type="submit">Sign in</FormButton>
+            <FormButton type="submit">Sign in</FormButton>
           </div>
         </FormInputs>
       </FormWrap>

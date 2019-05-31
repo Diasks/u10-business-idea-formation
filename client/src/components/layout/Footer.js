@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FooterDiv = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
@@ -16,7 +16,7 @@ const FooterDiv = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  font-family: 'Didact Gothic', sans-serif;
+  font-family: "Didact Gothic", sans-serif;
 `;
 
 const Social = styled.div`
@@ -72,14 +72,14 @@ function Footer() {
     <FooterDiv>
       <Social>
         <Icon>
-          <FontAwesomeIcon icon={['fab', 'instagram']} />
-          </Icon>
+          <FontAwesomeIcon icon={["fab", "instagram"]} />
+        </Icon>
         <Icon>
-          <FontAwesomeIcon icon={['fab', 'facebook']} />
-          </Icon>
+          <FontAwesomeIcon icon={["fab", "facebook"]} />
+        </Icon>
         <Icon>
-          <FontAwesomeIcon icon={['fab', 'linkedin']} />
-          </Icon>
+          <FontAwesomeIcon icon={["fab", "linkedin"]} />
+        </Icon>
       </Social>
       <Links>
         <LinkSection>

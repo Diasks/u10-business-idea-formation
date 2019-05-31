@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import client from "../../client";
 import LogoImg from "../../assets/formation.png";
 
 const Navbar = styled.div`
@@ -30,21 +29,7 @@ const Logo = styled.div`
   padding: 5px 0 5px 8px;
 `;
 
-const Header = () => {
-  const [user, setUser] = useState({ loading: true });
-
-  useEffect(() => {
-    async function fetchData() {
-      const result = await client.get("/users/me");
-
-      setUser({ ...result.data, loading: false });
-    }
-
-    fetchData();
-  }, []);
-
-  const firstName = user.loading ? "" : user.first_name;
-
+function Header() {
   return (
     <Navbar>
       <Logo>
@@ -72,6 +57,6 @@ const Header = () => {
       </StyledLink>
     </Navbar>
   );
-};
+}
 
 export default Header;

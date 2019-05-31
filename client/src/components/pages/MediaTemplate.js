@@ -163,7 +163,6 @@ const Buttons = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 0 10px 15px 10px;
-  
 
   @media (min-width: 320px) and (max-width: 480px) {
     display: flex;
