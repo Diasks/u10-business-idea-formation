@@ -163,22 +163,22 @@ export default class Profession extends Component {
   }
 
   routeChange() {
-    const path = `GenTemplate`;
+    const path = `general-template`;
     this.props.history.push(path);
   }
 
   itRouteChange() {
-    const path = `ItTemplate`;
+    const path = `it-template`;
     this.props.history.push(path);
   }
 
   builderRouteChange() {
-    const path = `BuilderTemplate`;
+    const path = `builder-template`;
     this.props.history.push(path);
   }
 
   mediaRouteChange() {
-    const path = `MediaTemplate`;
+    const path = `media-template`;
     this.props.history.push(path);
   }
 

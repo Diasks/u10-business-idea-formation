@@ -163,22 +163,22 @@ export default class MyTemplates extends Component {
   }
 
   routeChange() {
-    const path = `MyTemplates`;
+    const path = `my-templates`;
     this.props.history.push(path);
   }
 
   itRouteChange() {
-    const path = `MyTemplates`;
+    const path = `my-templates`;
     this.props.history.push(path);
   }
 
   builderRouteChange() {
-    const path = `MyTemplates`;
+    const path = `my-templates`;
     this.props.history.push(path);
   }
 
   mediaRouteChange() {
-    const path = `MyTemplates`;
+    const path = `my-templates`;
     this.props.history.push(path);
   }
 

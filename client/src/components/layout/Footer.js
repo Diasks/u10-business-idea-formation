@@ -91,7 +91,7 @@ export default function Footer() {
 
         <LinkSection>
           <LinkSectionTitle>Resources</LinkSectionTitle>
-          <Link style={linkStyle} to="/login">
+          <Link style={linkStyle}>
             Articles
           </Link>
         </LinkSection>
